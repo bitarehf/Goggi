@@ -1,0 +1,27 @@
+// import Nebular Theme System and the default theme
+@import '~@nebular/theme/styles/theming';
+@import '~@nebular/theme/styles/themes/default';
+
+// Change the variables you need
+// or simply leave the map empty to use the default values
+$nb-themes: nb-register-theme((
+    color-primary: #73a1ff,
+    color-success: #5dcfe3,
+    color-info:	#ba7fec,
+    color-warning: #ffa36b,
+    color-danger: #ff6b83,
+    btn-primary-bg: #8a7fff,
+    btn-secondary-bg: #edf2f5,
+    btn-info-bg: #4ca6ff,
+    btn-success-bg: #5dcfe3,
+    btn-warning-bg: #ffa100,
+    btn-danger-bg: #ff4c6a,
+    link-color: #5dcfe3,
+    link-color-hover: #7dcfe3,
+    link-color-visited: #5dcfe3,
+    tooltip-primary-bg: #73a1ff,
+    tooltip-info-bg: #ba7fec,
+    tooltip-success-bg: #5dcfe3,
+    tooltip-warning-bg: #ffa36b,
+    tooltip-danger-bg: #ff6b83
+), default, default); // let's leave it as default
