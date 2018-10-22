@@ -6,7 +6,7 @@ import { Person } from './person';
 @Injectable()
 export class BitcoinService {
 
-  url: string = 'http://localhost:5000/persons';
+  url: string = 'http://api.bitar.is/persons';
 
   constructor(private http: HttpClient) {
   }
