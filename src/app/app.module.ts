@@ -10,6 +10,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
 import { BitcoinService } from './services/bitcoin.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CurrencyService } from './services/currency.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { HttpClientModule } from '@angular/common/http';
     NbBadgeModule,
     NbAlertModule
   ],
-  providers: [BitcoinService],
+  providers: [BitcoinService, CurrencyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

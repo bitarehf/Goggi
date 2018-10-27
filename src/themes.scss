@@ -23,5 +23,6 @@ $nb-themes: nb-register-theme((
     tooltip-info-bg: #ba7fec,
     tooltip-success-bg: #5dcfe3,
     tooltip-warning-bg: #ffa36b,
-    tooltip-danger-bg: #ff6b83
+    tooltip-danger-bg: #ff6b83,
+    header-height: 7.24rem
 ), default, default); // let's leave it as default
