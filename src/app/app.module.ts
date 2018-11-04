@@ -10,12 +10,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { TextMaskModule } from 'angular2-text-mask';
 import { BitcoinService } from './services/bitcoin.service';
 import { HttpClientModule } from '@angular/common/http';
-import { CurrencyService } from './services/currency.service';
+import { StockService } from './services/stock.service';
+import { ExchangeRatesComponent } from './components/exchange-rates/exchange-rates.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BuyComponent
+    BuyComponent,
+    ExchangeRatesComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,7 @@ import { CurrencyService } from './services/currency.service';
     NbBadgeModule,
     NbAlertModule
   ],
-  providers: [BitcoinService, CurrencyService],
+  providers: [BitcoinService, StockService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

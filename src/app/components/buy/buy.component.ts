@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Person } from 'src/app/services/person';
 import { BitcoinService } from 'src/app/services/bitcoin.service';
-import { CurrencyService } from 'src/app/services/currency.service';
+import { StockService } from 'src/app/services/stock.service';
 
 @Component({
   selector: 'app-buy',
@@ -18,12 +18,9 @@ export class BuyComponent {
   hidden: boolean;
   alertHidden: boolean = true;
 
-  constructor(private bitcoin: BitcoinService, private currency: CurrencyService) { }
+  constructor(private bitcoin: BitcoinService) { }
 
   buySubmit() {
-
-    this.currency.tada();
-
     if (this.ssnValid && this.addressValid) {
       console.log('Adding person...');
       this.person2.ssn = this.person.ssn.replace('-', '');
