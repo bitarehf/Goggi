@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Person } from 'src/app/services/person';
-import { BitcoinService } from 'src/app/services/bitcoin.service';
-import { StockService } from 'src/app/services/stock.service';
+import { BitarApiService } from 'src/app/services/bitar-api.service';
 
 @Component({
   selector: 'app-buy',
@@ -18,7 +17,7 @@ export class BuyComponent {
   hidden: boolean;
   alertHidden: boolean = true;
 
-  constructor(private bitcoin: BitcoinService) { }
+  constructor(private bitcoin: BitarApiService) { }
 
   buySubmit() {
     if (this.ssnValid && this.addressValid) {
@@ -78,6 +77,5 @@ export class BuyComponent {
   showError() {
     this.alertHidden = false;
   }
+
 }
-
-

@@ -1,0 +1,172 @@
+<div class="container" [hidden]="hidden">
+  <div class="row">
+    <div class="col-lg-6">
+      <h1 class="display-4 font-size-48--md-down mb-3">Bitar</h1>
+      <p>
+        Viltu kaupa bitcoin á
+        <span class="text-primary">
+          <strong class="writer"></strong>
+        </span>
+        <br>Þá ertu kominn á réttan stað! Við notum alla nýjustu tækni og erum ljósárum á undan samkeppnis aðilum.
+      </p>
+
+      <form name="buyForm" (ngSubmit)="buySubmit()">
+        <div class="s-input" [ngClass]="{'success': ssnValid}">
+          <input name="ssn" type="text" placeholder="Kennitala" [(ngModel)]="person.ssn" (ngModelChange)="validateSSN()"
+            [textMask]="{mask: ssnMask, guide: false}">
+          <svg viewBox="0 0 16 16">
+            <path d="M10.8000002,10.8000002 C9.85000038,11.6500006 9.18349609,12 8,12 C5.80000019,12 4,10.1999998 4,8 C4,5.80000019 5.80000019,4 8,4 C10.1999998,4 12,6 12,8 C12,9.35332031 12.75,9.5 13.5,9.5 C14.25,9.5 15,8.60000038 15,8 C15,4 12,1 8,1 C4,1 1,4 1,8 C1,12 4,15 8,15 C12,15 15,12 15,8"></path>
+            <polyline points="5 8.375 7.59090909 11 14.5 4" transform='translate(0 -0.5)'></polyline>
+          </svg>
+        </div>
+        <br>
+        <div class="s-input" [ngClass]="{'success': addressValid}">
+          <input name="bitcoinAddress" type="text" placeholder="Bitcoin Address" spellcheck="false" [(ngModel)]="person.bitcoinAddress"
+            (ngModelChange)="validateAddress()">
+          <svg viewBox="0 0 16 16">
+            <path d="M10.8000002,10.8000002 C9.85000038,11.6500006 9.18349609,12 8,12 C5.80000019,12 4,10.1999998 4,8 C4,5.80000019 5.80000019,4 8,4 C10.1999998,4 12,6 12,8 C12,9.35332031 12.75,9.5 13.5,9.5 C14.25,9.5 15,8.60000038 15,8 C15,4 12,1 8,1 C4,1 1,4 1,8 C1,12 4,15 8,15 C12,15 15,12 15,8"></path>
+            <polyline points="5 8.375 7.59090909 11 14.5 4" transform='translate(0 -0.5)'></polyline>
+          </svg>
+        </div>
+        <br>
+        <br>
+        <div class="d-flex">
+          <button class="btn u-btn-primary--air u-btn-wide transition-3d-hover">Kaupa Bitcoin</button>
+          <!-- Fancybox -->
+          <a class="media align-items-center u-instruction ml-3" href="#">
+            <span class="mr-3">
+              <span class="u-instruction__icon u-instruction__icon--success">
+                <span class="fas fa-book u-instruction__icon-inner"></span>
+              </span>
+            </span>
+            <span class="media-body">Leiðbeiningar</span>
+          </a>
+          <!-- End Fancybox -->
+        </div>
+
+      </form>
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-4 font-size-48--md-down mb-3">Gengi</h1>
+      <br>
+      <div class="row align-items-center">
+        <div class="col">
+          <div class="media align-items-center">
+            <div class="d-flex mr-3">
+              <span class="u-icon u-icon--lg u-icon-warning--air rounded-circle">
+                <span class="fab fa-bitcoin u-icon__inner"></span>
+              </span>
+            </div>
+            <div class="media-body">
+              <h3 class="h5 mb-0">1 Bitcoin</h3>
+              <span class="d-block text-secondary">BTC</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <ul class="list-inline row justify-content-end text-secondary text-uppercase mb-0">
+            <li class="list-inline-item col u-ver-divider u-ver-divider--xs u-ver-divider--none-md">
+              <small class="d-block">Verð <small>(1 min)</small></small>
+              <a class="d-block text-success" href="#">
+                750.000 ISK
+                <span class="fa fa-angle-up ml-2"></span>
+              </a>
+            </li>
+            <li class="list-inline-item col">
+              <small class="d-block">Breyting <small>(24 klst)</small></small>
+              <a class="d-block text-danger" href="#">
+                -3.38%
+                <span class="fa fa-angle-down ml-2"></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" [hidden]="!hidden">
+  <span class="u-label u-label--sm u-label--success mb-2">Vel gert!</span>
+  <div class="row">
+    <div class="col-lg-5 mb-9 mb-lg-0">
+      <div class="pr-lg-4 mb-7">
+        <h2 class="text-primary">Aðeins eitt skref
+          <span class="font-weight-bold">eftir</span>
+        </h2>
+        <p>Millifærðu á Bitar ehf. hvaða upphæð sem þú vilt
+          og við sendum þér viðeigandi magn í bitcoin.
+          Banka upplýsingar má sjá hér að neðan.</p>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <ul class="list-unstyled mb-0">
+            <li class="py-2">
+              <div class="media">
+                <div class="d-flex mr-3">
+                  <span class="u-icon u-icon-success--air u-icon--sm rounded-circle">
+                    <span class="fas fa-university u-icon__inner"></span>
+                  </span>
+                </div>
+                <div class="media-body">0133-26-014528</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6">
+          <ul class="list-unstyled mb-0">
+            <li class="py-2">
+              <div class="media">
+                <div class="d-flex mr-3">
+                  <span class="u-icon u-icon-info--air u-icon--sm rounded-circle">
+                    <span class="fas fa-user u-icon__inner"></span>
+                  </span>
+                </div>
+                <div class="media-body">470818-0420</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="col mb-9 mb-lg-0">
+      <div class="pr-lg-4 mb-7">
+        <h2 class="text-primary">Fleiri
+          <span class="font-weight-bold">Upplýsingar</span>
+        </h2>
+        <p>Allar greiðslur eru sjálfvirkar og taka ekki lengur en 1 mínútu. Bitcoin Staðfestingar tími er um 10 blocks.</p>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <ul class="list-unstyled mb-0">
+            <li class="py-2">
+              <div class="media">
+                <div class="d-flex mr-3">
+                  <span class="u-icon u-icon-info--air u-icon--sm rounded-circle">
+                    <span class="fas fa-user u-icon__inner"></span>
+                  </span>
+                </div>
+                <div class="media-body">{{person.ssn}}</div>
+              </div>
+            </li>
+            <li class="py-2">
+              <div class="media">
+                <div class="d-flex mr-3">
+                  <span class="u-icon u-icon-primary--air u-icon--sm rounded-circle">
+                    <span class="fas fa-wallet u-icon__inner"></span>
+                  </span>
+                </div>
+                <div class="media-body">{{person.bitcoinAddress}}</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

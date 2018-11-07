@@ -1,43 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NbThemeModule, NbLayoutModule, NbButtonModule, NbStepperModule, NbCardModule, NbInputModule, NbMenuModule, NbActionsModule, NbBadgeModule, NbToastrService, NbToastrModule, NbAlertModule } from '@nebular/theme';
-import { BuyComponent } from './components/buy/buy.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { TextMaskModule } from 'angular2-text-mask';
-import { BitcoinService } from './services/bitcoin.service';
+import { HeaderComponent } from './components/header/header.component';
+import { HomeComponent } from './components/home/home.component';
+import { BuyComponent } from './components/home/buy/buy.component';
 import { HttpClientModule } from '@angular/common/http';
-import { StockService } from './services/stock.service';
-import { ExchangeRatesComponent } from './components/exchange-rates/exchange-rates.component';
+import { TextMaskModule } from 'angular2-text-mask';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FooterComponent } from './components/footer/footer.component';
+import { FeatureComponent } from './components/home/feature/feature.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
+    HomeComponent,
     BuyComponent,
-    ExchangeRatesComponent
+    FooterComponent,
+    FeatureComponent
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    TextMaskModule,
-    NbThemeModule.forRoot({ name: 'default' }),
-    NbLayoutModule,
-    NbButtonModule,
-    NbInputModule,
-    NbStepperModule,
-    NbCardModule,
-    NbActionsModule,
-    NbBadgeModule,
-    NbAlertModule
+    TextMaskModule
   ],
-  providers: [BitcoinService, StockService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

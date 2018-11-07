@@ -3,8 +3,10 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Person } from './person';
 
-@Injectable()
-export class BitcoinService {
+@Injectable({
+  providedIn: 'root'
+})
+export class BitarApiService {
 
   url: string = 'https://api.bitar.is/persons';
 
