@@ -1,53 +1,50 @@
-<header class="u-header u-header--abs-top-md u-header--bg-transparent u-header--show-hide-md">
+<header class="u-header u-header--abs-top-md u-header--show-hide-md js-header-fix-moment">
   <div class="u-header__section">
-
     <div class="container">
-      <!-- Nav -->
       <nav class="navbar navbar-expand-md u-header__navbar">
-        <!-- Logo -->
-        <a class="navbar-brand u-header__navbar-brand u-header__navbar-brand-top-space" href="#">
-          <img src="../../../assets/bitar.png" style="width: 56px;">
+        <a class="navbar-brand u-header__navbar-brand u-header__navbar-brand-top-space" routerLink="" aria-label="Front">
+          <img src="../../../assets/bitar.png" alt="Logo" width="56px">
         </a>
-        <!-- End Logo -->
 
-        <!-- Responsive Toggle Button -->
         <button type="button" class="navbar-toggler btn u-hamburger" aria-label="Toggle navigation" aria-expanded="false"
-          aria-controls="navBar" data-toggle="collapse" data-target="#navBar">
+          aria-controls="navBarBasic" data-toggle="collapse" data-target="#navBarBasic">
           <span id="hamburgerTrigger" class="u-hamburger__box">
             <span class="u-hamburger__inner"></span>
           </span>
         </button>
-        <!-- End Responsive Toggle Button -->
 
-        <!-- Navigation -->
-        <div id="navBar" class="collapse navbar-collapse py-0">
+        <div id="navBarBasic" class="collapse navbar-collapse py-0">
           <ul class="navbar-nav u-header__navbar-nav ml-lg-auto">
+            <li class="nav-item">
+              <a class="nav-link u-header__nav-link" routerLink="">
+                Heim
+              </a>
+            </li>
 
-            <!-- Starter - Link -->
+            <li class="nav-item">
+              <a class="nav-link u-header__nav-link" routerLink="">
+                Test
+              </a>
+            </li>
+
             <li class="nav-item">
               <a class="nav-link u-header__nav-link" href="https://github.com/bitarehf" target="_blank">
                 GitHub
               </a>
             </li>
-            <!-- End Starter - Link -->
 
-
-
-            <!-- Button -->
-            <li class="nav-item d-none d-md-inline-block pl-3 pr-0">
-              <a class="btn btn-sm btn-primary u-btn-primary transition-3d-hover" href="#">Innskrá</a>
+            <li class="nav-item d-none d-md-inline-block pl-2 pr-0">
+              <a class="btn btn-sm btn-primary u-btn-primary transition-3d-hover" routerLink="">
+                Innskrá
+              </a>
             </li>
-
-            <!-- End Button -->
           </ul>
         </div>
-        <!-- End Navigation -->
       </nav>
-      <!-- End Nav -->
     </div>
   </div>
 </header>
-
+<br>
 <br>
 <br>
 <br>
