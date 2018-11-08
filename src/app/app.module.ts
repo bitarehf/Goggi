@@ -11,6 +11,9 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 import { FeatureComponent } from './components/home/feature/feature.component';
+import { TermsComponent } from './components/terms/terms.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { FeatureComponent } from './components/home/feature/feature.component';
     HomeComponent,
     BuyComponent,
     FooterComponent,
-    FeatureComponent
+    FeatureComponent,
+    TermsComponent,
+    PageNotFoundComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
