@@ -14,6 +14,7 @@ import { FeatureComponent } from './components/home/feature/feature.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
+import { RatesComponent } from './components/rates/rates.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
     FeatureComponent,
     TermsComponent,
     PageNotFoundComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    RatesComponent
   ],
   imports: [
     BrowserModule,

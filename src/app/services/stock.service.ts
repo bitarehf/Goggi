@@ -12,7 +12,7 @@ export class StockService {
 
   constructor() { }
 
-  public tada() {
+  start() {
     console.log('Stock service started.');
     
     let connection = new HubConnectionBuilder()
@@ -32,4 +32,5 @@ export class StockService {
       });
     });
   }
+
 }
