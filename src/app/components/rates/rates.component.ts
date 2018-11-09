@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StockService } from 'src/app/services/stock.service';
 
+
 @Component({
   selector: 'app-rates',
   templateUrl: './rates.component.html',
