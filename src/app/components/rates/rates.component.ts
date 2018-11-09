@@ -8,7 +8,7 @@ import { StockService } from 'src/app/services/stock.service';
 })
 export class RatesComponent implements OnInit {
 
-  constructor(private stock: StockService) { }
+  constructor(public stock: StockService) { }
 
   ngOnInit() {
     this.stock.start();
