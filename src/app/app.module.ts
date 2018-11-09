@@ -16,6 +16,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { RatesComponent } from './components/rates/rates.component';
 
+import { registerLocaleData } from '@angular/common';
+import is from '@angular/common/locales/is';
+registerLocaleData(is);
+
 @NgModule({
   declarations: [
     AppComponent,
