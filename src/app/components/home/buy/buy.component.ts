@@ -20,25 +20,25 @@ export class BuyComponent {
   constructor(private bitcoin: BitarApiService) { }
 
   buySubmit() {
-    if (this.ssnValid && this.addressValid) {
-      console.log('Adding person...');
-      this.person2.ssn = this.person.ssn.replace('-', '');
-      this.person2.bitcoinAddress = this.person.bitcoinAddress;
-      this.bitcoin.addPerson(this.person2).subscribe(
-        res => {
-          if (res.status == 200) {
-            console.log('Request successful');
-            console.log(res);
-            this.hidden = true;
-          }
-        },
-        err => {
-          console.log('Request failed');
-          this.showError();
-          console.error(err);
-        }
-      );
-    }
+    // if (this.ssnValid && this.addressValid) {
+    //   console.log('Adding person...');
+    //   this.person2.ssn = this.person.ssn.replace('-', '');
+    //   this.person2.bitcoinAddress = this.person.bitcoinAddress;
+    //   this.bitcoin.register(this.person2).subscribe(
+    //     res => {
+    //       if (res.status == 200) {
+    //         console.log('Request successful');
+    //         console.log(res);
+    //         this.hidden = true;
+    //       }
+    //     },
+    //     err => {
+    //       console.log('Request failed');
+    //       this.showError();
+    //       console.error(err);
+    //     }
+    //   );
+    // }
   }
 
   validateSSN() {

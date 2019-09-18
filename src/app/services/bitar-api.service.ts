@@ -1,19 +1,28 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Person } from './person';
+import { Register } from './register';
+import { Login } from './login';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BitarApiService {
 
-  url: string = 'https://api.bitar.is/persons';
+  url: string = 'https://api.bitar.is/account';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) { }
+
+  register(register: Register) {
+    return this.http.post(this.url + '/register', register, { responseType: 'text' as 'json', observe: 'response' });
   }
 
-  addPerson(person: Person): Observable<HttpResponse<Person>> {
-    return this.http.post<Person>(this.url, person, { observe: 'response' });
+  login(login: Login) {
+    return this.http.post(this.url + '/login', login, { responseType: 'text' as 'json', observe: 'response' });
+  }
+
+  logout() {
+    localStorage.removeItem('token');
   }
 }
