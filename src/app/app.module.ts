@@ -21,6 +21,7 @@ import { registerLocaleData } from '@angular/common';
 import is from '@angular/common/locales/is';
 import { RegisterComponent } from './components/home/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/home/login/login.component';
 registerLocaleData(is);
 
 export function tokenGetter() {
@@ -40,7 +41,8 @@ export function tokenGetter() {
     PrivacyComponent,
     RatesComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

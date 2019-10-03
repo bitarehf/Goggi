@@ -6,10 +6,12 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guard';
+import { LoginComponent } from './components/home/login/login.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  { path: 'login', component: LoginComponent },
   { path: 'terms', component: TermsComponent },
   { path: 'privacy', component: PrivacyComponent },
   { path: '**', component: PageNotFoundComponent }
