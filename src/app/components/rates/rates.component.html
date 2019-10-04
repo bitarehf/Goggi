@@ -17,17 +17,11 @@
     <ul class="list-inline row justify-content-end text-secondary text-uppercase mb-0">
       <li class="list-inline-item col u-ver-divider u-ver-divider--xs u-ver-divider--none-md">
         <small class="d-block">Verð <small>(1 min)</small></small>
-        <a class="d-block text-success" href="#">
-          {{ stock.BTC | number:'0.0-0' }} ISK
-          <span class="fa fa-angle-up ml-2"></span>
-        </a>
+        <a class="d-block text-success">{{stock.BTC | number:'0.0-0'}} ISK</a>
       </li>
       <li class="list-inline-item col">
         <small class="d-block">Breyting <small>(24 klst)</small></small>
-        <a class="d-block text-danger" href="#">
-          -1.02%
-          <span class="fa fa-angle-down ml-2"></span>
-        </a>
+        <a class="d-block text-danger">-1.02%<span class="fa fa-angle-down ml-2"></span></a>
       </li>
     </ul>
   </div>
