@@ -10,11 +10,9 @@ export class StockService {
   public BTC: number;
   Stocks: Stock[];
 
-  constructor() { }
-
-  start() {
+  constructor() {
     console.log('Stock service started.');
-    
+
     let connection = new HubConnectionBuilder()
       .withUrl('https://api.bitar.is/stocks')
       .build();
@@ -23,12 +21,12 @@ export class StockService {
 
     connection.on('StocksUpdated', (stocks: Stock[]) => {
       this.Stocks = stocks;
+      console.log(this.Stocks);
       stocks.forEach(element => {
         if (element.symbol == Symbol.BTC) {
           this.BTC = element.price;
           console.log("Price set to: " + element.price);
         }
-        console.log(element);
       });
     });
   }
