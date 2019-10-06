@@ -14,7 +14,6 @@ export class BuyComponent {
   ssnMask: Array<string | RegExp> = [/[0-9]/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
   ssnValid: boolean;
   addressValid: boolean;
-  hidden: boolean;
   alertHidden: boolean = true;
 
   constructor(private bitcoin: BitarApiService) { }

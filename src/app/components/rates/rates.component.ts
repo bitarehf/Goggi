@@ -10,8 +10,6 @@ export class RatesComponent implements OnInit {
 
   constructor(public stock: StockService) { }
 
-  ngOnInit() {
-    this.stock.start();
-  }
+  ngOnInit() { }
 
 }

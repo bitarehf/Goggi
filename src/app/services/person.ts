@@ -1,4 +1,4 @@
-export class Person {
+export interface Person {
     ssn: string;
     bitcoinAddress: string;
 }

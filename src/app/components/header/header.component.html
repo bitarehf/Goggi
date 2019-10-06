@@ -1,4 +1,29 @@
-<header class="u-header u-header--abs-top-md u-header--show-hide-md js-header-fix-moment">
+<nav class="navbar navbar-expand-sm navbar-light bg-white">
+  <a class="navbar-brand" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Bitar</a>
+  <button class="navbar-toggler" (click)="collapse=!collapse" type="button">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="navbar-collapse flex-grow-1 text-right" [hidden]="collapse">
+    <ul class="navbar-nav ml-auto flex-nowrap">
+      <!-- <li class="nav-item">
+        <a class="nav-link m-2 menu-item" routerLink="/terms" routerLinkActive="active">Terms</a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link m-2 menu-item" routerLink="/login" routerLinkActive="active"
+          *ngIf="!isAuthenticated()">Innskráning</a>
+      </li>
+      <li class="nav-item" *ngIf="isAuthenticated()">
+        <a class="nav-link m-2 menu-item" routerLink="/dashboard" routerLinkActive="active">Mitt svæði</a>
+      </li>
+      <li class="nav-item" *ngIf="isAuthenticated()">
+        <a class="nav-link m-2 menu-item" routerLink="/" (click)="logout()">Útskrá</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- <header class="u-header u-header--abs-top-md u-header--show-hide-md js-header-fix-moment">
   <div class="u-header__section">
     <div class="container">
       <nav class="navbar navbar-expand-md u-header__navbar">
@@ -47,4 +72,4 @@
 <br>
 <br>
 <br>
-<br>
+<br> -->
