@@ -1,27 +1,28 @@
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
 
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { JwtModule } from '@auth0/angular-jwt';
+import { TextMaskModule } from 'angular2-text-mask';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { HomeComponent } from './components/home/home.component';
-import { BuyComponent } from './components/home/buy/buy.component';
-import { HttpClientModule } from '@angular/common/http';
-import { TextMaskModule } from 'angular2-text-mask';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { BuyComponent } from './components/home/buy/buy.component';
 import { FeatureComponent } from './components/home/feature/feature.component';
-import { TermsComponent } from './components/terms/terms.component';
+import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { RatesComponent } from './components/rates/rates.component';
-import { JwtModule } from '@auth0/angular-jwt';
+import { TermsComponent } from './components/terms/terms.component';
 
 import { registerLocaleData } from '@angular/common';
 import is from '@angular/common/locales/is';
-import { RegisterComponent } from './components/home/register/register.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { OrderComponent } from './components/dashboard/order/order.component';
 import { LoginComponent } from './components/home/login/login.component';
+import { RegisterComponent } from './components/home/register/register.component';
 registerLocaleData(is);
 
 export function tokenGetter() {
@@ -42,7 +43,8 @@ export function tokenGetter() {
     RatesComponent,
     RegisterComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,

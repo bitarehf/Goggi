@@ -1,6 +1,7 @@
 export interface Stock {
     price: number;
     symbol: Symbol;
+    lastUpdated: Date;
 }
 
 export enum Symbol {

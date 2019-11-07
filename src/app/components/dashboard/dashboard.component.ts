@@ -1,48 +1,75 @@
-import { Component, OnInit } from '@angular/core';
-import { BitarApiService } from 'src/app/services/bitar-api.service';
-import { HttpClient } from '@angular/common/http';
-import { StockService } from 'src/app/services/stock.service';
+import { Component, OnInit } from "@angular/core";
+import { Observable } from "rxjs";
+import { AccountData } from "src/app/services/accountData";
+import { BitarApiService } from "src/app/services/bitar-api.service";
+import { StockService } from "src/app/services/stock.service";
+import createNumberMask from "text-mask-addons/dist/createNumberMask";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: "app-dashboard",
+  templateUrl: "./dashboard.component.html",
+  styleUrls: ["./dashboard.component.scss"]
 })
 export class DashboardComponent implements OnInit {
-  accountData: AccountData;
-  accountBTCBalance: number;  
+  account: AccountData;
+  bitcoinBalance: number;
+  btc: string = '';
+  isk: string = '';
+  show: boolean;
+  countdown: Observable<number>;
 
-  constructor(http: HttpClient, public stock: StockService) {
-    http.get<AccountData>("https://api.bitar.is/accountdata/getaccountdata").subscribe(result => {
-      console.log(result);
-      this.accountData = result;
-    }, error => console.error(error));
-    http.get<number>("https://api.bitar.is/accountdata/getaddressbalance").subscribe(result => {
-      console.log(result);
-      this.accountBTCBalance = result;
-    }, error => console.error(error));
-  }
+  iskMask = createNumberMask({
+    prefix: '',
+    thousandsSeparatorSymbol: '.'
+  });
 
+  btcMask = createNumberMask({
+    prefix: '',
+    thousandsSeparatorSymbol: '.',
+    allowDecimal: true,
+    decimalSymbol: ',',
+    decimalLimit: 8
+  });
+
+  constructor(public stock: StockService, private bitar: BitarApiService) { }
 
   ngOnInit() {
+    this.bitar.getAccountData().subscribe(res => (this.account = res));
+    this.bitar.getAddressBalance().subscribe(res => (this.bitcoinBalance = res));
+    this.countdown = this.stock.getCounter();
+  }
 
+  toNumber(n: string): number {
+    return +n.split('.').join('').split(',').join('.');
+  }
+
+  iskUpdate() {
+    const nisk = +this.isk.split('.').join('');
+    if (nisk >= 5000) {
+      this.btc = (nisk / this.stock.BTC).toFixed(8).split('.').join(',');
+      console.log((nisk / this.stock.BTC).toFixed(8).split('.').join(','));
+    } else {
+      if (this.btc.length === 0) {
+        return;
+      } else {
+        this.btc = '0,00000000';
+        console.log('noice');
+      }
+    }
+  }
+
+  btcUpdate() {
+    const nbtc = +this.btc.split(',').join('.');
+    console.log(nbtc * this.stock.BTC);
+    this.isk = Math.trunc(nbtc * this.stock.BTC).toString().split('.').join(',');
+  }
+
+  order() {
+    console.log('w0t ' + this.toNumber(this.isk));
+    if (this.toNumber(this.isk) >= 5000) {
+      this.show = true;
+    } else {
+      this.show = false;
+    }
   }
 }
-
-interface Transaction {
-  id: string;
-  date: string;
-  reference: string;
-  shortReference: string;
-  paymentDetail: string;
-  amount: number;
-}
-
-interface AccountData {
-  id: string;
-  withdrawalAddress: string;
-  derivation: number;
-  balance: number;
-  transactions: Transaction[];
-}
-

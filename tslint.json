@@ -54,7 +54,7 @@
     ],
     "no-empty": false,
     "no-inferrable-types": [
-      true,
+      false,
       "ignore-params"
     ],
     "no-non-null-assertion": true,
@@ -66,9 +66,9 @@
       "as-needed"
     ],
     "object-literal-sort-keys": false,
-    "ordered-imports": false,
+    "ordered-imports": true,
     "quotemark": [
-      true,
+      false,
       "single"
     ],
     "trailing-comma": false,

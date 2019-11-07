@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Symbol } from 'src/app/services/stock';
 import { StockService } from 'src/app/services/stock.service';
 
 @Component({
@@ -8,8 +9,12 @@ import { StockService } from 'src/app/services/stock.service';
 })
 export class RatesComponent implements OnInit {
 
+  countdown;
+
   constructor(public stock: StockService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.countdown = this.stock.getCounter();
+  }
 
 }

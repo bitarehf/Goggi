@@ -23,6 +23,7 @@
     "@auth0/angular-jwt": "^3.0.0",
     "angular2-text-mask": "^9.0.0",
     "rxjs": "~6.4.0",
+    "text-mask-addons": "^3.8.0",
     "tslib": "^1.10.0",
     "typed.js": "^2.0.11",
     "zone.js": "~0.9.1"
