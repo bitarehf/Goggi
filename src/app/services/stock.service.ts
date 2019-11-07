@@ -39,8 +39,6 @@ export class StockService {
       this.lastUpdated = new Date(stocks[Symbol.BTC].lastUpdated);
       this.counter = +this.lastUpdated - Date.now() + 60000;
       console.log(this.Stocks);
-      console.log(Date.now());
-      console.log(+this.lastUpdated);
     });
 
   }

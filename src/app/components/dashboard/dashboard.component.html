@@ -171,21 +171,14 @@
             </a>
           </div>
           <div class="col-6 text-right">
-              <div *ngIf="(countdown | async) > 0; else updating">
+              <div>
                 <p>
-                  {{ countdown | async | date: 's,S' }} Sekúndur
-                    <a class="btn btn-icon btn-sm btn-soft-primary rounded-circle" href="javascript:;">
+                  {{ countdown | async | date: 's' }} sekúndur
+                    <a class="btn btn-icon btn-sm btn-soft-primary rounded-circle ml-2" href="javascript:;">
                       <i class="fas fa-info btn-icon__inner"></i>
                     </a>
                   </p>
               </div>
-
-              <ng-template #updating>
-                <p>
-                  Uppfæri verð...
-                </p>
-              </ng-template>
-
           </div>
         </div>
       </div>

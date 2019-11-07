@@ -16,7 +16,9 @@
   <div class="col">
     <ul class="list-inline row justify-content-end text-secondary text-uppercase mb-0">
       <li class="list-inline-item col">
-        <small class="d-block">Verð <small>(1 min)</small></small>
+        <small class="d-block">Verð
+          <small>({{ countdown | async | date: 's' }} sek)</small>
+        </small>
         <a class="d-block text-success">{{stock.BTC | number:'0.0-0'}} ISK</a>
       </li>
       <li class="list-inline-item col">
