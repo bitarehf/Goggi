@@ -134,7 +134,7 @@
       <div class="row">
         <div class="col">
           <label class="h6 mb-3">Veldu magn í ISK</label>
-          <input class="form-control" [(ngModel)]="isk" (ngModelChange)="iskUpdate()"
+          <input class="form-control" [(ngModel)]="sisk" (ngModelChange)="iskUpdate()"
             [textMask]="{ mask: iskMask, guide: false }" placeholder="0" />
         </div>
         <div
@@ -144,7 +144,7 @@
 
         <div class="col">
           <label class="h6 mb-3">Veldu magn í BTC</label>
-          <input class="form-control" [(ngModel)]="btc" (ngModelChange)="btcUpdate()"
+          <input class="form-control" [(ngModel)]="sbtc" (ngModelChange)="btcUpdate()"
             [textMask]="{ mask: btcMask, guide: false }" placeholder="0,00000000" />
         </div>
       </div>
@@ -171,22 +171,22 @@
             </a>
           </div>
           <div class="col-6 text-right">
-              <div>
-                <p>
-                  {{ countdown | async | date: 's' }} sekúndur
-                    <a class="btn btn-icon btn-sm btn-soft-primary rounded-circle ml-2" href="javascript:;">
-                      <i class="fas fa-info btn-icon__inner"></i>
-                    </a>
-                  </p>
-              </div>
+            <div>
+              <p>
+                {{ countdown | async | date: 's' }} sekúndur
+                <a class="btn btn-icon btn-sm btn-soft-primary rounded-circle ml-2" href="javascript:;">
+                  <i class="fas fa-info btn-icon__inner"></i>
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
       <div class="align-items-center justify-content-between mb-3">
         <div class="text-center">
           <h4 class="text-primary">Þú ert að kaupa</h4>
-          <h1>{{ btc }} BTC</h1>
-          <h3 class="text-secondary">Fyrir {{ isk }} ISK</h3>
+          <h1>{{ (nisk / this.stock.BTC) | number: '0.8-8' }} BTC</h1>
+          <h3 class="text-secondary">Fyrir {{ nisk | currency: 'ISK' }}</h3>
         </div>
       </div>
 

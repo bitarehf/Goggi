@@ -13,8 +13,10 @@ import createNumberMask from "text-mask-addons/dist/createNumberMask";
 export class DashboardComponent implements OnInit {
   account: AccountData;
   bitcoinBalance: number;
-  btc: string = '';
-  isk: string = '';
+  nbtc: number;
+  nisk: number;
+  sbtc: string = '';
+  sisk: string = '';
   show: boolean;
   countdown: Observable<number>;
 
@@ -44,29 +46,32 @@ export class DashboardComponent implements OnInit {
   }
 
   iskUpdate() {
-    const nisk = +this.isk.split('.').join('');
-    if (nisk >= 5000) {
-      this.btc = (nisk / this.stock.BTC).toFixed(8).split('.').join(',');
-      console.log((nisk / this.stock.BTC).toFixed(8).split('.').join(','));
+    this.nisk = +this.sisk.split('.').join('');
+    if (this.nisk >= 5000) {
+      this.nbtc = this.nisk / this.stock.BTC;
+      this.sbtc = this.nbtc.toFixed(8).split('.').join(',');
+      console.log(this.nbtc);
     } else {
-      if (this.btc.length === 0) {
+      if (this.sbtc.length === 0) {
         return;
       } else {
-        this.btc = '0,00000000';
+        this.nbtc = 0;
+        this.sbtc = '0,00000000';
         console.log('noice');
       }
     }
   }
 
   btcUpdate() {
-    const nbtc = +this.btc.split(',').join('.');
-    console.log(nbtc * this.stock.BTC);
-    this.isk = Math.trunc(nbtc * this.stock.BTC).toString().split('.').join(',');
+    this.nbtc = this.toNumber(this.sbtc);
+    console.log(this.nbtc * this.stock.BTC);
+    this.nisk = Math.trunc(this.nbtc * this.stock.BTC);
+    this.sisk = this.nisk.toString().split('.').join(',');
   }
 
   order() {
-    console.log('w0t ' + this.toNumber(this.isk));
-    if (this.toNumber(this.isk) >= 5000) {
+    console.log('w0t ' + this.nisk);
+    if (this.nisk >= 5000) {
       this.show = true;
     } else {
       this.show = false;
