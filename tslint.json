@@ -21,6 +21,7 @@
       "app",
       "kebab-case"
     ],
+    "eofline": false,
     "import-blacklist": [
       true,
       "rxjs/Rx"

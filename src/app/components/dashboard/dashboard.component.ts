@@ -4,6 +4,7 @@ import { AccountData } from "src/app/services/accountData";
 import { BitarApiService } from "src/app/services/bitar-api.service";
 import { StockService } from "src/app/services/stock.service";
 import createNumberMask from "text-mask-addons/dist/createNumberMask";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-dashboard",
@@ -33,7 +34,10 @@ export class DashboardComponent implements OnInit {
     decimalLimit: 8
   });
 
-  constructor(public stock: StockService, private bitar: BitarApiService) { }
+  constructor(
+    public stock: StockService,
+    private bitar: BitarApiService,
+    private router: Router) { }
 
   ngOnInit() {
     this.bitar.getAccountData().subscribe(res => (this.account = res));
@@ -76,5 +80,21 @@ export class DashboardComponent implements OnInit {
     } else {
       this.show = false;
     }
+  }
+
+  orderConfirm() {
+    this.bitar.order(this.nisk).subscribe(
+      res => {
+        if (res.ok) {
+          console.log('Order completed');
+          console.log(res.body.toString());
+          this.router.navigate(['order-completed', res.body.toString()]);
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
   }
 }

@@ -23,6 +23,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OrderComponent } from './components/dashboard/order/order.component';
 import { LoginComponent } from './components/home/login/login.component';
 import { RegisterComponent } from './components/home/register/register.component';
+import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
 registerLocaleData(is);
 
 export function tokenGetter() {
@@ -45,6 +46,7 @@ export function tokenGetter() {
     DashboardComponent,
     LoginComponent,
     OrderComponent,
+    OrderCompletedComponent,
   ],
   imports: [
     BrowserModule,
