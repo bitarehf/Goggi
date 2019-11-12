@@ -17,14 +17,13 @@ export class TransactionsComponent implements OnInit {
   selected: [];
 
   cssClasses: any = {
-    sortAscending: 'fas fa-angle-up u-datatable__thead-icon pr-1',
-    sortDescending: 'fas fa-angle-down u-datatable__thead-icon pr-1',
+    sortAscending: 'fas fa-angle-up u-datatable__thead-icon',
+    sortDescending: 'fas fa-angle-down u-datatable__thead-icon',
     pagerLeftArrow: 'datatable-icon-left',
     pagerRightArrow: 'datatable-icon-right',
     pagerPrevious: 'datatable-icon-prev',
     pagerNext: 'datatable-icon-skip'
   };
-
 
   constructor(private bitar: BitarApiService) { }
 
