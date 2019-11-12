@@ -19,11 +19,15 @@ import { TermsComponent } from './components/terms/terms.component';
 
 import { registerLocaleData } from '@angular/common';
 import is from '@angular/common/locales/is';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { OrderComponent } from './components/dashboard/order/order.component';
+import { OverviewComponent } from './components/dashboard/overview/overview.component';
+import { SettingsComponent } from './components/dashboard/settings/settings.component';
+import { TransactionsComponent } from './components/dashboard/transactions/transactions.component';
 import { LoginComponent } from './components/home/login/login.component';
 import { RegisterComponent } from './components/home/register/register.component';
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
+
 registerLocaleData(is);
 
 export function tokenGetter() {
@@ -45,8 +49,10 @@ export function tokenGetter() {
     RegisterComponent,
     DashboardComponent,
     LoginComponent,
-    OrderComponent,
     OrderCompletedComponent,
+    TransactionsComponent,
+    OverviewComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,14 +60,15 @@ export function tokenGetter() {
     HttpClientModule,
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter,
+        tokenGetter,
         whitelistedDomains: ['bitar.is', 'api.bitar.is', 'localhost:4200', 'localhost:5000'],
         blacklistedRoutes: ['example.com/examplebadroute/']
       }
     }),
     ReactiveFormsModule,
     FormsModule,
-    TextMaskModule
+    TextMaskModule,
+    NgxDatatableModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'is' }],
   bootstrap: [AppComponent]

@@ -1,0 +1,218 @@
+/*
+bootstrap table theme
+*/
+
+// common datatable colors
+$ngx-datatable-background: #fff !default;
+$ngx-datatable-box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12) !default;
+$ngx-datatable-row-odd-background: #eee !default;
+
+// default row and cell background colors
+$ngx-datatable-default-background: #fff !default;
+$ngx-datatable-default-background-hover: #eee !default;
+$ngx-datatable-default-background-focus: #ddd !default;
+
+// default background colors for cell selection style
+$ngx-datatable-cellselection-background-hover: #eee !default;
+$ngx-datatable-cellselection-background-focus: #ddd !default;
+
+// background and text colors for selected cell / row
+$ngx-datatable-selected-active-background: #304ffe !default;
+$ngx-datatable-selected-active-color: #fff !default;
+$ngx-datatable-selected-active-background-hover: #193ae4 !default;
+$ngx-datatable-selected-active-color-hover: #fff !default;
+$ngx-datatable-selected-active-background-focus: #2041ef !default;
+$ngx-datatable-selected-active-color-focus: #fff !default;
+
+// colors for header elements
+$datatable-header-cell-background: #fff !default;
+$datatable-header-cell-color: rgba(0, 0, 0, 0.54) !default;
+$datatable-header-border-bottom-color: rgba(0, 0, 0, 0.12) !default;
+$datatable-header-resize-handle-color: #eee !default;
+
+// colors for table body elements
+$datatable-row-detail-background: #f5f5f5 !default;
+$datatable-body-cell-color: rgba(0, 0, 0, 0.87) !default;
+$datatable-group-header-background: #f5f5f5 !default;
+$datatable-group-header-border-top-color: #d9d8d9 !default;
+$datatable-group-header-border-bottom-color: #d9d8d9 !default;
+
+// colors for footer elements
+$datatable-footer-cell-color: rgba(0, 0, 0, 0.54) !default;
+$datatable-footer-border-top-color: rgba(0, 0, 0, 0.12) !default;
+$datatable-pager-color: rgba(0, 0, 0, 0.54) !default;
+$datatable-pager-color-hover: rgba(0, 0, 0, 0.75) !default;
+$datatable-pager-background-hover: rgba(158, 158, 158, 0.2) !default;
+$datatable-pager-disabled-color: rgba(0, 0, 0, 0.26) !default;
+$datatable-pager-disabled-background: transparent !default;
+$datatable-pager-active-background: rgba(158, 158, 158, 0.2) !default;
+
+// colors for summary row elements
+$datatable-summary-row-background: #ddd !default;
+$datatable-summary-row-background-hover: #ddd !default;
+
+.ngx-datatable.bootstrap {
+  box-shadow: none;
+  font-size: 0.875rem;
+  font-family: "Poppins", Helvetica, Arial, sans-serif;
+  .datatable-header {
+    height: unset !important;
+    .datatable-header-cell {
+      vertical-align: bottom;
+      padding: 14px;
+      .datatable-header-cell-label {
+        line-height: 21px;
+        font-weight: 500;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+    }
+  }
+  .datatable-body {
+    .datatable-body-row {
+      vertical-align: middle;
+      &.datatable-row-even {
+        background-color: #f8fafd;
+      }
+      .datatable-body-cell {
+        text-align: left;
+        padding: 14px;
+        vertical-align: top;
+        border-top: 0;
+      }
+      .datatable-body-group-cell {
+        text-align: left;
+        padding: 0.9rem 1.2rem;
+        vertical-align: top;
+        border-top: 0;
+      }
+    }
+    .empty-row {
+      height: 56px;
+      text-align: left;
+      padding: 0.5rem 1.2rem;
+      vertical-align: top;
+      border-top: 0;
+    }
+  }
+
+  /**
+	 * Footer Styles
+	 */
+  .datatable-footer {
+    border-top: 1px solid $datatable-footer-border-top-color;
+    font-size: 12px;
+    font-weight: 400;
+    color: $datatable-footer-cell-color;
+
+    .page-count {
+      line-height: 50px;
+      height: 50px;
+      padding: 0 1.2rem;
+    }
+
+    .datatable-pager {
+      margin: 0 10px;
+
+      li {
+        vertical-align: middle;
+
+        &.disabled a {
+          color: $datatable-pager-disabled-color !important;
+          background-color: $datatable-pager-disabled-background !important;
+        }
+
+        &.active a {
+          background-color: $datatable-pager-active-background;
+          font-weight: bold;
+        }
+      }
+
+      a {
+        height: 22px;
+        min-width: 24px;
+        line-height: 22px;
+        padding: 0 6px;
+        border-radius: 3px;
+        margin: 6px 3px;
+        text-align: center;
+        vertical-align: top;
+        color: $datatable-pager-color;
+        text-decoration: none;
+        vertical-align: bottom;
+
+        &:hover {
+          color: $datatable-pager-color-hover;
+          background-color: $datatable-pager-background-hover;
+        }
+      }
+
+      .datatable-icon-left,
+      .datatable-icon-skip,
+      .datatable-icon-right,
+      .datatable-icon-prev {
+        font-size: 20px;
+        line-height: 20px;
+        padding: 0 3px;
+      }
+    }
+  }
+
+  .datatable-checkbox {
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+    vertical-align: middle;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0;
+
+    input[type="checkbox"] {
+      position: relative;
+      margin: 0 1rem 0 0;
+      cursor: pointer;
+      outline: none;
+
+      &:before {
+        -webkit-transition: all 0.15s ease-in-out;
+        -moz-transition: all 0.15s ease-in-out;
+        transition: all 0.15s ease-in-out;
+        content: "";
+        position: absolute;
+        left: 0;
+        z-index: 1;
+        width: 1rem;
+        height: 1rem;
+        border: 2px solid #b9c0c5;
+        border-radius: 0.3125rem;
+      }
+
+      &:checked:before {
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        height: 0.5rem;
+        border-color: #377dff;
+        border-top-style: none;
+        border-right-style: none;
+        border-radius: 0px;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1rem;
+        height: 1rem;
+        background: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+}

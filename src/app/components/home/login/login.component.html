@@ -1,56 +1,53 @@
 <div class="w-40 mx-auto" style="max-width: 625px; min-width: 275px;">
-    <form (ngSubmit)="login()">
-        <!-- Login -->
-        <div id="login">
-            <!-- Title -->
-            <header class="text-center mb-7">
-                <h2 class="h4 mb-0">Halló!</h2>
-                <p>Innskráðu þig til að stjórna reikningnum þínum.</p>
-            </header>
-            <!-- End Title -->
+  <form (ngSubmit)="login()">
+    <!-- Login -->
+    <div id="login">
+      <!-- Title -->
+      <header class="text-center mb-7">
+        <h2 class="h4 mb-0">Halló!</h2>
+        <p>Innskráðu þig til að stjórna reikningnum þínum.</p>
+      </header>
+      <!-- End Title -->
 
-            <!-- Input -->
-            <div class="mb-4">
-                <div class="input-group u-form">
-                    <div class="input-group-prepend u-form__prepend">
-                        <span class="input-group-text u-form__text">
-                            <span class="fa fa-user u-form__text-inner"></span>
-                        </span>
-                    </div>
-                    <input class="form-control u-form__input" name="User" placeholder="Kennitala"
-                        [(ngModel)]="account.User" (ngModelChange)="validateId()">
-                </div>
-            </div>
-            <!-- End Input -->
-
-            <!-- Input -->
-            <div class="mb-2">
-                <div class="input-group u-form">
-                    <div class="input-group-prepend u-form__prepend">
-                        <span class="input-group-text u-form__text">
-                            <span class="fa fa-lock u-form__text-inner"></span>
-                        </span>
-                    </div>
-                    <input type="password" class="form-control u-form__input" name="password" placeholder="Lykilorð"
-                        [(ngModel)]="account.Password" (ngModelChange)="validatePassword()">
-                </div>
-            </div>
-            <!-- End Input -->
-
-            <div class="clearfix mb-4">
-                <a class="float-right small u-link-muted" href="#">Gleymt Lykilorð?</a>
-            </div>
-
-            <div class="mb-2">
-                <button type="submit"
-                    class="btn btn-block btn-primary transition-3d-hover">Innskrá</button>
-            </div>
-
-            <div class="text-center mb-4">
-                <span class="small text-muted">Áttu ekki reikning? </span>
-                <a class="small" routerLink="/register">Stofna reikning</a>
-            </div>
+      <!-- Input -->
+      <div class="mb-4">
+        <div class="input-group u-form">
+          <div class="input-group-prepend u-form__prepend">
+            <span class="input-group-text u-form__text">
+              <span class="fa fa-user u-form__text-inner"></span>
+            </span>
+          </div>
+          <input class="form-control u-form__input" name="User" placeholder="Kennitala" [(ngModel)]="account.User"
+            (ngModelChange)="validateId()">
         </div>
+      </div>
+      <!-- End Input -->
 
-    </form>
+      <!-- Input -->
+      <div class="mb-2">
+        <div class="input-group u-form">
+          <div class="input-group-prepend u-form__prepend">
+            <span class="input-group-text u-form__text">
+              <span class="fa fa-lock u-form__text-inner"></span>
+            </span>
+          </div>
+          <input type="password" class="form-control u-form__input" name="password" placeholder="Lykilorð"
+            [(ngModel)]="account.Password" (ngModelChange)="validatePassword()">
+        </div>
+      </div>
+      <!-- End Input -->
+
+      <div class="clearfix mb-4">
+        <a class="float-right small u-link-muted" href="#">Gleymt Lykilorð?</a>
+      </div>
+
+      <button type="submit" class="btn btn-block btn-primary transition-3d-hover mb-2">Innskrá</button>
+
+      <div class="text-center mb-4">
+        <span class="small text-muted">Áttu ekki reikning? </span>
+        <a class="small" routerLink="">Stofnaðu þá reikning</a>
+      </div>
+    </div>
+
+  </form>
 </div>

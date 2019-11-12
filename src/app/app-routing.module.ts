@@ -1,6 +1,9 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { OverviewComponent } from './components/dashboard/overview/overview.component';
+import { SettingsComponent } from './components/dashboard/settings/settings.component';
+import { TransactionsComponent } from './components/dashboard/transactions/transactions.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/home/login/login.component';
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
@@ -11,7 +14,14 @@ import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+  {
+    path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard],
+    children: [
+      { path: '', component: OverviewComponent },
+      { path: 'transactions', component: TransactionsComponent },
+      { path: 'settings', component: SettingsComponent }
+    ]
+  },
   { path: 'login', component: LoginComponent },
   { path: 'order-completed/:txid', component: OrderCompletedComponent },
   { path: 'terms', component: TermsComponent },

@@ -1,0 +1,55 @@
+<div class="container space-top-1">
+  <div class="card">
+    <div class="card-header py-4 px-0 mx-4"></div>
+    <div class="card-body p-4">
+      <div class="" *ngIf="transactions">
+        <ngx-datatable class="bootstrap" [rows]="transactions" [columnMode]="'force'" [rowHeight]="56"
+          [sorts]="[{ prop: 'id', dir: 'desc' }]" [limit]="50" [reorderable]="false" [cssClasses]="cssClasses">
+
+          <ngx-datatable-column [width]="30" [resizeable]="false"></ngx-datatable-column>
+
+          <ngx-datatable-column name="Pöntun" prop="id" [resizeable]="false">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <p class="text-dark">{{ row.id }}</p>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Kostnaður" prop="amount" [resizeable]="false">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <p class="text-primary">{{ row.amount | currency: 'ISK'}}</p>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Magn" prop="coins" [resizeable]="false">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <p class="text-primary">{{ row.coins | number: '0.8-8' }} BTC</p>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Gengi" prop="rate" [resizeable]="false">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <p class="text-primary">{{ row.rate | currency: 'ISK'}}</p>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Dagsetning" prop="date" [resizeable]="false">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <p class="text-secondary">{{ row.date | date: 'medium' }}</p>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column name="Staða" prop="status" [resizeable]="false">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <p class="text-success" *ngIf="row.status === 0">Completed</p>
+              <p class="text-indigo" *ngIf="row.status === 1">Pending</p>
+              <p class="text-danger" *ngIf="row.status === 2">Rejected</p>
+              <p class="text-danger" *ngIf="row.status === 3">Failed</p>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-footer></ngx-datatable-footer>
+        </ngx-datatable>
+      </div>
+    </div>
+  </div>
+
+</div>

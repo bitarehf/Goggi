@@ -1,10 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { Observable } from "rxjs";
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { AccountData } from "src/app/services/accountData";
-import { BitarApiService } from "src/app/services/bitar-api.service";
-import { StockService } from "src/app/services/stock.service";
-import createNumberMask from "text-mask-addons/dist/createNumberMask";
-import { Router } from '@angular/router';
 
 @Component({
   selector: "app-dashboard",
@@ -12,89 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ["./dashboard.component.scss"]
 })
 export class DashboardComponent implements OnInit {
-  account: AccountData;
-  bitcoinBalance: number;
-  nbtc: number;
-  nisk: number;
-  sbtc: string = '';
-  sisk: string = '';
-  show: boolean;
-  countdown: Observable<number>;
 
-  iskMask = createNumberMask({
-    prefix: '',
-    thousandsSeparatorSymbol: '.'
-  });
+  id: number;
 
-  btcMask = createNumberMask({
-    prefix: '',
-    thousandsSeparatorSymbol: '.',
-    allowDecimal: true,
-    decimalSymbol: ',',
-    decimalLimit: 8
-  });
-
-  constructor(
-    public stock: StockService,
-    private bitar: BitarApiService,
-    private router: Router) { }
+  constructor(private jwtHelper: JwtHelperService) { }
 
   ngOnInit() {
-    this.bitar.getAccountData().subscribe(res => (this.account = res));
-    this.bitar.getAddressBalance().subscribe(res => (this.bitcoinBalance = res));
-    this.countdown = this.stock.getCounter();
+    const token = this.jwtHelper.decodeToken(localStorage.getItem('token'));
+    this.id = token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
   }
 
-  toNumber(n: string): number {
-    return +n.split('.').join('').split(',').join('.');
-  }
-
-  iskUpdate() {
-    this.nisk = +this.sisk.split('.').join('');
-    if (this.nisk >= 5000) {
-      this.nbtc = this.nisk / this.stock.BTC;
-      this.sbtc = this.nbtc.toFixed(8).split('.').join(',');
-      console.log(this.nbtc);
-    } else {
-      if (this.sbtc.length === 0) {
-        return;
-      } else {
-        this.nbtc = 0;
-        this.sbtc = '0,00000000';
-        console.log('noice');
-      }
-    }
-  }
-
-  btcUpdate() {
-    this.nbtc = this.toNumber(this.sbtc);
-    console.log(this.nbtc * this.stock.BTC);
-    this.nisk = Math.trunc(this.nbtc * this.stock.BTC);
-    this.sisk = this.nisk.toString().split('.').join(',');
-  }
-
-  order() {
-    console.log('w0t ' + this.nisk);
-    if (this.nisk >= 5000) {
-      this.show = true;
-    } else {
-      this.show = false;
-    }
-  }
-
-  orderConfirm() {
-    this.bitar.order(this.nisk).subscribe(
-      res => {
-        if (res.ok) {
-          console.log('Order completed');
-          console.log(res.body.toString());
-          this.router.navigate(['order-completed', res.body.toString()]);
-        }
-      },
-      err => {
-        console.log(err);
-      }
-    );
-
-  }
 }
