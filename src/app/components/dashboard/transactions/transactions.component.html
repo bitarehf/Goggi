@@ -40,10 +40,10 @@
 
           <ngx-datatable-column name="Staða" prop="status" resizeable="false">
             <ng-template let-row="row" ngx-datatable-cell-template>
-              <p class="text-success" *ngIf="row.status === 0">Completed</p>
-              <p class="text-indigo" *ngIf="row.status === 1">Pending</p>
-              <p class="text-danger" *ngIf="row.status === 2">Rejected</p>
-              <p class="text-danger" *ngIf="row.status === 3">Failed</p>
+              <p class="text-success" *ngIf="row.status === 0">Afgreidd</p>
+              <p class="text-indigo" *ngIf="row.status === 1">Í bið</p>
+              <p class="text-danger" *ngIf="row.status === 2">Hafnað</p>
+              <p class="text-danger" *ngIf="row.status === 3">Mistókst</p>
             </ng-template>
           </ngx-datatable-column>
           <ngx-datatable-footer></ngx-datatable-footer>
