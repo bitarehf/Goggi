@@ -1,0 +1,150 @@
+<!-- <div class="container space-top-1">
+  <div class="w-md-75 w-lg-50 mx-auto text-center mb-5">
+    <h2 class="h3 text-center">Hér getur þú framkvæmt úttektir</h2>
+    <p>Veldu hvaða mynt þú vilt taka út.</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 mb-5">
+      <div class="media h-100 shadow rounded p-4">
+        <i class="far fa-fw fa-dot-circle fa-3x text-warning mr-4 mt-1"></i>
+
+        <div class="media-body">
+          <h5 class="mb-1"><a class="link-dark" routerLink="withdrawal">Bitcoin</a></h5>
+          <p class="mb-0">Welcome to Docs UI Kit! We're so glad you're here. Let's get started!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-5">
+      <div class="media h-100 shadow rounded p-4">
+        <i class="far fa-fw fa-dot-circle fa-3x text-secondary mr-4 mt-1"></i>
+
+        <div class="media-body">
+          <h5 class="mb-1"><a class="link-dark" routerLink="withdrawal">Íslenska krónan</a></h5>
+          <p class="mb-0">Adjust your profile and preferences to make Docs UI Kit work just for you!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container space-top-1">
+
+  <div class="row">
+    <div class="col-12">
+      <div class="mb-2 mt-3">
+        <h5>Veldu hvaða mynt þú vilt taka út</h5>
+      </div>
+    </div>
+    <div class="col-xl-4 col-lg-4 col-md-12">
+
+      <a class="card shadow p-3 transition-3d-hover mb-1" routerLink="/dashboard/withdrawal">
+        <span class="media align-items-center">
+          <span class="fab fa-bitcoin fa-3x text-warning mr-4 mt-1"></span>
+          <span class="media-body">
+
+            <h5 class="mb-0"><span class="text-dark">Bitcoin</span></h5>
+            <span class="d-block text-secondary" *ngIf="bitcoinBalance >= 0">{{ bitcoinBalance | number: '0.0-8'}}
+              BTC</span>
+          </span>
+          <span class="fas fa-arrow-right ml-2"></span>
+        </span>
+      </a>
+
+      <a class="card shadow p-3 transition-3d-hover mb-2" routerLink="isk">
+        <span class="media align-items-center">
+          <span class="btn btn-icon btn-soft-twitter rounded-circle mr-4 mt-1">
+            <span class="btn-icon__inner fas fa-university fa-2x mr-3"></span>
+          </span>
+          <span class="media-body">
+
+            <h5 class="mb-0"><span class="text-dark">Íslenska krónan</span></h5>
+            <span class="d-block text-secondary" *ngIf="account">{{ account.balance | currency: 'ISK' }}</span>
+          </span>
+          <span class="fas fa-arrow-right ml-2"></span>
+        </span>
+      </a>
+    </div>
+
+    <div class="col-xl-8 col-lg-8 col-md-12">
+      <div class="card shadow p-5">
+
+        <div class="row">
+          <div class="col-5">
+            <form class="row">
+              <div class="col-12 mb-4">
+                <label class="form-label">Magn</label>
+                <input class="form-control" [(ngModel)]="sbtc" [ngModelOptions]="{standalone: true}"
+                  (ngModelChange)="btcUpdate()" [textMask]="{ mask: btcMask, guide: false }" placeholder="0" />
+                <p class="invalid-feedback" style="display: block;" *ngIf="bitcoinBalance-btcFees-nbtc < 0">Þú átt ekki nóg Bitcoin</p>
+              </div>
+
+              <div class="col-12 mb-4">
+                <label class="form-label">Hraði</label>
+
+                <select class="custom-select">
+                  <option value="amortization1">Hratt</option>
+                  <option selected>Miðlungs</option>
+                  <option value="amortization2">Hægt</option>
+                  <option value="amortization3">Velja sjálfur</option>
+                </select>
+              </div>
+            </form>
+          </div>
+
+          <div class="col-7">
+            <!-- Progress -->
+            <!-- <div class="progress mb-1" style="height: .5rem;" *ngIf="bitcoinBalance-nbtc-btcFees >= 0">
+              <div class="progress-bar" [style.width.%]="(bitcoinBalance-nbtc)/bitcoinBalance*100"></div>
+              <div class="progress-bar bg-warning" [style.width.%]="nbtc/bitcoinBalance*100"></div>
+              <div class="progress-bar bg-success" [style.width.%]="btcFees/bitcoinBalance*100"></div>
+            </div>
+
+            <div class="progress mb-1" style="height: .5rem;" *ngIf="bitcoinBalance-btcFees-nbtc < 0">
+              <div class="progress-bar bg-danger" style="width: 100%"></div>
+            </div> -->
+            <!-- End Progress -->
+
+            <!-- Fact List -->
+            <ul class="list-unstyled font-size-1 mb-0">
+              <li class="d-flex align-items-center py-1">
+                <small class="far fa-circle text-warning mr-2"></small>
+                <span class="font-weight-medium">Færsla</span>
+                <div class="ml-auto">
+                  <span class="text-secondary">0,00044523 BTC</span>
+                </div>
+              </li>
+
+              <li class="d-flex align-items-center py-1">
+                <small class="far fa-circle text-success mr-2"></small>
+                <span class="font-weight-medium">Þóknun</span>
+                <div class="ml-auto">
+                  <span class="text-secondary" *ngIf="btcFees >= 0">{{ btcFees | number: '0.0-8'}} BTC</span>
+                </div>
+              </li>
+
+              <li class="d-flex align-items-center py-1">
+                <small class="far fa-circle text-primary mr-2"></small>
+                <span class="font-weight-medium">Staða eftir færslu</span>
+                <div class="ml-auto">
+                  <span class="text-secondary"
+                    *ngIf="nbtc >= 0">{{ (bitcoinBalance - nbtc - btcFees)  | number: "0.0-8" }}
+                    BTC</span>
+                </div>
+              </li>
+            </ul>
+            <!-- End Fact List -->
+
+            <button type="button" class="btn btn-block btn-soft-primary transition-3d-hover mt-5"
+              (click)="withdrawBitcoin()">
+              Millifæra
+            </button>
+          </div>
+        </div>
+        <!-- End Stats -->
+      </div>
+    </div>
+
+  </div>
+</div>

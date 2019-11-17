@@ -8,7 +8,7 @@ html {
 
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 200px;
+  margin-bottom: 279.78px;
 }
 
 .sticky-footer {
@@ -16,5 +16,5 @@ body {
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 266px;
+  height: 279.78px;
 }

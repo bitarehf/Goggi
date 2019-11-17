@@ -24,6 +24,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
 import { TransactionsComponent } from './components/dashboard/transactions/transactions.component';
+import { WithdrawalComponent } from './components/dashboard/withdrawal/withdrawal.component';
 import { LoginComponent } from './components/home/login/login.component';
 import { RegisterComponent } from './components/home/register/register.component';
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
@@ -53,6 +54,7 @@ export function tokenGetter() {
     TransactionsComponent,
     OverviewComponent,
     SettingsComponent,
+    WithdrawalComponent,
   ],
   imports: [
     BrowserModule,

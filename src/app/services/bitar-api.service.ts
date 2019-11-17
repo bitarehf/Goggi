@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { BitcoinWithdrawal } from '../components/dashboard/withdrawal/bitcoinWithdrawal';
 import { AccountData } from './accountData';
 import { Login } from './login';
 import { Register } from './register';
@@ -37,5 +38,9 @@ export class BitarApiService {
 
   getAddressBalance(): Observable<number> {
     return this.http.get<number>(this.apiUrl + 'accountdata/getaddressbalance');
+  }
+
+  withdrawBitcoin(bitcoinWithdrawal: BitcoinWithdrawal) {
+    return this.http.post<string>(this.apiUrl + 'bitcoin/withdrawal', bitcoinWithdrawal, { responseType: 'text' as 'json', observe: 'response' });
   }
 }

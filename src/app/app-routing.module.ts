@@ -4,6 +4,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
 import { TransactionsComponent } from './components/dashboard/transactions/transactions.component';
+import { WithdrawalComponent } from './components/dashboard/withdrawal/withdrawal.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/home/login/login.component';
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
     children: [
       { path: '', component: OverviewComponent },
       { path: 'transactions', component: TransactionsComponent },
+      { path: 'withdrawal', component: WithdrawalComponent },
       { path: 'settings', component: SettingsComponent }
     ]
   },
