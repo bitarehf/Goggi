@@ -58,7 +58,6 @@
             <span class="btn-icon__inner fas fa-university fa-2x mr-3"></span>
           </span>
           <span class="media-body">
-
             <h5 class="mb-0"><span class="text-dark">Íslenska krónan</span></h5>
             <span class="d-block text-secondary" *ngIf="account">{{ account.balance | currency: 'ISK' }}</span>
           </span>
@@ -68,82 +67,7 @@
     </div>
 
     <div class="col-xl-8 col-lg-8 col-md-12">
-      <div class="card shadow p-5">
-
-        <div class="row">
-          <div class="col-5">
-            <form class="row">
-              <div class="col-12 mb-4">
-                <label class="form-label">Magn</label>
-                <input class="form-control" [(ngModel)]="sbtc" [ngModelOptions]="{standalone: true}"
-                  (ngModelChange)="btcUpdate()" [textMask]="{ mask: btcMask, guide: false }" placeholder="0" />
-                <p class="invalid-feedback" style="display: block;" *ngIf="bitcoinBalance-btcFees-nbtc < 0">Þú átt ekki nóg Bitcoin</p>
-              </div>
-
-              <div class="col-12 mb-4">
-                <label class="form-label">Hraði</label>
-
-                <select class="custom-select">
-                  <option value="amortization1">Hratt</option>
-                  <option selected>Miðlungs</option>
-                  <option value="amortization2">Hægt</option>
-                  <option value="amortization3">Velja sjálfur</option>
-                </select>
-              </div>
-            </form>
-          </div>
-
-          <div class="col-7">
-            <!-- Progress -->
-            <!-- <div class="progress mb-1" style="height: .5rem;" *ngIf="bitcoinBalance-nbtc-btcFees >= 0">
-              <div class="progress-bar" [style.width.%]="(bitcoinBalance-nbtc)/bitcoinBalance*100"></div>
-              <div class="progress-bar bg-warning" [style.width.%]="nbtc/bitcoinBalance*100"></div>
-              <div class="progress-bar bg-success" [style.width.%]="btcFees/bitcoinBalance*100"></div>
-            </div>
-
-            <div class="progress mb-1" style="height: .5rem;" *ngIf="bitcoinBalance-btcFees-nbtc < 0">
-              <div class="progress-bar bg-danger" style="width: 100%"></div>
-            </div> -->
-            <!-- End Progress -->
-
-            <!-- Fact List -->
-            <ul class="list-unstyled font-size-1 mb-0">
-              <li class="d-flex align-items-center py-1">
-                <small class="far fa-circle text-warning mr-2"></small>
-                <span class="font-weight-medium">Færsla</span>
-                <div class="ml-auto">
-                  <span class="text-secondary">0,00044523 BTC</span>
-                </div>
-              </li>
-
-              <li class="d-flex align-items-center py-1">
-                <small class="far fa-circle text-success mr-2"></small>
-                <span class="font-weight-medium">Þóknun</span>
-                <div class="ml-auto">
-                  <span class="text-secondary" *ngIf="btcFees >= 0">{{ btcFees | number: '0.0-8'}} BTC</span>
-                </div>
-              </li>
-
-              <li class="d-flex align-items-center py-1">
-                <small class="far fa-circle text-primary mr-2"></small>
-                <span class="font-weight-medium">Staða eftir færslu</span>
-                <div class="ml-auto">
-                  <span class="text-secondary"
-                    *ngIf="nbtc >= 0">{{ (bitcoinBalance - nbtc - btcFees)  | number: "0.0-8" }}
-                    BTC</span>
-                </div>
-              </li>
-            </ul>
-            <!-- End Fact List -->
-
-            <button type="button" class="btn btn-block btn-soft-primary transition-3d-hover mt-5"
-              (click)="withdrawBitcoin()">
-              Millifæra
-            </button>
-          </div>
-        </div>
-        <!-- End Stats -->
-      </div>
+      <router-outlet></router-outlet>
     </div>
 
   </div>

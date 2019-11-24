@@ -24,6 +24,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
 import { TransactionsComponent } from './components/dashboard/transactions/transactions.component';
+import { BtcCompletedComponent } from './components/dashboard/withdrawal-completed/btc/btc.component';
+import { WithdrawalCompletedComponent } from './components/dashboard/withdrawal-completed/withdrawal-completed.component';
+import { BtcComponent } from './components/dashboard/withdrawal/btc/btc.component';
+import { IskComponent } from './components/dashboard/withdrawal/isk/isk.component';
 import { WithdrawalComponent } from './components/dashboard/withdrawal/withdrawal.component';
 import { LoginComponent } from './components/home/login/login.component';
 import { RegisterComponent } from './components/home/register/register.component';
@@ -55,6 +59,10 @@ export function tokenGetter() {
     OverviewComponent,
     SettingsComponent,
     WithdrawalComponent,
+    BtcComponent,
+    IskComponent,
+    BtcCompletedComponent,
+    WithdrawalCompletedComponent,
   ],
   imports: [
     BrowserModule,

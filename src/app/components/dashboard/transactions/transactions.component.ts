@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { AccountData, MarketTransaction } from 'src/app/services/accountData';
 import { BitarApiService } from 'src/app/services/bitar-api.service';
@@ -10,7 +10,9 @@ import { BitarApiService } from 'src/app/services/bitar-api.service';
 })
 export class TransactionsComponent implements OnInit {
 
-  // account: Observable<AccountData>;
+  @ViewChild('myTable', { static: false }) table: any;
+
+  account: AccountData;
 
   // rows: Observable<any[]>;
   transactions: MarketTransaction[];
@@ -33,6 +35,7 @@ export class TransactionsComponent implements OnInit {
     // this.account = this.bitar.getAccountData();
 
     this.bitar.getAccountData().subscribe(res => {
+      this.account = res;
       this.transactions = res.marketTransactions;
       console.log(this.transactions);
     });
@@ -57,6 +60,15 @@ export class TransactionsComponent implements OnInit {
 
   onActivate(event) {
     console.log('Activate Event', event);
+  }
+
+  toggleExpandRow(row) {
+    console.log('Toggled Expand Row!', row);
+    this.table.rowDetail.toggleExpandRow(row);
+  }
+
+  onDetailToggle(event) {
+    console.log('Detail Toggled', event);
   }
 
 }

@@ -56,7 +56,7 @@ export class OverviewComponent implements OnInit {
   iskUpdate() {
     this.nisk = +this.sisk.split('.').join('');
     if (this.nisk >= 5000) {
-      this.nbtc = this.nisk / this.stock.BTC;
+      this.nbtc = (this.nisk - (this.account.fee / 100 * this.nisk))  / this.stock.BTC;
       this.sbtc = this.nbtc.toFixed(8).split('.').join(',');
       console.log(this.nbtc);
     } else {
@@ -72,8 +72,8 @@ export class OverviewComponent implements OnInit {
 
   btcUpdate() {
     this.nbtc = this.toNumber(this.sbtc);
-    console.log(this.nbtc * this.stock.BTC);
-    this.nisk = Math.trunc(this.nbtc * this.stock.BTC);
+    console.log((this.nbtc + (this.account.fee / 100 * this.nbtc)) * this.stock.BTC);
+    this.nisk = Math.trunc((this.nbtc - (this.account.fee / 100 * this.nbtc)) * this.stock.BTC);
     this.sisk = this.nisk.toString().split('.').join(',');
   }
 

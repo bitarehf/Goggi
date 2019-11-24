@@ -3,42 +3,163 @@
     <div class="card-header py-4 px-0 mx-4"></div>
     <div class="card-body p-4">
       <div class="" *ngIf="transactions">
-        <ngx-datatable class="bootstrap" [rows]="transactions" columnMode="force" rowHeight="56"
+        <ngx-datatable #myTable class="bootstrap" [rows]="transactions" columnMode="force" rowHeight="56"
           [sorts]="[{ prop: 'id', dir: 'desc' }]" limit="50" reorderable="false" [cssClasses]="cssClasses">
 
-          <ngx-datatable-column [width]="30" resizeable="false"></ngx-datatable-column>
+          <ngx-datatable-row-detail rowHeight="auto" #myDetailRow (toggle)="onDetailToggle($event)">
+            <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+              <div class="border rounded p-5 mt-2">
 
-          <ngx-datatable-column name="Pöntun" prop="id" resizeable="false">
-            <ng-template let-row="row" ngx-datatable-cell-template>
-              <p class="text-dark">{{ row.id }}</p>
+
+
+                <div class="row mb-6">
+                  <div class="col-6">
+                    <h4 class="h3">Reikningur</h4>
+                    <ul class="list-unstyled">
+                      <li class="mb-2">
+                        <span class="text-secondary">Dagsetning og tími: </span>
+                        <span class="font-weight-medium">{{row.time | date: 'medium'}}</span>
+                      </li>
+                      <li class="mb-2">
+                        <span class="text-secondary">Færslu númer: </span>
+                        <span class="font-weight-medium">{{ row.id | number }}</span>
+                      </li>
+                      <li class="mb-2">
+                        <span class="text-secondary">Tegund: </span>
+                        <span class="font-weight-medium" *ngIf="row.type === 0">Skipti</span>
+                        <span class="font-weight-medium" *ngIf="row.type === 1">Sala</span>
+                        <span class="font-weight-medium" *ngIf="row.type === 2">Innborgun</span>
+                        <span class="font-weight-medium" *ngIf="row.type === 3">Úttekt</span>
+                      </li>
+                    </ul>
+
+                    <h5 class="text-dark font-size-1 text-uppercase">Upplýsingar viðskiptamanns:</h5>
+                    <ul class="list-unstyled mb-0">
+                      <!-- <li class="mb-2">
+                        <span class="text-secondary">Nafn: </span>
+                        <span class="font-weight-medium">Sævar Gunnarsson</span>
+                      </li> -->
+                      <li class="mb-2">
+                        <span class="text-secondary">Kennitala: </span>
+                        <span class="font-weight-medium">{{ row.personalId }}</span>
+                      </li>
+                      <li class="mb-2">
+                        <span class="text-secondary">Prósent þóknunar: </span>
+                        <span class="font-weight-medium">0,5%</span>
+                      </li>
+                    </ul>
+
+                  </div>
+                  <div class="col-6">
+
+
+                    <h5 class="text-dark font-size-1 text-uppercase">Upplýsingar um vöru:</h5>
+                    <ul class="list-unstyled mb-0">
+                      <li class="mb-2">
+                        <span class="text-secondary">Magn: </span>
+                        <span class="font-weight-medium">{{ row.coins }} BTC</span>
+                      </li>
+                      <li class="mb-2">
+                        <span class="text-secondary">Gengi: </span>
+                        <span class="font-weight-medium">{{ row.rate | number }} kr.</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6 mb-3 mb-0">
+
+
+                  </div>
+
+                  <div class="col-6">
+
+                  </div>
+                </div>
+
+                <div class="row justify-content-end mb-4">
+                  <div class="col-6">
+                    <hr class="my-4">
+
+                    <h5 class="text-dark font-size-1 text-uppercase">Upplýsingar um greiðslu:</h5>
+                    <ul class="list-unstyled mb-0">
+                      <li class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="text-secondary">Kostnaður</span>
+                        <span class="font-weight-medium">{{ -(row.amount - row.fee) | number }} kr.</span>
+                      </li>
+                      <li class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="text-secondary">Þóknun</span>
+                        <span class="font-weight-medium">{{ -row.fee | number }} kr.</span>
+                      </li>
+                      <li class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="text-secondary">Samtals</span>
+                        <span class="text-primary font-weight-medium">{{ -row.amount | currency: 'ISK'}}</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <ul class="list-inline mb-0">
+                  <li class="list-inline-item u-ver-divider pr-3 mr-3">
+                    <a href="#">
+                      <span class="fas fa-file-word text-secondary mr-1"></span>
+                      Sækja
+                    </a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="#">
+                      <span class="fas fa-print text-secondary mr-1"></span>
+                      Prenta
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </ng-template>
+          </ngx-datatable-row-detail>
+
+          <ngx-datatable-column [width]="70" [resizeable]="false" [sortable]="false" [draggable]="false"
+            [canAutoResize]="false">
+            <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+              <a href="javascript:void(0)" class="fas u-datatable__thead-icon" [class.fa-angle-up]="!expanded"
+                [class.fa-angle-down]="expanded" title="Expand/Collapse Row" (click)="toggleExpandRow(row)">
+              </a>
             </ng-template>
           </ngx-datatable-column>
 
-          <ngx-datatable-column name="Kostnaður" prop="amount" resizeable="false">
+          <ngx-datatable-column name="Færsla" prop="amount" [resizeable]="false" maxWidth="80">
             <ng-template let-row="row" ngx-datatable-cell-template>
-              <p class="text-primary">{{ row.amount | currency: 'ISK'}}</p>
+              <p class="text-dark">{{ row.id | number }}</p>
             </ng-template>
           </ngx-datatable-column>
 
-          <ngx-datatable-column name="Magn" prop="coins" resizeable="false">
+          <ngx-datatable-column name="Dagsetning" prop="date" [resizeable]="false" maxWidth="220">
             <ng-template let-row="row" ngx-datatable-cell-template>
-              <p class="text-primary">{{ row.coins | number: '0.8-8' }} BTC</p>
+              <p class="text-dark">{{ row.time | date: 'shortDate' }}</p>
             </ng-template>
           </ngx-datatable-column>
 
-          <ngx-datatable-column name="Gengi" prop="rate" resizeable="false">
+          <ngx-datatable-column name="Upphæð (ISK)" prop="amount" [resizeable]="false">
             <ng-template let-row="row" ngx-datatable-cell-template>
-              <p class="text-primary">{{ row.rate | currency: 'ISK'}}</p>
+              <p class="text-success" *ngIf="row.amount > 0">{{ row.amount | number }}</p>
+              <p class="text-danger" *ngIf="row.amount < 0">{{ row.amount | number }}</p>
             </ng-template>
           </ngx-datatable-column>
 
-          <ngx-datatable-column name="Dagsetning" prop="date" resizeable="false">
+          <ngx-datatable-column name="Upphæð (BTC)" prop="coins" [resizeable]="false">
             <ng-template let-row="row" ngx-datatable-cell-template>
-              <p class="text-secondary">{{ row.date | date: 'medium' }}</p>
+              <p class="text-success" *ngIf="row.coins > 0">{{ row.coins | number: '0.8-8' }}</p>
+              <p class="text-danger" *ngIf="row.coins < 0">{{ row.coins | number: '0.8-8' }}</p>
             </ng-template>
           </ngx-datatable-column>
 
-          <ngx-datatable-column name="Staða" prop="status" resizeable="false">
+          <!-- <ngx-datatable-column name="Gengi" prop="rate" [resizeable]="false">
+            <ng-template let-row="row" ngx-datatable-cell-template>
+              <p class="text-dark">{{ row.rate | number }} kr.</p>
+            </ng-template>
+          </ngx-datatable-column> -->
+
+          <ngx-datatable-column name="Staða" prop="status" [resizeable]="false">
             <ng-template let-row="row" ngx-datatable-cell-template>
               <p class="text-success" *ngIf="row.status === 0">Afgreidd</p>
               <p class="text-indigo" *ngIf="row.status === 1">Í bið</p>

@@ -11,7 +11,7 @@ export interface AccountData {
 export interface Transaction {
   id: number;
   personalId: string;
-  date: string;
+  time: string;
   reference: string;
   shortReference: string;
   paymentDetail: string;
@@ -21,13 +21,22 @@ export interface Transaction {
 export interface MarketTransaction {
   id: number;
   personalId: string;
-  date: string;
+  time: string;
   rate: number;
   fee: number;
   coins: number;
   amount: number;
   txId: string;
+  balance: number;
+  type: TransactionType;
   status: TransactionStatus;
+}
+
+export enum TransactionType {
+  Buy,
+  Sell,
+  Deposit,
+  Withdrawal
 }
 
 export enum TransactionStatus {

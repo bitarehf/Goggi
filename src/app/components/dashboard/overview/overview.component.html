@@ -96,7 +96,7 @@
       </button>
     </div>
 
-    <div [hidden]="!show" class="bg-white p-6 rounded shadow-sm">
+    <div [hidden]="!show" class="bg-white p-6 rounded shadow-sm" *ngIf="account">
       <div class="mb-9">
         <div class="row">
           <div class="col-6">
@@ -120,7 +120,7 @@
       <div class="align-items-center justify-content-between mb-3">
         <div class="text-center">
           <h4 class="text-primary">Þú ert að kaupa</h4>
-          <h1>{{ (nisk / this.stock.BTC) | number: '0.8-8' }} BTC</h1>
+          <h1>{{ ((nisk - (account.fee / 100 * nisk))  / this.stock.BTC) | number: '0.8-8' }} BTC</h1>
           <h3 class="text-secondary">Fyrir {{ nisk | currency: 'ISK' }}</h3>
         </div>
       </div>

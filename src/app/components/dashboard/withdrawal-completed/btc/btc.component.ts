@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-order-completed',
-  templateUrl: './order-completed.component.html',
-  styleUrls: ['./order-completed.component.scss']
+  selector: 'app-btc-completed',
+  templateUrl: './btc.component.html',
+  styleUrls: ['./btc.component.scss']
 })
-export class OrderCompletedComponent implements OnInit {
+export class BtcCompletedComponent implements OnInit {
 
   txid: string;
 
