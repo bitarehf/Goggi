@@ -1,1 +1,88 @@
-<p>isk works!</p>
+<div [hidden]="show" class="rounded shadow p-5">
+
+  <div class="row" *ngIf="account">
+    <div class="col-5">
+      <form class="row">
+        <div class="col-12 mb-4"
+          [ngClass]="account.balance-withdrawalAmount < 0 && withdrawalAmount >= 0 ? 'u-has-error' : 'u-has-success'">
+          <label class="form-label">Magn</label>
+          <input class="form-control" [(ngModel)]="sWithdrawalAmount" [ngModelOptions]="{standalone: true}"
+            (ngModelChange)="iskUpdate()" [textMask]="{ mask: iskMask, guide: false }" placeholder="0" />
+          <p class="invalid-feedback" style="display: block;"
+            *ngIf="account.balance-withdrawalAmount < 0 && withdrawalAmount >= 0">Þú getur ekki framkvæmt þessa færslu
+          </p>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-7">
+
+      <ul class="list-unstyled font-size-1 mb-0">
+        <li class="d-flex align-items-center py-1">
+          <small class="far fa-circle text-warning mr-2"></small>
+          <span class="font-weight-medium">Færsla</span>
+          <div class="ml-auto">
+            <span class="text-secondary" *ngIf="withdrawalAmount">{{ withdrawalAmount | currency: 'ISK' }}</span>
+          </div>
+        </li>
+
+        <li class="d-flex align-items-center py-1">
+          <small class="far fa-circle text-success mr-2"></small>
+          <span class="font-weight-medium">Staða eftir færslu</span>
+          <div class="ml-auto">
+            <span class="text-secondary"
+              *ngIf="withdrawalAmount">{{ (account.balance - withdrawalAmount) | currency: 'ISK' }}</span>
+          </div>
+        </li>
+      </ul>
+
+      <button type="button" class="btn btn-block btn-soft-primary transition-3d-hover mt-6" (click)="withdrawISK()">
+        Millifæra
+      </button>
+    </div>
+  </div>
+</div>
+
+<div [hidden]="!show" class="p-5 rounded shadow" *ngIf="account">
+  <div class="mb-3">
+    <div class="row">
+      <div class="col-6">
+        <a class="text-secondary" routerLink="/dashboard/withdrawal" (click)="show = false">
+          <span class="fa fa-arrow-left small text-primary mr-2"></span>
+          Til baka
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="align-items-center justify-content-between mb-3">
+    <div class="text-center">
+      <h4 class="text-primary">Millifærsla</h4>
+
+      <ul class="list-unstyled mb-0">
+        <li class="d-flex align-items-center text-center py-1">
+          <small class="far fa-circle text-warning mr-2"></small>
+          <span class="font-weight-medium mr-1">Færsla</span>
+          <span class="text-secondary">{{ withdrawalAmount | currency: 'ISK' }}</span>
+        </li>
+
+        <li class="d-flex align-items-center py-1">
+          <small class="far fa-circle text-indigo mr-2"></small>
+          <span class="font-weight-medium mr-1">Móttakandi</span>
+          <span class="text-secondary">{{ account.bankAccountNumber }}</span>
+        </li>
+
+        <li class="d-flex align-items-center py-1">
+          <small class="far fa-circle text-success mr-2"></small>
+          <span class="font-weight-medium mr-1">Staða eftir færslu</span>
+          <span class="text-secondary">{{ (account.balance - withdrawalAmount) | currency: 'ISK' }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="text-right">
+    <button type="button" class="btn btn-soft-primary transition-3d-hover" (click)="withdrawISKConfirm()">
+      Staðfesta
+    </button>
+  </div>
+</div>

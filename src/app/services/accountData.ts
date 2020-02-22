@@ -1,6 +1,7 @@
 export interface AccountData {
     id: string;
     withdrawalAddress: string;
+    bankAccountNumber: string;
     derivation: number;
     fee: number;
     balance: number;

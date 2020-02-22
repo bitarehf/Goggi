@@ -11,16 +11,6 @@
           <!-- <p class="invalid-feedback" style="display: block;" *ngIf="bitcoinBalance-btcFees-nbtc < 0">Þú átt ekki fyrir færslunni</p> -->
         </div>
 
-        <div class="col-12 mb-4">
-          <label class="form-label">Hraði</label>
-
-          <select class="custom-select">
-            <option value="amortization1">Hratt</option>
-            <option selected>Miðlungs</option>
-            <option value="amortization2">Hægt</option>
-            <option value="amortization3">Velja sjálfur</option>
-          </select>
-        </div>
       </form>
     </div>
 
@@ -104,7 +94,7 @@
 
         <li class="d-flex align-items-center py-1">
           <small class="far fa-circle text-indigo mr-2"></small>
-          <span class="font-weight-medium mr-1">Dreifilykill</span>
+          <span class="font-weight-medium mr-1">Móttakandi</span>
           <span class="text-secondary">{{ account.withdrawalAddress }}</span>
         </li>
 

@@ -1,1 +1,14 @@
-<p>settings works!</p>
+<form class="container space-2" *ngIf="account != null">
+  <div class="row">
+    <div class="col-sm-6 mb-6">
+      <div>
+        <label class="form-label">
+          Úttektar lykill
+        </label>
+        <input type="text" class="form-control" name="WithdrawalAddress" [(ngModel)]="account.withdrawalAddress" >
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-sm btn-primary transition-3d-hover mr-1" (click)="update()">Vista breytingar</button>
+</form>

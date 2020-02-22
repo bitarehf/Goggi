@@ -58,6 +58,12 @@ export class BtcComponent implements OnInit {
 
   withdrawBitcoin() {
     console.log('w0t ' + this.nbtc);
+
+    if (this.account.withdrawalAddress == null)
+    {
+      return;
+    }
+
     if (this.nbtc >= 0.0005 && this.nbtc <= this.bitcoinBalance) {
       this.show = true;
     } else {

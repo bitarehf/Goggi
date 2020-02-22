@@ -10,14 +10,14 @@
         <a class="nav-link m-2 menu-item" routerLink="/terms" routerLinkActive="active">Terms</a>
       </li> -->
       <li class="nav-item">
-        <a class="nav-link m-2 menu-item" routerLink="/login" routerLinkActive="active"
+        <a class="nav-link menu-item" routerLink="/login" routerLinkActive="active"
           *ngIf="!isAuthenticated()">Innskráning</a>
       </li>
       <li class="nav-item" *ngIf="isAuthenticated()">
-        <a class="nav-link m-2 menu-item" routerLink="/dashboard" routerLinkActive="active">Mitt svæði</a>
+        <a class="nav-link menu-item" routerLink="/dashboard" routerLinkActive="active">Mitt svæði</a>
       </li>
       <li class="nav-item" *ngIf="isAuthenticated()">
-        <a class="nav-link m-2 menu-item" routerLink="/" (click)="logout()">Útskrá</a>
+        <a class="nav-link menu-item" routerLink="/" (click)="logout()">Útskrá</a>
       </li>
     </ul>
   </div>
