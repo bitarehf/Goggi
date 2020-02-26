@@ -14,12 +14,8 @@
 
                 <div class="row mb-6">
                   <div class="col-6">
-                    <h4 class="h3">Reikningur</h4>
+                    <h4 class="h3">Færsla</h4>
                     <ul class="list-unstyled">
-                      <li class="mb-2">
-                        <span class="text-secondary">Dagsetning og tími: </span>
-                        <span class="font-weight-medium">{{row.time | date: 'medium'}}</span>
-                      </li>
                       <li class="mb-2">
                         <span class="text-secondary">Færslu númer: </span>
                         <span class="font-weight-medium">{{ row.id | number }}</span>
@@ -31,37 +27,35 @@
                         <span class="font-weight-medium" *ngIf="row.type === 2">Innborgun</span>
                         <span class="font-weight-medium" *ngIf="row.type === 3">Úttekt</span>
                       </li>
+                      <li class="mb-2">
+                        <span class="text-secondary">Dagsetning og tími: </span>
+                        <span class="font-weight-medium">{{row.time | date: 'medium'}}</span>
+                      </li>
                     </ul>
 
                     <h5 class="text-dark font-size-1 text-uppercase">Upplýsingar viðskiptamanns:</h5>
                     <ul class="list-unstyled mb-0">
-                      <!-- <li class="mb-2">
-                        <span class="text-secondary">Nafn: </span>
-                        <span class="font-weight-medium">Sævar Gunnarsson</span>
-                      </li> -->
                       <li class="mb-2">
                         <span class="text-secondary">Kennitala: </span>
                         <span class="font-weight-medium">{{ row.personalId }}</span>
                       </li>
                       <li class="mb-2">
-                        <span class="text-secondary">Prósent þóknunar: </span>
-                        <span class="font-weight-medium">0,5%</span>
+                        <span class="text-secondary">Þóknunar prósent: </span>
+                        <span class="font-weight-medium">{{ row.fee / row.amount * 100 | number }}</span>
                       </li>
                     </ul>
-
                   </div>
+
                   <div class="col-6">
-
-
                     <h5 class="text-dark font-size-1 text-uppercase">Upplýsingar um vöru:</h5>
                     <ul class="list-unstyled mb-0">
                       <li class="mb-2">
                         <span class="text-secondary">Magn: </span>
                         <span class="font-weight-medium">{{ row.coins }} BTC</span>
                       </li>
-                      <li class="mb-2">
+                      <li class="mb-2" >
                         <span class="text-secondary">Gengi: </span>
-                        <span class="font-weight-medium">{{ row.rate | number }} kr.</span>
+                        <span class="font-weight-medium">{{ row.rate | currency: 'ISK' }}</span>
                       </li>
                     </ul>
                   </div>
@@ -69,7 +63,6 @@
 
                 <div class="row">
                   <div class="col-6 mb-3 mb-0">
-
 
                   </div>
 
@@ -86,11 +79,11 @@
                     <ul class="list-unstyled mb-0">
                       <li class="d-flex justify-content-between align-items-center mb-2">
                         <span class="text-secondary">Kostnaður</span>
-                        <span class="font-weight-medium">{{ -(row.amount - row.fee) | number }} kr.</span>
+                        <span class="font-weight-medium">{{ -(row.amount - row.fee) | currency: 'ISK' }}</span>
                       </li>
                       <li class="d-flex justify-content-between align-items-center mb-2">
                         <span class="text-secondary">Þóknun</span>
-                        <span class="font-weight-medium">{{ -row.fee | number }} kr.</span>
+                        <span class="font-weight-medium">{{ -row.fee | currency: 'ISK' }}</span>
                       </li>
                       <li class="d-flex justify-content-between align-items-center mb-2">
                         <span class="text-secondary">Samtals</span>

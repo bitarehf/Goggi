@@ -5,7 +5,7 @@ import { OverviewComponent } from './components/dashboard/overview/overview.comp
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
 import { TransactionsComponent } from './components/dashboard/transactions/transactions.component';
 import { BtcCompletedComponent } from './components/dashboard/withdrawal-completed/btc/btc.component';
-import { WithdrawalCompletedComponent } from './components/dashboard/withdrawal-completed/withdrawal-completed.component';
+import { IskCompletedComponent } from './components/dashboard/withdrawal-completed/isk/isk.component';
 import { BtcComponent } from './components/dashboard/withdrawal/btc/btc.component';
 import { IskComponent } from './components/dashboard/withdrawal/isk/isk.component';
 import { WithdrawalComponent } from './components/dashboard/withdrawal/withdrawal.component';
@@ -35,6 +35,7 @@ const routes: Routes = [
         path: 'withdrawal-completed',
         children: [
           { path: 'btc/:txid', component: BtcCompletedComponent },
+          { path: 'isk/:txid', component: IskCompletedComponent },
         ]
       },
       { path: 'settings', component: SettingsComponent }

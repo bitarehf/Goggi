@@ -69,7 +69,7 @@ export class IskComponent implements OnInit {
         console.log('Transaction request successful');
         this.result = res.body;
         console.log(this.result);
-        this.router.navigate(['/dashboard/withdrawal-completed/btc', res.body.toString()]);
+        this.router.navigate(['/dashboard/withdrawal-completed/isk', res.body.toString()]);
       }
     }, err => {
       console.log(err);

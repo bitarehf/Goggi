@@ -48,10 +48,10 @@ export class BitarApiService {
   }
 
   withdrawBitcoin(bitcoinWithdrawal: BitcoinWithdrawal) {
-    return this.http.post<string>(this.apiUrl + 'bitcoin/withdrawal', bitcoinWithdrawal, { responseType: 'text' as 'json', observe: 'response' });
+    return this.http.post<string>(this.apiUrl + 'bitcoin/withdraw', bitcoinWithdrawal, { responseType: 'text' as 'json', observe: 'response' });
   }
   withdrawISK(amount: number) {
-    return this.http.post<string>(this.apiUrl + 'accountdata/withdrawal', amount, { responseType: 'text' as 'json', observe: 'response' });
+    return this.http.post<string>(this.apiUrl + 'accountdata/withdraw', amount, { responseType: 'text' as 'json', observe: 'response' });
   }
 
   setWithdrawalAddress(bitcoinAddress: string) {

@@ -10,6 +10,7 @@ import { AccountData } from 'src/app/services/accountData';
 export class SettingsComponent implements OnInit {
 
   account: AccountData;
+  bankMask: Array<string | RegExp> = [/[0-9]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
 
   constructor(private bitar: BitarApiService) { }
 
@@ -21,7 +22,19 @@ export class SettingsComponent implements OnInit {
     this.bitar.setWithdrawalAddress(this.account.withdrawalAddress).subscribe(
       res => {
         if (res.ok) {
-          console.log('Settings updated successfully');
+          console.log('Withdrawal address updated successfully');
+          console.log(res.body.toString());
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
+    this.bitar.setBankAccountNumber(this.account.bankAccountNumber.split('-').join('')).subscribe(
+      res => {
+        if (res.ok) {
+          console.log('Bank account number updated successfully');
           console.log(res.body.toString());
         }
       },
