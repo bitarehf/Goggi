@@ -32,6 +32,7 @@ import { WithdrawalComponent } from './components/dashboard/withdrawal/withdrawa
 import { LoginComponent } from './components/home/login/login.component';
 import { RegisterComponent } from './components/home/register/register.component';
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
+import { DepositComponent } from './components/dashboard/deposit/deposit.component';
 
 registerLocaleData(is);
 
@@ -63,6 +64,7 @@ export function tokenGetter() {
     IskComponent,
     BtcCompletedComponent,
     IskCompletedComponent,
+    DepositComponent,
   ],
   imports: [
     BrowserModule,

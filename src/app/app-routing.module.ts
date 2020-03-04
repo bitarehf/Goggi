@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { AuthGuard } from './guards/auth.guard';
+import { DepositComponent } from './components/dashboard/deposit/deposit.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
     children: [
       { path: '', component: OverviewComponent },
       { path: 'transactions', component: TransactionsComponent },
+      { path: 'deposit', component: DepositComponent },
       {
         path: 'withdrawal', component: WithdrawalComponent,
         children: [
