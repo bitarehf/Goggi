@@ -31,7 +31,7 @@ export class IskComponent implements OnInit {
 
   ngOnInit() {
     this.bitar.getAccountData().subscribe(res => {
-      this.account = res
+      this.account = res;
       console.log(this.account);
     });
   }

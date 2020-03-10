@@ -6,21 +6,20 @@ import { AccountData } from './accountData';
 import { Login } from './login';
 import { Register } from './register';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class BitarApiService {
 
   apiUrl: string = 'https://api.bitar.is/';
-  private httpOptions: any;
 
-  constructor(private http: HttpClient) {
-    this.httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      responseType: 'text' as 'json',
-      observe: 'response'
-    };
-  }
+
+  public account: AccountData;
+  public email: string;
+
+  constructor(private http: HttpClient) { }
 
   register(register: Register) {
     return this.http.post(this.apiUrl + 'account/register', register, { responseType: 'text' as 'json', observe: 'response' });
@@ -40,11 +39,17 @@ export class BitarApiService {
   }
 
   getAccountData(): Observable<AccountData> {
-    return this.http.get<AccountData>(this.apiUrl + 'accountdata/getaccountdata');
+    let result = this.http.get<AccountData>(this.apiUrl + 'accountdata/getaccountdata');
+    result.subscribe(r => (this.account = r));
+    return result;
   }
 
   getAddressBalance(): Observable<number> {
     return this.http.get<number>(this.apiUrl + 'accountdata/getaddressbalance');
+  }
+
+  getUserEmail(): Observable<any> {
+    return this.http.get<string>(this.apiUrl + 'account/getuseremail', { responseType: 'text' as 'json'});
   }
 
   withdrawBitcoin(bitcoinWithdrawal: BitcoinWithdrawal) {

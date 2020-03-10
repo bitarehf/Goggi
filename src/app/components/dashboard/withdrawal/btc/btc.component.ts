@@ -14,7 +14,7 @@ export class BtcComponent implements OnInit {
 
   account: AccountData;
   bitcoinBalance: number;
-  nbtc: number;
+  nbtc: number = 0;
   sbtc: string;
   btcFees: number;
   result: string;
@@ -40,11 +40,6 @@ export class BtcComponent implements OnInit {
         this.nbtc = this.bitcoinBalance - this.btcFees;
         this.sbtc = (this.bitcoinBalance - this.btcFees).toLocaleString('da', { maximumFractionDigits: 8 });
       }
-
-      console.log(this.bitcoinBalance);
-      console.log(this.nbtc);
-      console.log(this.bitcoinBalance - this.btcFees);
-      console.log(this.bitcoinBalance - this.btcFees - this.nbtc);
     });
   }
 
@@ -59,8 +54,7 @@ export class BtcComponent implements OnInit {
   withdrawBitcoin() {
     console.log('w0t ' + this.nbtc);
 
-    if (this.account.withdrawalAddress == null)
-    {
+    if (this.account.withdrawalAddress == null) {
       return;
     }
 

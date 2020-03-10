@@ -37,7 +37,7 @@ export class OverviewComponent implements OnInit {
 
   constructor(
     public stock: StockService,
-    private bitar: BitarApiService,
+    public bitar: BitarApiService,
     private router: Router) { }
 
   ngOnInit() {
