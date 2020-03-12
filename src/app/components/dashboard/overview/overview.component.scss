@@ -1,0 +1,18 @@
+.callout {
+  border-left-width: 10px;
+  border-left-style: solid;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.callout-danger {
+  border-color: rgba(222, 68, 55, 0.25);
+  background-color: rgba(222, 68, 55, 0.075);
+}
+
+.callout-title {
+  color: initial;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
