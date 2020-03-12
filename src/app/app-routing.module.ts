@@ -17,6 +17,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { AuthGuard } from './guards/auth.guard';
 import { DepositComponent } from './components/dashboard/deposit/deposit.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -45,6 +46,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'order-completed/:txid', component: OrderCompletedComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'terms', component: TermsComponent },
   { path: 'privacy', component: PrivacyComponent },
   { path: '**', component: PageNotFoundComponent }
