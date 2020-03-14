@@ -13,12 +13,17 @@ export class DashboardComponent implements OnInit {
 
   id: number;
   email: string;
+  username: string;
 
   constructor(private jwtHelper: JwtHelperService, public bitar: BitarApiService) { }
 
   ngOnInit() {
     const token = this.jwtHelper.decodeToken(localStorage.getItem('token'));
     this.id = token['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
+
+    this.bitar.getUserName().subscribe(res => {
+      this.username = res;
+    });
 
     this.bitar.getUserEmail().subscribe(res => {
       this.email = res;

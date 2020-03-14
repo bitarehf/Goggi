@@ -52,6 +52,10 @@ export class BitarApiService {
     return this.http.get<string>(this.apiUrl + 'account/getuseremail', { responseType: 'text' as 'json'});
   }
 
+  getUserName(): Observable<any> {
+    return this.http.get<string>(this.apiUrl + 'account/getusername', { responseType: 'text' as 'json'});
+  }
+
   withdrawBitcoin(bitcoinWithdrawal: BitcoinWithdrawal) {
     return this.http.post<string>(this.apiUrl + 'bitcoin/withdraw', bitcoinWithdrawal, { responseType: 'text' as 'json', observe: 'response' });
   }
