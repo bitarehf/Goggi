@@ -1,5 +1,5 @@
 <div class="w-40 mx-auto" style="max-width: 625px; min-width: 275px;">
-  <form (ngSubmit)="login()">
+  <form [formGroup]="loginForm" (ngSubmit)="submitHandler()">
     <!-- Login -->
     <div id="login">
       <!-- Title -->
@@ -11,28 +11,37 @@
 
       <!-- Input -->
       <div class="mb-4">
-        <div class="input-group u-form">
-          <div class="input-group-prepend u-form__prepend">
-            <span class="input-group-text u-form__text">
-              <span class="fa fa-user u-form__text-inner"></span>
+        <label class="form-label">Kennitala eða netfang</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-user"></span>
             </span>
           </div>
-          <input class="form-control u-form__input" name="User" placeholder="Kennitala" [(ngModel)]="account.User"
-            (ngModelChange)="validateId()">
+          <input class="form-control" placeholder="Kennitala eða netfang" formControlName="user"
+            [class.validation-error]="!userValid && user.touched" [class.validation-success]="userValid && user.touched"
+            (ngModelChange)="validateUser()">
+          <div *ngIf="user.touched && !userValid" class="invalid-feedback d-block">
+            Vinsamlegast sláðu inn gilda kennitölu eða gilt netfang
+          </div>
         </div>
       </div>
       <!-- End Input -->
 
       <!-- Input -->
       <div class="mb-2">
-        <div class="input-group u-form">
-          <div class="input-group-prepend u-form__prepend">
-            <span class="input-group-text u-form__text">
-              <span class="fa fa-lock u-form__text-inner"></span>
+        <label class="form-label">Lykilorð</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">
+              <span class="fa fa-lock"></span>
             </span>
           </div>
-          <input type="password" class="form-control u-form__input" name="password" placeholder="Lykilorð"
-            [(ngModel)]="account.Password" (ngModelChange)="validatePassword()">
+          <input type="password" class="form-control" placeholder="Lykilorð" formControlName="password"
+            [class.validation-error]="password.invalid && password.touched" [class.validation-success]="password.valid">
+          <div *ngIf="password.invalid && password.touched" class="invalid-feedback d-block">
+            Vinsamlegast sláðu inn gilt lykilorð
+          </div>
         </div>
       </div>
       <!-- End Input -->

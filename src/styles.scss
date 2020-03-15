@@ -2,3 +2,11 @@
 @import 'assets/css/index.scss';
 @import 'assets/css/datatable.scss';
 @import '~@swimlane/ngx-datatable/assets/icons.css';
+
+.validation-error {
+  border-color: rgba(222, 68, 55, 0.5);
+}
+
+.validation-success {
+  border-color: rgba(0, 201, 167, 0.5);
+}

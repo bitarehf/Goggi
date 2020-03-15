@@ -14,53 +14,74 @@
       <app-rates></app-rates>
     </div>
     <div class="col-lg-6">
-      <h1 class="display-4 font-size-48--md-down">Stofnaðu aðgang</h1>
-      <h2 class="h4 text-primary"><strong>Það er fljótt og auðvelt!</strong></h2>
-      <form name="buyForm" (ngSubmit)="register()">
-        <div class="s-input" [ngClass]="{'success': emailValid}">
-          <input name="email" type="text" placeholder="Netfang" spellcheck="false" autocomplete="new-password"
-            [(ngModel)]="account.Email" (ngModelChange)="validateEmail()">
-          <svg viewBox="0 0 16 16">
-            <path
-              d="M10.8000002,10.8000002 C9.85000038,11.6500006 9.18349609,12 8,12 C5.80000019,12 4,10.1999998 4,8 C4,5.80000019 5.80000019,4 8,4 C10.1999998,4 12,6 12,8 C12,9.35332031 12.75,9.5 13.5,9.5 C14.25,9.5 15,8.60000038 15,8 C15,4 12,1 8,1 C4,1 1,4 1,8 C1,12 4,15 8,15 C12,15 15,12 15,8">
-            </path>
-            <polyline points="5 8.375 7.59090909 11 14.5 4" transform='translate(0 -0.5)'></polyline>
-          </svg>
-        </div>
-        <br>
-        <div class="s-input" [ngClass]="{'success': idValid}">
-          <input name="id" type="text" placeholder="Kennitala" autocomplete="new-password" [(ngModel)]="account.Id"
-            (ngModelChange)="validateId()" [textMask]="{mask: idMask, guide: false}">
-          <svg viewBox="0 0 16 16">
-            <path
-              d="M10.8000002,10.8000002 C9.85000038,11.6500006 9.18349609,12 8,12 C5.80000019,12 4,10.1999998 4,8 C4,5.80000019 5.80000019,4 8,4 C10.1999998,4 12,6 12,8 C12,9.35332031 12.75,9.5 13.5,9.5 C14.25,9.5 15,8.60000038 15,8 C15,4 12,1 8,1 C4,1 1,4 1,8 C1,12 4,15 8,15 C12,15 15,12 15,8">
-            </path>
-            <polyline points="5 8.375 7.59090909 11 14.5 4" transform='translate(0 -0.5)'></polyline>
-          </svg>
-        </div>
-        <br>
-        <div class="s-input" [ngClass]="{'success': passwordValid}">
-          <input name="password" type="password" placeholder="Nýtt lykilorð" spellcheck="false"
-            autocomplete="new-password" [(ngModel)]="account.Password" (ngModelChange)="validatePassword()">
-          <svg viewBox="0 0 16 16">
-            <path
-              d="M10.8000002,10.8000002 C9.85000038,11.6500006 9.18349609,12 8,12 C5.80000019,12 4,10.1999998 4,8 C4,5.80000019 5.80000019,4 8,4 C10.1999998,4 12,6 12,8 C12,9.35332031 12.75,9.5 13.5,9.5 C14.25,9.5 15,8.60000038 15,8 C15,4 12,1 8,1 C4,1 1,4 1,8 C1,12 4,15 8,15 C12,15 15,12 15,8">
-            </path>
-            <polyline points="5 8.375 7.59090909 11 14.5 4" transform='translate(0 -0.5)'></polyline>
-          </svg>
-        </div>
-        <br>
-        <small class="text-muted">
-          Með því að stofna aðgang samþykkir þú
-          <a class="link-muted" target="_blank" routerLink="terms">skilmálana okkar</a>.
-        </small>
-        <br>
-        <br>
-        <div class="d-flex">
-          <button type="submit" class="btn btn-soft-primary u-btn-wide transition-3d-hover">Stofna aðgang</button>
-        </div>
-        <br>
 
+      <h1 class="display-4 font-size-48--md-down text-center">Stofnaðu aðgang</h1>
+      <h2 class="text-primary text-center mb-2"><strong>Það er fljótt og auðvelt!</strong></h2>
+
+      <form class="card shadow" [formGroup]="registerForm" (ngSubmit)="submitHandler()">
+        <div class="card-body p-5 p-md-6">
+          <div class="row">
+
+            <div class="col-sm-12 mb-3">
+              <!-- Form Group -->
+              <div class="form-group">
+                <label class="form-label">Kennitala <span class="text-danger">*</span></label>
+                <input class="form-control font-italic" placeholder="470818-0420" [class.validation-error]="id.touched && !idValid"
+                  [class.validation-success]="idValid" formControlName="id" autocomplete="off"
+                  (ngModelChange)="validateId()" [textMask]="{mask: idMask, guide: false}">
+                <div *ngIf="id.touched && !idValid" class="invalid-feedback d-block">
+                  Vinsamlegast sláðu inn gilda kennitölu
+                </div>
+              </div>
+              <!-- End Form Group -->
+            </div>
+
+            <div class="col-sm-12 mb-3">
+              <!-- Form Group -->
+              <div class="form-group">
+                <label class="form-label">Netfang <span class="text-danger">*</span></label>
+                <input class="form-control" spellcheck="false" placeholder="forsetinn@gmail.com"
+                  [class.validation-error]="email.invalid && email.touched"
+                  [class.validation-success]="email.valid && email.touched" formControlName="email" autocomplete="off">
+                <div *ngIf="email.invalid && email.touched" class="invalid-feedback d-block">
+                  Vinsamlegast sláðu inn gilt netfang
+                </div>
+              </div>
+              <!-- End Form Group -->
+            </div>
+
+            <div class="col-sm-12 mb-3">
+              <!-- Form Group -->
+              <div class="form-group">
+                <label class="form-label">Nýtt Lykilorð <span class="text-danger">*</span></label>
+                <input class="form-control" placeholder="*********"
+                  [class.validation-error]="password.invalid && password.touched"
+                  [class.validation-success]="password.valid && password.touched" formControlName="password"
+                  autocomplete="new-password">
+                <div *ngIf="password.invalid && password.touched" class="invalid-feedback d-block">
+                  Vinsamlegast sláðu inn gilt lykilorð
+                </div>
+              </div>
+              <!-- End Form Group -->
+            </div>
+
+          </div>
+
+          <!-- Terms -->
+          <div class="mb-5 d-flex align-items-center">
+            <small class="text-muted">
+              Með því að stofna aðgang samþykkir þú
+              <a class="link-muted" target="_blank" routerLink="terms">skilmálana okkar</a>.
+            </small>
+          </div>
+          <!-- End Terms -->
+
+          <button [disabled]="registerForm.invalid" type="submit"
+            class="btn btn-block btn-soft-primary transition-3d-hover">
+            Stofna aðgang
+            <span class="fas fa-angle-right align-middle ml-2"></span>
+          </button>
+        </div>
       </form>
     </div>
   </div>
