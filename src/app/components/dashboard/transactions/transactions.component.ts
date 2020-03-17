@@ -10,7 +10,7 @@ import { BitarApiService } from 'src/app/services/bitar-api.service';
 })
 export class TransactionsComponent implements OnInit {
 
-  @ViewChild('myTable', { static: false }) table: any;
+  @ViewChild('myTable') table: any;
 
   account: AccountData;
 
