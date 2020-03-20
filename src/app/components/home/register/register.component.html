@@ -26,9 +26,10 @@
               <!-- Form Group -->
               <div class="form-group">
                 <label class="form-label">Kennitala <span class="text-danger">*</span></label>
-                <input class="form-control font-italic" placeholder="470818-0420" [class.validation-error]="id.touched && !idValid"
-                  [class.validation-success]="idValid" formControlName="id" autocomplete="off"
-                  (ngModelChange)="validateId()" [textMask]="{mask: idMask, guide: false}">
+                <input class="form-control font-italic" placeholder="470818-0420"
+                  [class.validation-error]="id.touched && !idValid" [class.validation-success]="idValid"
+                  formControlName="id" autocomplete="off" (ngModelChange)="validateId()"
+                  [textMask]="{mask: idMask, guide: false}">
                 <div *ngIf="id.touched && !idValid" class="invalid-feedback d-block">
                   Vinsamlegast sláðu inn gilda kennitölu
                 </div>
@@ -76,8 +77,7 @@
           </div>
           <!-- End Terms -->
 
-          <button [disabled]="registerForm.invalid" type="submit"
-            class="btn btn-block btn-soft-primary transition-3d-hover">
+          <button type="submit" class="btn btn-block btn-soft-primary transition-3d-hover">
             Stofna aðgang
             <span class="fas fa-angle-right align-middle ml-2"></span>
           </button>

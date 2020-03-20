@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
 
   idMask: Array<string | RegExp> = [/[0-9]/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  
+
   // Form state
   idValid: boolean = false;
 
@@ -54,22 +54,25 @@ export class RegisterComponent implements OnInit {
   }
 
   async submitHandler() {
-    const formValue = this.registerForm.value;
+    if (true) {
 
-    console.log('Creating account...');
-    console.log(formValue);
+      const formValue = this.registerForm.value;
 
-    this.bitar.register(formValue).subscribe(
-      res => {
-        if (res.ok) {
-          console.log('Account created');
-          localStorage.setItem('token', res.body.toString());
-          this.router.navigate(['dashboard']);
-        }
-      },
-      err => {
-        console.log(err);
-      });
+      console.log('Creating account...');
+      console.log(formValue);
+
+      this.bitar.register(formValue).subscribe(
+        res => {
+          if (res.ok) {
+            console.log('Account created');
+            localStorage.setItem('token', res.body.toString());
+            this.router.navigate(['dashboard']);
+          }
+        },
+        err => {
+          console.log(err);
+        });
+    }
   }
 
   validateId() {

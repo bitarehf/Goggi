@@ -1,12 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { BitcoinWithdrawal } from '../components/dashboard/withdrawal/bitcoinWithdrawal';
 import { AccountData } from './accountData';
 import { Login } from './login';
 import { Register } from './register';
-
-
+import { OhlcData } from './ohlcData';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +18,14 @@ export class BitarApiService {
   public account: AccountData;
   public email: string;
 
+  private ohlcBtcEurSource = new BehaviorSubject<OhlcData>(null);
+  ohlcBtcEur = this.ohlcBtcEurSource.asObservable();
+
   constructor(private http: HttpClient) { }
+
+  GetOhlc(): Observable<OhlcData> {
+    return this.http.get<OhlcData>(this.apiUrl + 'market/ohlcchart');
+  }
 
   register(register: Register) {
     return this.http.post(this.apiUrl + 'account/register', register, { responseType: 'text' as 'json', observe: 'response' });
@@ -49,11 +55,11 @@ export class BitarApiService {
   }
 
   getUserEmail(): Observable<any> {
-    return this.http.get<string>(this.apiUrl + 'account/getuseremail', { responseType: 'text' as 'json'});
+    return this.http.get<string>(this.apiUrl + 'account/getuseremail', { responseType: 'text' as 'json' });
   }
 
   getUserName(): Observable<any> {
-    return this.http.get<string>(this.apiUrl + 'account/getusername', { responseType: 'text' as 'json'});
+    return this.http.get<string>(this.apiUrl + 'account/getusername', { responseType: 'text' as 'json' });
   }
 
   withdrawBitcoin(bitcoinWithdrawal: BitcoinWithdrawal) {
