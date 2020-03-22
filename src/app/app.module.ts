@@ -29,7 +29,7 @@ import { IskCompletedComponent } from './components/dashboard/withdrawal-complet
 import { BtcComponent } from './components/dashboard/withdrawal/btc/btc.component';
 import { IskComponent } from './components/dashboard/withdrawal/isk/isk.component';
 import { WithdrawalComponent } from './components/dashboard/withdrawal/withdrawal.component';
-import { LoginComponent } from './components/home/login/login.component';
+import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/home/register/register.component';
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
 import { DepositComponent } from './components/dashboard/deposit/deposit.component';
