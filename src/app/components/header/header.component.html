@@ -1,24 +1,35 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-white">
-  <a class="navbar-brand text-primary" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Bitar</a>
-  <button class="navbar-toggler" (click)="collapse=!collapse" type="button">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<header class="header">
+  <nav class="navbar navbar-dark fixed-top bg-primary flex-nowrap">
+    <div class="col-md-3 col-xl-2 d-flex align-items-center bg-md-primary-darker mr-0 py-2">
+      <a routerLink="/">
+        <img src="assets/bitar.png" width="40" height="40">
+      </a>
+      <a routerLink="/">
+        <span class="badge badge-danger ml-2">v0.2</span>
+      </a>
+    </div>
 
-  <div class="navbar-collapse flex-grow-1 text-right" [hidden]="collapse">
-    <ul class="navbar-nav ml-auto flex-nowrap">
-      <!-- <li class="nav-item">
-        <a class="nav-link m-2 menu-item" routerLink="/terms" routerLinkActive="active">Terms</a>
-      </li> -->
-      <li class="nav-item">
-        <a class="nav-link menu-item" routerLink="/login" routerLinkActive="active"
-          *ngIf="!isAuthenticated()">Innskráning</a>
+    <!-- Header Links -->
+    <ul class="navbar-nav text-nowrap flex-row align-items-center px-3 ml-0 ml-sm-3">
+      <li *ngIf="!isAuthenticated()">
+        <a class="nav-link" routerLink="/login">
+          <i class="fas fa-sign-in-alt mr-sm-1"></i>
+          <span class="d-none d-lg-inline-block">Innskráning</span>
+        </a>
       </li>
-      <li class="nav-item" *ngIf="isAuthenticated()">
-        <a class="nav-link menu-item" routerLink="/dashboard" routerLinkActive="active">Mitt svæði</a>
+      <li class="ml-4" *ngIf="isAuthenticated()">
+        <a class="nav-link" routerLink="/dashboard">
+          <i class="fas fa-jedi mr-sm-1"></i>
+          <span class="d-none d-lg-inline-block">Mitt svæði</span>
+        </a>
       </li>
-      <li class="nav-item" *ngIf="isAuthenticated()">
-        <a class="nav-link menu-item" routerLink="/" (click)="logout()">Útskrá</a>
+      <li class="ml-3 ml-sm-5" *ngIf="isAuthenticated()">
+        <a class="btn btn-sm btn-light text-primary" routerLink="/" (click)="logout()">
+          <i class="fas fa-sign-out-alt mr-sm-1"></i>
+          Útskrá
+        </a>
       </li>
     </ul>
-  </div>
-</nav>
+    <!-- End Header Links -->
+  </nav>
+</header>
