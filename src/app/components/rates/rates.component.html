@@ -1,30 +1,33 @@
-<div class="row align-items-center">
-  <div class="col">
-    <div class="media align-items-center">
-      <div class="d-flex mr-3">
-        <span class="btn btn-icon btn-soft-warning rounded-circle">
-          <span class="fab fa-bitcoin btn-icon__inner fa-2x mr-3"></span>
-        </span>
-      </div>
-      <div class="media-body">
-        <h3 class="h5 mb-0">1 Bitcoin</h3>
-        <span class="d-block text-secondary">BTC</span>
-      </div>
-    </div>
-  </div>
+<table class="table table-light">
+  <thead>
+    <tr>
+      <th style="width: 40%;">Nafn</th>
+      <th>Verð</th>
+      <th>24 Klst breyting</th>
+      <th>% Breyting</th>
+      <th>Tími í uppfærslu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>
+        <img class="mr-3" src="assets/images/btc.png" width="70" height="70">
+        <span class="h2 align-middle mr-3">Bitcoin</span>
+        <span class="align-middle" style="font-size: 1.5rem; font-weight: 400;">BTCISK</span>
+      </th>
+      <td class="align-middle">
+        <p class="h3 align-middle">{{stock.BTC | currency: 'ISK'}}</p>
+      </td>
+      <td class="align-middle">
+        <p class="h3 align-middle text-danger">-5.000 ISK</p>
+      </td>
+      <td class="align-middle">
+        <p class="h3 align-middle text-danger">-0.5%</p>
+      </td>
+      <td class="align-middle">
+        <p class="h3 align-middle">{{ countdown | async | date: 's' }} sek</p>
+      </td>
+    </tr>
 
-  <div class="col">
-    <ul class="list-inline row justify-content-end text-secondary text-uppercase mb-0">
-      <li class="list-inline-item col">
-        <small class="d-block">Verð
-          <small>({{ countdown | async | date: 's' }} sek)</small>
-        </small>
-        <a class="d-block text-success">{{stock.BTC | currency: 'ISK'}}</a>
-      </li>
-      <li class="list-inline-item col">
-        <small class="d-block">Breyting <small>(24 klst)</small></small>
-        <a class="d-block text-danger">-0.00%<span class="fa fa-angle-down ml-2"></span></a>
-      </li>
-    </ul>
-  </div>
-</div>
+  </tbody>
+</table>

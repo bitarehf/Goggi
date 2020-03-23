@@ -1,38 +1,38 @@
-<div class="container">
+<div class="container space-2">
   <div class="row">
-    <div class="col-lg-6 d-none d-lg-block">
-      <h1 class="display-4 font-size-48--md-down mb-3">Bitar</h1>
-      <p>
-        Viltu kaupa bitcoin á
-        <span class="text-primary">
-          <strong class="writer"></strong>
-        </span>
-        <br>Þá ertu kominn á réttan stað! Við notum nýjustu tækni og erum ljósárum á undan samkeppnis aðilum.
-      </p>
-      <br>
-      <br>
-      <app-rates></app-rates>
+    <div class="col-sm-10 col-md-6 mb-7 mb-md-0">
+      <div class="mb-5">
+        <h1 class="display-4 mb-4">
+          Við erum
+          <br>
+          <span class="text-primary font-weight-bold">
+            <strong class="writer"></strong>
+          </span>
+        </h1>
+        <p class="lead">Hjá okkur getur þú geymt og stundað viðskipti með bitcoin hratt og örugglega allan
+          sólarhringinn.</p>
+      </div>
     </div>
-    <div class="col-lg-6">
 
-      <h1 class="display-4 font-size-48--md-down text-center">Stofnaðu aðgang</h1>
-      <h2 class="text-primary text-center mb-2"><strong>Það er fljótt og auðvelt!</strong></h2>
+    <div class="col-md-6">
+      <form class="card shadow-lg" [formGroup]="registerForm" (ngSubmit)="submitHandler()">
+        <div class="card-header bg-light text-center py-4 px-5 px-md-6">
+          <h2 class="h4 mb-0">Stofnaðu aðgang <span class="text-body font-size-1 font-weight-bold">það er frítt</span>
+          </h2>
+        </div>
 
-      <form class="card shadow" [formGroup]="registerForm" (ngSubmit)="submitHandler()">
         <div class="card-body p-5 p-md-6">
           <div class="row">
-
             <div class="col-sm-12 mb-3">
               <!-- Form Group -->
               <div class="form-group">
-                <label class="form-label">Kennitala <span class="text-danger">*</span></label>
-                <input class="form-control font-italic" placeholder="470818-0420"
-                  [class.validation-error]="id.touched && !idValid" [class.validation-success]="idValid"
-                  formControlName="id" autocomplete="off" (ngModelChange)="validateId()"
+                <label class="input-label">Kennitala</label>
+                <input class="form-control" placeholder="470818-0420" [class.is-invalid]="id.touched && !idValid"
+                  [class.is-valid]="idValid" formControlName="id" autocomplete="off" (ngModelChange)="validateId()"
                   [textMask]="{mask: idMask, guide: false}">
-                <div *ngIf="id.touched && !idValid" class="invalid-feedback d-block">
+                <span *ngIf="id.touched && !idValid" class="invalid-feedback">
                   Vinsamlegast sláðu inn gilda kennitölu
-                </div>
+                </span>
               </div>
               <!-- End Form Group -->
             </div>
@@ -40,13 +40,13 @@
             <div class="col-sm-12 mb-3">
               <!-- Form Group -->
               <div class="form-group">
-                <label class="form-label">Netfang <span class="text-danger">*</span></label>
+                <label class="input-label">Netfang</label>
                 <input class="form-control" spellcheck="false" placeholder="forsetinn@gmail.com"
-                  [class.validation-error]="email.invalid && email.touched"
-                  [class.validation-success]="email.valid && email.touched" formControlName="email" autocomplete="off">
-                <div *ngIf="email.invalid && email.touched" class="invalid-feedback d-block">
+                  [class.is-invalid]="email.invalid && email.touched" [class.is-valid]="email.valid && email.touched"
+                  formControlName="email" autocomplete="off">
+                <span *ngIf="email.invalid && email.touched" class="invalid-feedback">
                   Vinsamlegast sláðu inn gilt netfang
-                </div>
+                </span>
               </div>
               <!-- End Form Group -->
             </div>
@@ -54,14 +54,13 @@
             <div class="col-sm-12 mb-3">
               <!-- Form Group -->
               <div class="form-group">
-                <label class="form-label">Nýtt Lykilorð <span class="text-danger">*</span></label>
-                <input class="form-control" placeholder="*********"
-                  [class.validation-error]="password.invalid && password.touched"
-                  [class.validation-success]="password.valid && password.touched" formControlName="password"
-                  autocomplete="new-password">
-                <div *ngIf="password.invalid && password.touched" class="invalid-feedback d-block">
+                <label class="input-label">Nýtt Lykilorð</label>
+                <input class="form-control" placeholder="*********" autocomplete="new-password" type="password"
+                  [class.is-invalid]="password.invalid && password.touched"
+                  [class.is-valid]="password.valid && password.touched" formControlName="password">
+                <span *ngIf="password.invalid && password.touched" class="invalid-feedback">
                   Vinsamlegast sláðu inn gilt lykilorð
-                </div>
+                </span>
               </div>
               <!-- End Form Group -->
             </div>
@@ -70,14 +69,14 @@
 
           <!-- Terms -->
           <div class="mb-5 d-flex align-items-center">
-            <small class="text-muted">
+            <small>
               Með því að stofna aðgang samþykkir þú
-              <a class="link-muted" target="_blank" routerLink="terms">skilmálana okkar</a>.
+              <a class="link-underline" target="_blank" routerLink="terms">skilmálana okkar</a>.
             </small>
           </div>
           <!-- End Terms -->
 
-          <button type="submit" class="btn btn-block btn-soft-primary transition-3d-hover">
+          <button type="submit" class="btn btn-block btn-primary transition-3d-hover">
             Stofna aðgang
             <span class="fas fa-angle-right align-middle ml-2"></span>
           </button>

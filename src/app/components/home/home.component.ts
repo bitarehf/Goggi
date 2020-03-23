@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     let options = {
-      strings: ["einfaldan hátt?", "ódýran hátt?", "öruggan hátt?"],
+      strings: ["ódýrastir.", "einfaldastir.", "öruggastir."],
       typeSpeed: 60,
       loop: true,
       backSpeed: 25,
