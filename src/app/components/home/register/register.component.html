@@ -1,87 +1,116 @@
-<div class="container space-2">
-  <div class="row">
-    <div class="col-sm-10 col-md-6 mb-7 mb-md-0">
-      <div class="mb-5">
-        <h1 class="display-4 mb-4">
-          Við erum
-          <br>
-          <span class="text-primary font-weight-bold">
-            <strong class="writer"></strong>
-          </span>
-        </h1>
-        <p class="lead">Hjá okkur getur þú geymt og stundað viðskipti með bitcoin hratt og örugglega allan
-          sólarhringinn.</p>
+<div class="position-relative">
+  <div class="container space-2 space-lg-3">
+    <div class="row justify-content-lg-between align-items-lg-center">
+      <div class="col-lg-5 mb-7 mb-lg-0">
+        <!-- Info -->
+        <div class="mb-5">
+          <h2>Hjá okkur getur þú haft einföld viðskipti með bitcoin.</h2>
+          <p>Kóðinn á öllum kerfum okkar er opinn fyrir öllum á
+            <a href="https://github.com/bitarehf/" target="_blank">GitHub</a>.
+          </p>
+        </div>
+
+        <h4>Um tæknina sem við notum:</h4>
+
+        <div class="media text-body mb-3">
+          <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+          <div class="media-body">
+            Við erum með Bech32 stuðning sem gerir færslur minni og þar af leiðandi ódýrari og hraðari.
+          </div>
+        </div>
+        <div class="media text-body mb-3">
+          <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+          <div class="media-body">
+            Markaðsgögn er fáanleg með SignalR.
+          </div>
+        </div>
+        <div class="media text-body mb-3">
+          <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
+          <div class="media-body">
+            Við erum að vinna í koma leifturnetinu á bitar.<span class="badge badge-warning badge-pill ml-1">Beta</span>
+          </div>
+        </div>
+        <!-- End Info -->
       </div>
-    </div>
 
-    <div class="col-md-6">
-      <form class="card shadow-lg" [formGroup]="registerForm" (ngSubmit)="submitHandler()">
-        <div class="card-header bg-light text-center py-4 px-5 px-md-6">
-          <h2 class="h4 mb-0">Stofnaðu aðgang <span class="text-body font-size-1 font-weight-bold">það er frítt</span>
-          </h2>
-        </div>
-
-        <div class="card-body p-5 p-md-6">
-          <div class="row">
-            <div class="col-sm-12 mb-3">
-              <!-- Form Group -->
-              <div class="form-group">
-                <label class="input-label">Kennitala</label>
-                <input class="form-control" placeholder="470818-0420" [class.is-invalid]="id.touched && !idValid"
-                  [class.is-valid]="idValid" formControlName="id" autocomplete="off" (ngModelChange)="validateId()"
-                  [textMask]="{mask: idMask, guide: false}">
-                <span *ngIf="id.touched && !idValid" class="invalid-feedback">
-                  Vinsamlegast sláðu inn gilda kennitölu
-                </span>
-              </div>
-              <!-- End Form Group -->
-            </div>
-
-            <div class="col-sm-12 mb-3">
-              <!-- Form Group -->
-              <div class="form-group">
-                <label class="input-label">Netfang</label>
-                <input class="form-control" spellcheck="false" placeholder="forsetinn@gmail.com"
-                  [class.is-invalid]="email.invalid && email.touched" [class.is-valid]="email.valid && email.touched"
-                  formControlName="email" autocomplete="off">
-                <span *ngIf="email.invalid && email.touched" class="invalid-feedback">
-                  Vinsamlegast sláðu inn gilt netfang
-                </span>
-              </div>
-              <!-- End Form Group -->
-            </div>
-
-            <div class="col-sm-12 mb-3">
-              <!-- Form Group -->
-              <div class="form-group">
-                <label class="input-label">Nýtt Lykilorð</label>
-                <input class="form-control" placeholder="*********" autocomplete="new-password" type="password"
-                  [class.is-invalid]="password.invalid && password.touched"
-                  [class.is-valid]="password.valid && password.touched" formControlName="password">
-                <span *ngIf="password.invalid && password.touched" class="invalid-feedback">
-                  Vinsamlegast sláðu inn gilt lykilorð
-                </span>
-              </div>
-              <!-- End Form Group -->
-            </div>
-
+      <div class="col-lg-6">
+        <form class="card shadow-lg w-md-85 w-lg-100 mx-md-auto" [formGroup]="registerForm"
+          (ngSubmit)="submitHandler()">
+          <div class="card-header bg-navy text-white text-center py-4 px-5 px-md-6">
+            <h4 class="text-white mb-0">Stofnaðu aðgang, það er frítt</h4>
           </div>
+          <!-- <form class="card shadow-lg" >
+          <div class="card-header bg-light text-center py-4 px-5 px-md-6">
+            <h2 class="h4 mb-0">Stofnaðu aðgang <span class="text-body font-size-1 font-weight-bold">það er frítt</span>
+            </h2>
+          </div> -->
 
-          <!-- Terms -->
-          <div class="mb-5 d-flex align-items-center">
-            <small>
-              Með því að stofna aðgang samþykkir þú
-              <a class="link-underline" target="_blank" routerLink="terms">skilmálana okkar</a>.
-            </small>
+          <div class="card-body p-5 p-md-6">
+            <div class="row">
+              <div class="col-sm-12 mb-3">
+                <!-- Form Group -->
+                <div class="form-group">
+                  <label class="input-label">Kennitala</label>
+                  <input class="form-control" placeholder="470818-0420" [class.is-invalid]="id.touched && !idValid"
+                    [class.is-valid]="idValid" formControlName="id" autocomplete="off" (ngModelChange)="validateId()"
+                    [textMask]="{mask: idMask, guide: false}">
+                  <span *ngIf="id.touched && !idValid" class="invalid-feedback">
+                    Vinsamlegast sláðu inn gilda kennitölu
+                  </span>
+                </div>
+                <!-- End Form Group -->
+              </div>
+
+              <div class="col-sm-12 mb-3">
+                <!-- Form Group -->
+                <div class="form-group">
+                  <label class="input-label">Netfang</label>
+                  <input class="form-control" spellcheck="false" placeholder="forsetinn@gmail.com"
+                    [class.is-invalid]="email.invalid && email.touched" [class.is-valid]="email.valid && email.touched"
+                    formControlName="email" autocomplete="off">
+                  <span *ngIf="email.invalid && email.touched" class="invalid-feedback">
+                    Vinsamlegast sláðu inn gilt netfang
+                  </span>
+                </div>
+                <!-- End Form Group -->
+              </div>
+
+              <div class="col-sm-12 mb-3">
+                <!-- Form Group -->
+                <div class="form-group">
+                  <label class="input-label">Nýtt Lykilorð</label>
+                  <input class="form-control" placeholder="*********" autocomplete="new-password" type="password"
+                    [class.is-invalid]="password.invalid && password.touched"
+                    [class.is-valid]="password.valid && password.touched" formControlName="password">
+                  <span *ngIf="password.invalid && password.touched" class="invalid-feedback">
+                    Vinsamlegast sláðu inn gilt lykilorð
+                  </span>
+                </div>
+                <!-- End Form Group -->
+              </div>
+
+            </div>
+
+            <!-- Additional -->
+            <div class="mb-5 align-items-center font-size-1 text-muted">
+              <p class="mb-1">
+                Með því að stofna aðgang samþykkir þú
+                <a class="link-underline" target="_blank" routerLink="terms">skilmálana okkar</a>.
+              </p>
+              <p>
+                Ertu með aðgang?
+                <a routerLink="login">Innskrá</a>
+              </p>
+            </div>
+            <!-- End Additonal -->
+
+            <button type="submit" class="btn btn-block btn-primary transition-3d-hover">
+              Stofna aðgang
+              <span class="fas fa-angle-right align-middle ml-2"></span>
+            </button>
           </div>
-          <!-- End Terms -->
-
-          <button type="submit" class="btn btn-block btn-primary transition-3d-hover">
-            Stofna aðgang
-            <span class="fas fa-angle-right align-middle ml-2"></span>
-          </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </div>
