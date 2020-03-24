@@ -35,6 +35,7 @@ import { OrderCompletedComponent } from './components/order-completed/order-comp
 import { DepositComponent } from './components/dashboard/deposit/deposit.component';
 import { AboutComponent } from './components/about/about.component';
 import { ChartComponent } from './components/home/chart/chart.component';
+import { HeaderTransparentComponent } from './components/header-transparent/header-transparent.component';
 
 registerLocaleData(is);
 
@@ -69,6 +70,7 @@ export function tokenGetter() {
     DepositComponent,
     AboutComponent,
     ChartComponent,
+    HeaderTransparentComponent,
   ],
   imports: [
     BrowserModule,
