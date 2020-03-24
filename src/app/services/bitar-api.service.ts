@@ -5,7 +5,7 @@ import { BitcoinWithdrawal } from '../components/dashboard/withdrawal/bitcoinWit
 import { AccountData } from './accountData';
 import { Login } from './login';
 import { Register } from './register';
-import { OhlcData } from './ohlcData';
+import { ChartPair } from './chartPair';
 
 @Injectable({
   providedIn: 'root'
@@ -14,17 +14,16 @@ export class BitarApiService {
 
   apiUrl: string = 'https://api.bitar.is/';
 
-
   public account: AccountData;
   public email: string;
 
-  private ohlcBtcEurSource = new BehaviorSubject<OhlcData>(null);
+  private ohlcBtcEurSource = new BehaviorSubject<ChartPair>(null);
   ohlcBtcEur = this.ohlcBtcEurSource.asObservable();
 
   constructor(private http: HttpClient) { }
 
-  GetOhlc(): Observable<OhlcData> {
-    return this.http.get<OhlcData>(this.apiUrl + 'market/ohlcchart');
+  GetChartPair(): Observable<ChartPair> {
+    return this.http.get<ChartPair>(this.apiUrl + 'market/chartpair');
   }
 
   register(register: Register) {
