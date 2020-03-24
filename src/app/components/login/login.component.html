@@ -1,62 +1,89 @@
-<div class="w-40 mx-auto" style="max-width: 625px; min-width: 275px;">
-  <form [formGroup]="loginForm" (ngSubmit)="submitHandler()">
-    <!-- Login -->
-    <div id="login">
-      <!-- Title -->
-      <header class="text-center mb-7">
-        <h2 class="h4 mb-0">Halló!</h2>
-        <p>Innskráðu þig til að stjórna reikningnum þínum.</p>
-      </header>
-      <!-- End Title -->
+<app-header-transparent></app-header-transparent>
+<main>
+  <!-- Form -->
+  <div class="d-flex align-items-center position-relative vh-lg-100">
+    <div class="col-lg-5 col-xl-4 d-none d-lg-flex align-items-center bg-navy vh-lg-100 px-0"
+      style="background-image: url(assets/svg/abstract-shapes-20.svg);">
+      <div class="w-100 p-5">
 
-      <!-- Input -->
-      <div class="mb-4">
-        <label class="form-label">Kennitala eða netfang</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <span class="fa fa-user"></span>
-            </span>
-          </div>
-          <input class="form-control" placeholder="Kennitala eða netfang" formControlName="user"
-            [class.validation-error]="!userValid && user.touched" [class.validation-success]="userValid && user.touched"
-            (ngModelChange)="validateUser()">
-          <div *ngIf="user.touched && !userValid" class="invalid-feedback d-block">
-            Vinsamlegast sláðu inn gilda kennitölu eða gilt netfang
+        <!-- Testimonials Carousel Main -->
+        <div class="slick mb-4">
+          <div style="opacity: 1; width: 1608px;">
+            <div style="width: 536px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1; height: auto;">
+              <!-- Testimonials -->
+              <div class="w-md-80 w-lg-60 text-center mx-auto">
+                <blockquote class="h3 text-white font-weight-normal mb-4">Hvað ertu að lesa þetta, drífðu þig að skrá
+                  þig inn!</blockquote>
+              </div>
+              <!-- End Testimonials -->
+            </div>
           </div>
         </div>
-      </div>
-      <!-- End Input -->
+        <!-- End Testimonials Carousel Main -->
 
-      <!-- Input -->
-      <div class="mb-2">
-        <label class="form-label">Lykilorð</label>
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
-              <span class="fa fa-lock"></span>
-            </span>
-          </div>
-          <input type="password" class="form-control" placeholder="Lykilorð" formControlName="password"
-            [class.validation-error]="password.invalid && password.touched" [class.validation-success]="password.valid">
-          <div *ngIf="password.invalid && password.touched" class="invalid-feedback d-block">
-            Vinsamlegast sláðu inn gilt lykilorð
-          </div>
-        </div>
-      </div>
-      <!-- End Input -->
-
-      <div class="clearfix mb-4">
-        <a class="float-right small u-link-muted" href="#">Gleymt Lykilorð?</a>
-      </div>
-
-      <button type="submit" class="btn btn-block btn-primary transition-3d-hover mb-2">Innskrá</button>
-
-      <div class="text-center mb-4">
-        <span class="small text-muted">Áttu ekki reikning? </span>
-        <a class="small" routerLink="">Stofnaðu þá reikning</a>
       </div>
     </div>
 
-  </form>
-</div>
+    <div class="container">
+      <div class="row no-gutters">
+        <div class="col-md-8 col-lg-7 col-xl-6 offset-md-2 offset-lg-2 offset-xl-3 space-top-3 space-lg-0">
+          <!-- Form -->
+          <form [formGroup]="loginForm" (ngSubmit)="submitHandler()">
+            <!-- Title -->
+            <div class="mb-5 mb-md-7">
+              <h1>Velkomin aftur</h1>
+              <p>Skráðu þig inn til að stjórna reikningnum þínum.</p>
+            </div>
+            <!-- End Title -->
+
+            <!-- Form Group -->
+            <div class="form-group">
+              <label class="input-label">Kennitala eða netfang</label>
+              <input class="form-control" placeholder="Kennitala eða netfang" formControlName="user"
+                [class.is-invalid]="!userValid && user.touched"
+                [class.is-valid]="userValid && user.touched" (ngModelChange)="validateUser()">
+              <div *ngIf="user.touched && !userValid" class="invalid-feedback d-block">
+                Vinsamlegast sláðu inn gilda kennitölu eða gilt netfang
+              </div>
+            </div>
+            <!-- End Form Group -->
+
+            <!-- Form Group -->
+            <div class="form-group">
+              <label class="input-label" for="signinSrPassword" tabindex="0">
+                <span class="d-flex justify-content-between align-items-center">
+                  Lykilorð
+                  <a class="link-underline text-capitalize font-weight-normal" routerLink="">Gleymdirðu
+                    lykilorðinu?</a>
+                </span>
+              </label>
+              <input type="password" class="form-control" placeholder="Lykilorð" formControlName="password"
+                [class.is-invalid]="password.invalid && password.touched"
+                [class.is-valid]="password.valid">
+              <div *ngIf="password.invalid && password.touched" class="invalid-feedback d-block">
+                Vinsamlegast sláðu inn gilt lykilorð
+              </div>
+            </div>
+            <!-- End Form Group -->
+
+            <!-- Button -->
+            <div class="row align-items-center mb-5">
+              <div class="col-sm-6 mb-3 mb-sm-0">
+                <span class="font-size-1 text-muted">Ertu ekki með reikning?</span>
+                <a class="font-size-1 font-weight-bold" routerLink=""> Stofna reikning</a>
+              </div>
+
+              <div class="col-sm-6 text-sm-right">
+                <button type="submit" class="btn btn-primary transition-3d-hover">Innskrá</button>
+              </div>
+            </div>
+            <!-- End Button -->
+          </form>
+          <!-- End Form -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Form -->
+</main>
+
