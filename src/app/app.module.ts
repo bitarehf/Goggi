@@ -36,6 +36,7 @@ import { DepositComponent } from './components/dashboard/deposit/deposit.compone
 import { AboutComponent } from './components/about/about.component';
 import { ChartComponent } from './components/home/chart/chart.component';
 import { HeaderTransparentComponent } from './components/header-transparent/header-transparent.component';
+import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.component';
 
 registerLocaleData(is);
 
@@ -71,6 +72,7 @@ export function tokenGetter() {
     AboutComponent,
     ChartComponent,
     HeaderTransparentComponent,
+    ExchangeRateComponent,
   ],
   imports: [
     BrowserModule,

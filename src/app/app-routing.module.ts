@@ -18,6 +18,11 @@ const routes: Routes = [
       .then(m => m.LoginModule)
   },
   {
+    path: 'exchange-rate',
+    loadChildren: () => import('./components/exchange-rate/exchange-rate.module')
+      .then(m => m.ExchangeRateModule)
+  },
+  {
     path: 'about',
     loadChildren: () => import('./components/about/about.module')
       .then(m => m.AboutModule)
