@@ -4,7 +4,7 @@
     <div class="card-body p-4">
       <div class="" *ngIf="transactions">
         <ngx-datatable #myTable class="bootstrap" [rows]="transactions" columnMode="force" rowHeight="56"
-          [sorts]="[{ prop: 'id', dir: 'desc' }]" limit="50" reorderable="false" [cssClasses]="cssClasses">
+          [sorts]="[{ prop: 'id', dir: 'desc' }]" limit="50" reorderable="false" [cssClasses]="cssClasses" [messages]="messages">
 
           <ngx-datatable-row-detail rowHeight="auto" #myDetailRow (toggle)="onDetailToggle($event)">
             <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>

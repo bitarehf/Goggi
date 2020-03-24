@@ -18,6 +18,9 @@ export class TransactionsComponent implements OnInit {
   transactions: MarketTransaction[];
   selected: [];
 
+  /**
+   * Css class overrides
+   */
   cssClasses: any = {
     sortAscending: 'fas fa-angle-up u-datatable__thead-icon',
     sortDescending: 'fas fa-angle-down u-datatable__thead-icon',
@@ -25,6 +28,25 @@ export class TransactionsComponent implements OnInit {
     pagerRightArrow: 'datatable-icon-right',
     pagerPrevious: 'datatable-icon-prev',
     pagerNext: 'datatable-icon-skip'
+  };
+
+  /**
+   * Message overrides for localization
+   *
+   * emptyMessage     [default] = 'No data to display'
+   * totalMessage     [default] = 'total'
+   * selectedMessage  [default] = 'selected'
+   */
+  messages: any = {
+    // Message to show when array is presented
+    // but contains no values
+    emptyMessage: 'Engar færslur hafa verið framkvæmdar',
+
+    // Footer total message
+    totalMessage: 'Samtals',
+
+    // Footer selected message
+    selectedMessage: 'Valið'
   };
 
   constructor(private bitar: BitarApiService) { }
