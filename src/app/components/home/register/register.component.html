@@ -21,13 +21,13 @@
         <div class="media text-body mb-3">
           <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
           <div class="media-body">
-            Markaðsgögn eru fáanleg með JSON-RCP & SignalR.
+            Markaðsgögn eru fáanleg með SignalR & RESTful-API.
           </div>
         </div>
         <div class="media text-body mb-3">
           <i class="fas fa-check-circle text-success mt-1 mr-2"></i>
           <div class="media-body">
-            Innleiðing á leifturnetinu er í vinnslu.<span class="badge badge-warning badge-pill ml-1">Beta</span>
+            Innleiðing á <a href="https://lightning.network/" target="_blank">leifturnetinu</a> er í vinnslu.<span class="badge badge-warning badge-pill ml-1">Beta</span>
           </div>
         </div>
         <!-- End Info -->
@@ -60,7 +60,7 @@
                 <!-- Form Group -->
                 <div class="form-group">
                   <label class="input-label">Netfang</label>
-                  <input class="form-control" spellcheck="false" placeholder="forsetinn@gmail.com"
+                  <input class="form-control" spellcheck="false" placeholder="forsetinn@forsetinn.is"
                     [class.is-invalid]="email.invalid && email.touched" [class.is-valid]="email.valid && email.touched"
                     formControlName="email" autocomplete="off">
                   <span *ngIf="email.invalid && email.touched" class="invalid-feedback">
