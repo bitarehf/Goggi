@@ -22,6 +22,7 @@
     "@angular/router": "^9.0.6",
     "@aspnet/signalr": "^1.1.4",
     "@auth0/angular-jwt": "^3.0.1",
+    "@fortawesome/fontawesome-free": "^5.13.0",
     "@swimlane/ngx-datatable": "^16.0.3",
     "angular2-text-mask": "^9.0.0",
     "lightweight-charts": "^2.0.0",

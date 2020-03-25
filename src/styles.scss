@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+
 @import "assets/scss/fonts.scss";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
 @import "assets/scss/ngx-datatable/index.scss";
 @import "assets/scss/ngx-datatable/datatable.scss";
 @import "~@swimlane/ngx-datatable/assets/icons.css";

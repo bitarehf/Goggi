@@ -52,7 +52,7 @@
             ],
             "styles": [
               "src/assets/scss/theme.scss",
-              "src/assets/vendor/font-awesome/css/all.min.css",
+              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss",
               "src/styles.scss"
             ],
             "scripts": []
