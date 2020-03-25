@@ -52,6 +52,7 @@
             ],
             "styles": [
               "src/assets/scss/theme.scss",
+              "src/assets/vendor/font-awesome/css/all.min.css",
               "src/styles.scss"
             ],
             "scripts": []
