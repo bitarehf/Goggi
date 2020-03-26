@@ -37,6 +37,8 @@ import { AboutComponent } from './components/about/about.component';
 import { ChartComponent } from './components/home/chart/chart.component';
 import { HeaderTransparentComponent } from './components/header-transparent/header-transparent.component';
 import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { HelpComponent } from './components/help/help.component';
 
 registerLocaleData(is);
 
@@ -73,6 +75,8 @@ export function tokenGetter() {
     ChartComponent,
     HeaderTransparentComponent,
     ExchangeRateComponent,
+    FaqComponent,
+    HelpComponent,
   ],
   imports: [
     BrowserModule,

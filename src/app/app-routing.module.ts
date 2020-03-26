@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ChartComponent } from './components/home/chart/chart.component';
+import { HelpModule } from './components/help/help.module';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -26,6 +27,16 @@ const routes: Routes = [
     path: 'about',
     loadChildren: () => import('./components/about/about.module')
       .then(m => m.AboutModule)
+  },
+  {
+    path: 'help',
+    loadChildren: () => import('./components/help/help.module')
+      .then(m => m.HelpModule)
+  },
+  {
+    path: 'faq',
+    loadChildren: () => import('./components/faq/faq.module')
+      .then(m => m.FaqModule)
   },
   {
     path: 'terms',

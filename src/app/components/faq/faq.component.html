@@ -1,0 +1,421 @@
+<app-header></app-header>
+<main>
+    <!-- Hero Section -->
+    <div class="bg-img-hero" style="background-image: url(assets/svg/abstract-shapes-12.svg);">
+        <div class="container space-top-3 space-top-lg-4 space-bottom-2 position-relative z-index-2">
+            <div class="w-md-80 w-lg-60 text-center mx-md-auto">
+                <h1>Algengar spurningar</h1>
+                <p>Leitaðu í gegnum algengustu spurningarnar fyrir svör á spurningum sem þú ert með.</p>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
+
+    <!-- FAQ Topics Section -->
+    <div class="container space-2 space-bottom-lg-3">
+        <div class="row justify-content-lg-center">
+            <div class="col-lg-8">
+                <div class="space-bottom-1">
+                    <h2>Grunnatriði</h2>
+
+                    <!-- Basics Accordion -->
+                    <div>
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse show">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="a1c()" [ngClass]="a1 ? 'collapsed' : ''">
+                                    Hvað er bitcoin?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="a1 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Bitcoin er gjaldmiðill sem er án miðstjórnar aðila eins og seðlabanka.</p>
+                                    <p>Eða með öðrum orðum, aðskilnaður peninga og ríkisins.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="a2c()" [ngClass]="a2 ? 'collapsed' : ''">
+                                    Hvernig stunda ég viðskipti á síðunni?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="a2 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Lestu <a routerLink="/help">viðskipta leiðbeingarnar</a> okkar.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="a3c()" [ngClass]="a3 ? 'collapsed' : ''">
+                                    Hvernig legg ég inn peninga?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="a3 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Fyrst stofnaru reikning ef þú hefur ekki gert það.</p>
+                                    <p>
+                                        Svo millifærir þú hvaða upphæð sem þú vilt á banka upplýsingar sem má sjá hér að
+                                        neðan.
+                                    </p>
+
+
+                                    <p class="mb-1">Reikningsnúmer: 0133-15-200640</p>
+                                    <p>Kennitala: 470818-0420</p>
+                                    <p>
+                                        Millifærslan verður að koma frá bankareikning sem er skráður á kennitölu
+                                        notanda.
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="a4c()" [ngClass]="a4 ? 'collapsed' : ''">
+                                    Hvernig tek ég út peninga?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="a4 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Þú ferð í flipan <a routerLink="/dashboard/withdrawl">taka út peninga</a> á
+                                        svæðinu þínu.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+                    </div>
+                    <!-- End Basics Accordion -->
+                </div>
+
+                <div class="space-1">
+                    <h2>Öryggi</h2>
+
+                    <!-- Syncing Accordion -->
+                    <div>
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="b1c()" [ngClass]="b1 ? 'collapsed' : ''">
+                                    Hvað er Bech32?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="b1 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Bech32 er tilgreint snið SegWit heimilisfangs (<a
+                                            href="https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki"
+                                            target="_blank">BIP173</a>). Þetta snið heimilisfangs
+                                        er einnig þekkt sem "bc1 heimlisfang".</p>
+                                    <p class="mb-0">Bech32 heimilisföng eru öruggari en hefðbundnu Base58
+                                        heimilisföngin.</p>
+                                    <p>Einnig eru Bech32 færslur minni og þar af leiðandi ódýrari og hraðvirkari.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="b2c()" [ngClass]="b2 ? 'collapsed' : ''">
+                                    Hvað er tvíþátta auðkenning?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="b2 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Tvíþáttar auðkenning er aukalag af öryggi sem notað er til að tryggja öryggi
+                                        reikninga notanda umfram bara notendanafn og lykilorð.</p>
+                                    <p>Tvíþátta auðkenning með Google Authenticator er í boði fyrir alla viðskiptavini
+                                        og mælum við með að allir nýti sér það.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="b3c()" [ngClass]="b3 ? 'collapsed' : ''">
+                                    Einhver sniðug spurning?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="b3 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod.</p>
+                                    <p>Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
+                                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer
+                                        labore wes anderson cred nesciunt sapiente ea proident.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+                    </div>
+                    <!-- End Syncing Accordion -->
+                </div>
+
+                <div class="space-1">
+                    <h2>Reikningsstillingar</h2>
+
+                    <!-- Account Accordion -->
+                    <div>
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="c1c()" [ngClass]="c1 ? 'collapsed' : ''">
+                                    Hvernig breyti ég um lykilorð?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="c1 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Þú ferð á síðuna breyta lykilorði og slærð inn netfangið þitt og ýtir svo á senda
+                                        beiðni. Þá færðu tölvupóst sem gerir þér kleift að breyta um lykilorð.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="c2c()" [ngClass]="c2 ? 'collapsed' : ''">
+                                    Hvernig eyði ég reikningnum mínum?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="c2 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Eins og stendur er ekki hægt að eyða reikningnum.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="c3c()" [ngClass]="c3 ? 'collapsed' : ''">
+                                    Hvernig breyti ég stillingunum mínum?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="c3 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Þú skáir þig inn og ferð svo í <a routerLink="/dashboard/settings">stillingar</a>
+                                        undir þínu svæði.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="c4c()" [ngClass]="c4 ? 'collapsed' : ''">
+                                    Ég gleymdi lykilorðinu mínu. Hvernig endurstilli ég það?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="c4 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Þú ferð á síðuna <a routerLink="reset-password">endurstilla lykilorð</a> og slærð
+                                        inn netfangið þitt og ýtir svo á senda
+                                        beiðni. Þá færðu tölvupóst sem gerir þér kleift að breyta um lykilorð.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+                    </div>
+                    <!-- End Account Accordion -->
+                </div>
+
+                <div class="space-1">
+                    <h2>Annað</h2>
+
+                    <!-- Privacy Accordion -->
+                    <div>
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="d1c()" [ngClass]="d1 ? 'collapsed' : ''">
+                                    Einhver sniðug spurning?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="d1 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod.</p>
+                                    <p>Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
+                                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer
+                                        labore wes anderson cred nesciunt sapiente ea proident.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="d2c()" [ngClass]="d2 ? 'collapsed' : ''">
+                                    Einhver sniðug spurning?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="d2 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod.</p>
+                                    <p>Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
+                                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer
+                                        labore wes anderson cred nesciunt sapiente ea proident.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="d3c()" [ngClass]="d3 ? 'collapsed' : ''">
+                                    Einhver sniðug spurning?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="d3 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+
+                        <!-- Card -->
+                        <div class="card shadow-none mb-3">
+                            <div class="card-header card-collapse">
+                                <a class="btn btn-link btn-block d-flex justify-content-between card-btn bg-white px-0"
+                                    routerLink="/faq" (click)="d4c()" [ngClass]="d4 ? 'collapsed' : ''">
+                                    Einhver sniðug spurning?
+
+                                    <span class="card-btn-toggle">
+                                        <span class="card-btn-toggle-default">+</span>
+                                        <span class="card-btn-toggle-active">−</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <div [ngClass]="d4 ? 'collapse' : ''">
+                                <div class="card-body px-0">
+                                    <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                        richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor
+                                        brunch. Food truck quinoa nesciunt laborum eiusmod.</p>
+                                    <p>Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin
+                                        coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer
+                                        labore wes anderson cred nesciunt sapiente ea proident.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Card -->
+                    </div>
+                    <!-- End Privacy Accordion -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End FAQ Topics Section -->
+</main>
+<app-footer></app-footer>
