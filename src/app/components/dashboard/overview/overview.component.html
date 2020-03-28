@@ -1,11 +1,17 @@
 <div class="u-bg-light">
   <div class="container space-1">
 
-    <blockquote class="callout callout-danger">
-      <p class="callout-title">Viðskipti lokuð tímabundið</p>
-      <p class="text-dark">Vegna uppfærslu verður <strong>lokað</strong> fyrir viðskipti fram að 27. mars</p>
-      <p class="text-dark mb-0">Það verður <strong>ekki lokað</strong> fyrir úttektir.</p>
-      <p class="text-dark mb-0">Afsakið óþægindi sem þetta kann að valda og takk fyrir að taka þátt í beta!</p>
+    <blockquote class="callout callout-success">
+      <p class="callout-title">Uppfærslurnar sem ég vildi klára eru að stóru leiti komnar</p>
+      <p class="text-dark mb-0">Það mun vera opið yfir helgina en á mánudaginn mun ég loka fyrir viðskipti þangað til að
+        við erum skráð hjá
+        fjármálaeftirlitinu.</p>
+    </blockquote>
+
+    <blockquote class="callout callout-warning">
+      <p class="callout-title">Vefsíðan er í vinnslu</p>
+      <p class="text-dark mb-0">Verð breyting og myndrit eru í vinnslu.</p>
+      <p class="text-dark mb-0">Einnig vantar nokkra hluta af vefsíðunni sem eru ekki tilbúnir.</p>
     </blockquote>
 
     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -97,12 +103,12 @@
         <p class="text-dark mb-0">Upphæðin verður að vera 5000 ISK eða meira.</p>
       </div>
 
-      <button type="button" class="btn btn-block btn-soft-primary transition-3d-hover mt-5 disabled">
+      <!-- <button type="button" class="btn btn-block btn-soft-primary transition-3d-hover mt-5 disabled">
         Viðskipti lokuð tímabundið
-      </button>
-      <!-- <button type="button" class="btn btn-block btn-soft-primary transition-3d-hover mt-5" (click)="order()">
-        Kaupa
       </button> -->
+      <button type="button" class="btn btn-block btn-soft-primary transition-3d-hover mt-5" (click)="order()">
+        Kaupa
+      </button>
     </div>
 
     <div [hidden]="!show" class="bg-white p-6 rounded shadow-sm" *ngIf="account">
