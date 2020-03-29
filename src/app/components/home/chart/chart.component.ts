@@ -54,9 +54,11 @@ export class ChartComponent implements OnInit, AfterViewInit {
         },
         grid: {
           horzLines: {
+            visible: false,
             color: '#eee',
           },
           vertLines: {
+            visible: false,
             color: '#ffffff',
           },
         },
@@ -67,9 +69,9 @@ export class ChartComponent implements OnInit, AfterViewInit {
           },
           vertLine: {
             visible: true,
-            style: 0,
-            width: 2,
-            color: 'rgba(32, 38, 46, 0.1)',
+            // style: 0,
+            // width: 2,
+            // color: 'rgba(32, 38, 46, 0.1)',
             labelVisible: true,
           }
         },
