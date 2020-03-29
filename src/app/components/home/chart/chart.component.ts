@@ -1,8 +1,8 @@
-import { Component, OnInit, Renderer2, ElementRef, ViewChild, AfterViewInit, ViewEncapsulation } from '@angular/core';
-import { data } from './data';
-import { createChart, isBusinessDay, isUTCTimestamp } from 'lightweight-charts';
+import { Component, OnInit, Renderer2, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { createChart } from 'lightweight-charts';
 import { BitarApiService } from '../../../services/bitar-api.service';
 import { ChartPair } from '../../../services/chartPair';
+import { formatDate, formatNumber } from '@angular/common';
 
 @Component({
   selector: 'app-chart',
@@ -12,6 +12,9 @@ import { ChartPair } from '../../../services/chartPair';
 export class ChartComponent implements OnInit, AfterViewInit {
 
   OhlcChart: ChartPair;
+  pri: number;
+  date: Date = new Date(2001, 20, 3);
+  tada: number = 2000;
 
   @ViewChild('one') d1: ElementRef;
 
@@ -24,20 +27,30 @@ export class ChartComponent implements OnInit, AfterViewInit {
       const container = document.createElement('div');
       this.renderer.appendChild(this.d1.nativeElement, container);
 
-      const width = 600;
-      const height = 350;
-
       const chart = createChart(container, {
-        width: width,
-        height: height,
+        width: 1200,
+        height: 600,
+        layout: {
+          fontFamily: 'Open Sans'
+        },
+        localization: {
+          locale: 'is',
+          timeFormatter: function (time) {
+            var t = new Date(time.year, time.month, time.day);
+            return formatDate(t, 'mediumDate', 'is');
+          },
+          priceFormatter: function (price) {
+            return formatNumber(Math.trunc(price), 'is');
+          }
+        },
         priceScale: {
-          position: 'left',
+          borderColor: 'rgba(197, 203, 206, 1)',
           borderVisible: false,
+          autoScale: true,
+          entireTextOnly: true,
         },
         timeScale: {
-          borderVisible: false,
-          rightOffset: 2
-          
+          borderVisible: false
         },
         grid: {
           horzLines: {
@@ -49,71 +62,32 @@ export class ChartComponent implements OnInit, AfterViewInit {
         },
         crosshair: {
           horzLine: {
-            visible: false,
-            labelVisible: false
+            visible: true,
+            labelVisible: true
           },
           vertLine: {
             visible: true,
             style: 0,
             width: 2,
             color: 'rgba(32, 38, 46, 0.1)',
-            labelVisible: false,
+            labelVisible: true,
           }
         },
       });
 
       const series = chart.addAreaSeries({
-        topColor: 'rgba(0, 120, 255, 0.2)',
-        bottomColor: 'rgba(0, 120, 255, 0.0)',
-        lineColor: 'rgba(0, 120, 255, 1)',
-        lineWidth: 3
+        topColor: 'rgba(33, 150, 243, 0.56)',
+        bottomColor: 'rgba(33, 150, 243, 0.04)',
+        lineColor: 'rgba(33, 150, 243, 1)',
+        lineWidth: 2
       });
 
       console.log(this.OhlcChart);
       series.setData(this.OhlcChart.chartData);
 
-      function businessDayToString(businessDay) {
-        return businessDay.day + '/' + businessDay.month + '/' + businessDay.year;
-      }
+      // chart.subscribeCrosshairMove(function (param) {
 
-      var toolTipWidth = 96;
-      var toolTipHeight = 80;
-      var toolTipMargin = 15;
-      var priceScaleWidth = 50;
-
-      var toolTip = document.createElement('div');
-      toolTip.className = 'floating-tooltip-2';
-      container.appendChild(toolTip);
-
-      // update tooltip
-      chart.subscribeCrosshairMove(function (param) {
-        if (!param.time || param.point.x < 0 || param.point.x > width || param.point.y < 0 || param.point.y > height) {
-          toolTip.style.display = 'block';
-          return;
-        }
-
-        var dateStr = isBusinessDay(param.time)
-          ? businessDayToString(param.time)
-          : new Date(param.time * 1000).toLocaleDateString();
-
-        toolTip.style.display = 'block';
-        var price = param.seriesPrices.get(series);
-        toolTip.innerHTML = '<div style="color: rgba(0, 120, 255, 0.9)">⬤ BTCEUR</div>' +
-          '<div style="font-size: 24px; margin: 4px 0px; color: #20262E">' + Math.round(<number>price) + '</div>' +
-          '<div>' + dateStr + '</div>';
-
-        var left = param.point.x;
-
-
-        if (left > width - toolTipWidth - toolTipMargin) {
-          this.left = width - toolTipWidth;
-        } else if (left < toolTipWidth / 2) {
-          this.left = priceScaleWidth;
-        }
-
-        toolTip.style.left = left + 'px';
-        toolTip.style.top = 0 + 'px';
-      });
+      // });
     });
   }
 

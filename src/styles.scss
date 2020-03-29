@@ -9,29 +9,30 @@ $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
 @import "assets/scss/ngx-datatable/datatable.scss";
 @import "~@swimlane/ngx-datatable/assets/icons.css";
 
-.floating-tooltip-2 {
-  width: 96px;
-  height: 350px;
-  position: absolute;
-  display: block;
-  padding: 8px;
-  box-sizing: border-box;
-  font-size: 12px;
-  color: "#20262E";
-  background-color: rgba(255, 255, 255, 0.23);
-  text-align: left;
-  z-index: 1000;
-  top: 12px;
-  left: 12px;
-  pointer-events: none;
-  border-radius: 4px 4px 0px 0px;
-  border-bottom: none;
-  box-shadow: 0 2px 5px 0 rgba(117, 134, 150, 0.45);
-}
+// .floating-tooltip-2 {
+//   width: 96px;
+//   height: 350px;
+//   position: absolute;
+//   display: block;
+//   padding: 8px;
+//   box-sizing: border-box;
+//   font-size: 12px;
+//   color: "#20262E";
+//   background-color: rgba(255, 255, 255, 0.23);
+//   text-align: left;
+//   z-index: 1000;
+//   top: 12px;
+//   left: 12px;
+//   pointer-events: none;
+//   border-radius: 4px 4px 0px 0px;
+//   border-bottom: none;
+//   box-shadow: 0 2px 5px 0 rgba(117, 134, 150, 0.45);
+// }
 
 .chart-container {
-  width: 600px;
-  height: 350px;
+  position: relative;
+  height: 100%;
+  width: 100%;
   border: 1px solid #e0e3eb;
   border-radius: 4px;
   overflow: hidden;
