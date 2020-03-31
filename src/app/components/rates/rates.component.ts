@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Symbol } from 'src/app/services/stock';
-import { StockService } from 'src/app/services/stock.service';
+import { TickerService } from 'src/app/services/ticker.service';
+import { Observable, timer } from 'rxjs';
+import { Ticker } from 'src/app/services/ticker';
 
 @Component({
   selector: 'app-rates',
@@ -10,11 +11,13 @@ import { StockService } from 'src/app/services/stock.service';
 export class RatesComponent implements OnInit {
 
   countdown;
+  tickers: Observable<{ [id: string]: Ticker }>;
 
-  constructor(public stock: StockService) { }
+  constructor(public ticker: TickerService) { }
 
   ngOnInit() {
-    this.countdown = this.stock.getCounter();
+    this.tickers = this.ticker.tickers;
+    this.countdown = this.ticker.getCounter();
   }
 
 }

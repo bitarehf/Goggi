@@ -2,13 +2,14 @@
   <thead>
     <tr>
       <th style="width: 40%;">Nafn</th>
-      <th>Verð</th>
-      <th>24 Klst breyting</th>
-      <th>% Breyting</th>
-      <th>Tími í uppfærslu</th>
+      <th>Kaupverð</th>
+      <th>Söluverð</th>
+      <th>24 klst. breyting</th>
+      <th>% breyting</th>
+      <th class="text-dark">{{ countdown | async | date: 'ss' }} sek</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="tickers | async as tick">
     <tr>
       <th>
         <img class="mr-3" src="assets/images/btc.png" width="70" height="70">
@@ -16,17 +17,20 @@
         <span class="align-middle" style="font-size: 1.5rem; font-weight: 400;">BTCISK</span>
       </th>
       <td class="align-middle">
-        <p class="h3 align-middle">{{stock.BTC | currency: 'ISK'}}</p>
+        <p class="h3 align-middle">{{ tick["btcisk"]?.ask | currency: 'ISK' }}</p>
       </td>
       <td class="align-middle">
-        <p class="h3 align-middle text-danger">-5.000 ISK</p>
+        <p class="h3 align-middle">{{ tick["btcisk"]?.bid | currency: 'ISK' }}</p>
       </td>
       <td class="align-middle">
-        <p class="h3 align-middle text-danger">-0.5%</p>
+        <p class="h3 align-middle text-danger">{{ tick["btcisk"]?.dailyChange | currency: 'ISK' }}</p>
       </td>
       <td class="align-middle">
+        <p class="h3 align-middle text-danger">{{ tick["btcisk"]?.dailyChange / tick["btcisk"]?.ask * 100 | number: '0.2-2' }}%</p>
+      </td>
+      <!-- <td class="align-middle">
         <p class="h3 align-middle">{{ countdown | async | date: 's' }} sek</p>
-      </td>
+      </td> -->
     </tr>
   </tbody>
 </table>

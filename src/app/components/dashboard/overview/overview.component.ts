@@ -3,8 +3,9 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { AccountData } from 'src/app/services/accountData';
 import { BitarApiService } from 'src/app/services/bitar-api.service';
-import { StockService } from 'src/app/services/stock.service';
+import { TickerService } from 'src/app/services/ticker.service';
 import createNumberMask from "text-mask-addons/dist/createNumberMask";
+import { Ticker } from 'src/app/services/ticker';
 
 @Component({
   selector: 'app-overview',
@@ -12,6 +13,8 @@ import createNumberMask from "text-mask-addons/dist/createNumberMask";
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit {
+
+  tickers: Observable<{ [id: string]: Ticker }>;
 
   account: AccountData;
   bitcoinBalance: number;
@@ -36,7 +39,7 @@ export class OverviewComponent implements OnInit {
   });
 
   constructor(
-    public stock: StockService,
+    public ticker: TickerService,
     public bitar: BitarApiService,
     private router: Router) { }
 
@@ -46,7 +49,8 @@ export class OverviewComponent implements OnInit {
       console.log(this.account);
     });
     this.bitar.getAddressBalance().subscribe(res => (this.bitcoinBalance = res));
-    this.countdown = this.stock.getCounter();
+    this.tickers = this.ticker.tickers;
+    //////////this.countdown = this.stock.getCounter();
   }
 
   toNumber(n: string): number {
@@ -56,7 +60,8 @@ export class OverviewComponent implements OnInit {
   iskUpdate() {
     this.nisk = +this.sisk.split('.').join('');
     if (this.nisk >= 5000) {
-      this.nbtc = (this.nisk - (this.account.fee / 100 * this.nisk))  / this.stock.BTC;
+      this.nbtc = (this.nisk - (this.account.fee / 100 * this.nisk));
+      // this.nbtc = (this.nisk - (this.account.fee / 100 * this.nisk))  / this.stock.BTC;
       this.sbtc = this.nbtc.toFixed(8).split('.').join(',');
       console.log(this.nbtc);
     } else {
@@ -72,8 +77,10 @@ export class OverviewComponent implements OnInit {
 
   btcUpdate() {
     this.nbtc = this.toNumber(this.sbtc);
-    console.log((this.nbtc + (this.account.fee / 100 * this.nbtc)) * this.stock.BTC);
-    this.nisk = Math.trunc((this.nbtc - (this.account.fee / 100 * this.nbtc)) * this.stock.BTC);
+    console.log((this.nbtc + (this.account.fee / 100 * this.nbtc)));
+    this.nisk = Math.trunc((this.nbtc - (this.account.fee / 100 * this.nbtc)));
+    // console.log((this.nbtc + (this.account.fee / 100 * this.nbtc)) * this.stock.BTC);
+    // this.nisk = Math.trunc((this.nbtc - (this.account.fee / 100 * this.nbtc)) * this.stock.BTC);
     this.sisk = this.nisk.toString().split('.').join(',');
   }
 
