@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ChartComponent } from './components/home/chart/chart.component';
-import { HelpModule } from './components/help/help.module';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -48,13 +47,20 @@ const routes: Routes = [
     loadChildren: () => import('./components/privacy/privacy.module')
       .then(m => m.PrivacyModule)
   },
+  {
+    path: 'changelog',
+    loadChildren: () => import('./components/changelog/changelog.module')
+      .then(m => m.ChangelogModule)
+  },
   { path: 'order-completed/:txid', component: OrderCompletedComponent },
   { path: 'charts', component: ChartComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -41,6 +41,7 @@ import { HeaderTransparentComponent } from './components/header-transparent/head
 import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { HelpComponent } from './components/help/help.component';
+import { ChangelogComponent } from './components/changelog/changelog.component';
 
 
 
@@ -79,6 +80,7 @@ export function tokenGetter() {
     ExchangeRateComponent,
     FaqComponent,
     HelpComponent,
+    ChangelogComponent,
   ],
   imports: [
     BrowserModule,
