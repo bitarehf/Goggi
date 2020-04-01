@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HubConnectionBuilder } from '@aspnet/signalr';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { timer } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Ticker } from './ticker';
-import { JsonPipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
