@@ -3,7 +3,7 @@
 ------------------------------------*/
 
 .search-slide-down {
-  position: absolute;
+  position: fixed;
   z-index: $search-slide-down-z-index;
   top: $search-slide-down-top-offset;
   left: calc(50% - 18rem) !important;

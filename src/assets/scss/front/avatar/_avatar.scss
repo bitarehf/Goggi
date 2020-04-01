@@ -7,6 +7,7 @@
   display: inline-block;
   width: $avatar-width;
   height: $avatar-height;
+  @include border-radius($avatar-img-border-radius);
 
   &-img {
     max-width: 100%;

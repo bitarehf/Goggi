@@ -63,11 +63,11 @@
 }
 
 /* Shadow On Hover */
-.card-shadow-on-hover {
+.card-hover-shadow {
   box-shadow: none;
 
   &:hover {
-    box-shadow: $card-shadow-on-hover-box-shadow;
+    box-shadow: $card-hover-shadow-box-shadow;
   }
 }
 

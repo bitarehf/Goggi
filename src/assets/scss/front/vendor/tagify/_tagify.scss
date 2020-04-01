@@ -48,6 +48,7 @@
       @include border-radius($tagify-tag-border-radius);
 
       * {
+        display: inline-flex;
         vertical-align: baseline;
       }
     }

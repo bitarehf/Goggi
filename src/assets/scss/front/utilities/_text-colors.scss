@@ -9,3 +9,9 @@
 		color: $white-color-hover;
 	}
 }
+
+a:hover {
+  .text-hover-primary {
+    color: $link-hover-color !important;
+  }
+}
