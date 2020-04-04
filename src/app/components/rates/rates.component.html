@@ -1,12 +1,12 @@
 <table class="table table-light">
   <thead>
     <tr>
-      <th style="width: 40%;">Nafn</th>
+      <th style="width: 35%;">Nafn</th>
       <th>Kaupverð</th>
       <th>Söluverð</th>
-      <th>24 klst. breyting</th>
-      <th>% breyting</th>
-      <th class="text-dark">{{ countdown | async | date: 'ss' }} sek</th>
+      <th>24-h br.</th>
+      <th>% br.</th>
+      <th class="text-dark counter">{{ countdown | async | date: 's' }}</th>
     </tr>
   </thead>
   <tbody *ngIf="tickers | async as tick">
@@ -23,10 +23,12 @@
         <p class="h3 align-middle">{{ tick["btcisk"]?.bid | currency: 'ISK' }}</p>
       </td>
       <td class="align-middle">
-        <p class="h3 align-middle text-danger">{{ tick["btcisk"]?.dailyChange | currency: 'ISK' }}</p>
+        <p class="h3 align-middle" [ngClass]="tick['btcisk']?.dailyChange >= 0 ? 'text-success2' : 'text-danger'">
+          {{ tick["btcisk"]?.dailyChange | currency: 'ISK' }}</p>
       </td>
       <td class="align-middle">
-        <p class="h3 align-middle text-danger">{{ tick["btcisk"]?.dailyChange / tick["btcisk"]?.ask * 100 | number: '0.2-2' }}%</p>
+        <p class="h3 align-middle" [ngClass]="tick['btcisk']?.dailyChange >= 0 ? 'text-success2' : 'text-danger'">
+          {{ tick["btcisk"]?.dailyChange / tick["btcisk"]?.ask * 100 | number: '0.2-2' }}%</p>
       </td>
       <!-- <td class="align-middle">
         <p class="h3 align-middle">{{ countdown | async | date: 's' }} sek</p>
