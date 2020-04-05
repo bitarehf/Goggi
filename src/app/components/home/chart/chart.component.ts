@@ -74,8 +74,8 @@ export class ChartComponent implements OnInit, AfterViewInit {
     window.onresize = (e) => {
       // ngZone.run will help to run change detection.
       this.ngZone.run(() => {
-        console.log("Width: " + window.innerWidth);
-        console.log("Height: " + window.innerHeight);
+        // console.log("Width: " + window.innerWidth);
+        // console.log("Height: " + window.innerHeight);
       });
     };
   }
@@ -113,8 +113,8 @@ export class ChartComponent implements OnInit, AfterViewInit {
     var height = <number>event.target.innerHeight;
     var width2 = this.d1.nativeElement.offsetWidth;
     var height2 = this.d1.nativeElement.offsetHeight;
-    console.log('width ' + width2);
-    console.log('height ' + height2);
+    // console.log('width ' + width2);
+    // console.log('height ' + height2);
     this.chart.resize(width2, height2);
   }
 
