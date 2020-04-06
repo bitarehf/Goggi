@@ -42,6 +42,7 @@ import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.
 import { FaqComponent } from './components/faq/faq.component';
 import { HelpComponent } from './components/help/help.component';
 import { ChangelogComponent } from './components/changelog/changelog.component';
+import { TooltipModule } from 'ng2-tooltip-directive';
 
 
 
@@ -96,7 +97,8 @@ export function tokenGetter() {
     ReactiveFormsModule,
     FormsModule,
     TextMaskModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    TooltipModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'is' },
