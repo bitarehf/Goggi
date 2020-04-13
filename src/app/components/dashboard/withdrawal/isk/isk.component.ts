@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BitarApiService } from 'src/app/services/bitar-api.service';
 import { Router } from '@angular/router';
 import { AccountData } from 'src/app/services/accountData';
+import { BitarApiService } from 'src/app/services/bitar-api.service';
 import createNumberMask from "text-mask-addons/dist/createNumberMask";
 import { iskWithdrawal } from '../iskWithdrawal';
 

@@ -1,8 +1,8 @@
-import { Component, OnInit, Renderer2, ElementRef, ViewChild, AfterViewInit, HostListener, NgZone } from '@angular/core';
+import { formatDate, formatNumber } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, HostListener, NgZone, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { createChart, CrosshairMode } from 'lightweight-charts';
 import { BitarApiService } from '../../../services/bitar-api.service';
 import { ChartPair } from '../../../services/chartPair';
-import { formatDate, formatNumber } from '@angular/common';
 
 @Component({
   selector: 'app-chart',
@@ -28,11 +28,11 @@ export class ChartComponent implements OnInit, AfterViewInit {
     },
     localization: {
       locale: 'is',
-      timeFormatter: function (time) {
-        var t = new Date(time.year, time.month, time.day);
+      timeFormatter (time) {
+        let t = new Date(time.year, time.month, time.day);
         return formatDate(t, 'mediumDate', 'is');
       },
-      priceFormatter: function (price) {
+      priceFormatter (price) {
         return formatNumber(Math.trunc(price), 'is');
       }
     },
@@ -109,10 +109,10 @@ export class ChartComponent implements OnInit, AfterViewInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    var width = <number>event.target.innerWidth;
-    var height = <number>event.target.innerHeight;
-    var width2 = this.d1.nativeElement.offsetWidth;
-    var height2 = this.d1.nativeElement.offsetHeight;
+    let width = event.target.innerWidth as number;
+    let height = event.target.innerHeight as number;
+    let width2 = this.d1.nativeElement.offsetWidth;
+    let height2 = this.d1.nativeElement.offsetHeight;
     // console.log('width ' + width2);
     // console.log('height ' + height2);
     this.chart.resize(width2, height2);

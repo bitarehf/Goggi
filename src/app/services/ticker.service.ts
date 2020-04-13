@@ -33,7 +33,7 @@ export class TickerService {
 
     connection.on('TickersUpdated', (tickers: { [key: string]: Ticker }) => {
       this._tickers.next(tickers);
-      this.lastUpdated = new Date(tickers["btcisk"].lastUpdated);
+      this.lastUpdated = new Date(tickers.btcisk.lastUpdated);
       console.table(tickers);
     });
   }

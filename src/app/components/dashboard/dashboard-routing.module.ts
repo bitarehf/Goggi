@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard.component';
+import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/guards/auth.guard';
-import { OverviewComponent } from './overview/overview.component';
-import { TransactionsComponent } from './transactions/transactions.component';
+import { DashboardComponent } from './dashboard.component';
 import { DepositComponent } from './deposit/deposit.component';
-import { WithdrawalComponent } from './withdrawal/withdrawal.component';
-import { BtcComponent } from './withdrawal/btc/btc.component';
-import { IskComponent } from './withdrawal/isk/isk.component';
+import { OverviewComponent } from './overview/overview.component';
+import { SettingsComponent } from './settings/settings.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 import { BtcCompletedComponent } from './withdrawal-completed/btc/btc.component';
 import { IskCompletedComponent } from './withdrawal-completed/isk/isk.component';
-import { SettingsComponent } from './settings/settings.component';
+import { BtcComponent } from './withdrawal/btc/btc.component';
+import { IskComponent } from './withdrawal/isk/isk.component';
+import { WithdrawalComponent } from './withdrawal/withdrawal.component';
 
 
 const routes: Routes = [

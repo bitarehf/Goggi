@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { AccountData } from 'src/app/services/accountData';
 import { BitarApiService } from 'src/app/services/bitar-api.service';
+import { Ticker } from 'src/app/services/ticker';
 import { TickerService } from 'src/app/services/ticker.service';
 import createNumberMask from "text-mask-addons/dist/createNumberMask";
-import { Ticker } from 'src/app/services/ticker';
 
 @Component({
   selector: 'app-overview',
@@ -50,7 +50,7 @@ export class OverviewComponent implements OnInit {
     });
     this.bitar.getAddressBalance().subscribe(res => (this.bitcoinBalance = res));
     this.tickers = this.ticker.tickers;
-    //////////this.countdown = this.stock.getCounter();
+    ////////// this.countdown = this.stock.getCounter();
   }
 
   toNumber(n: string): number {

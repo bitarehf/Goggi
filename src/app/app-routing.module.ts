@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { ChartComponent } from './components/home/chart/chart.component';
 import { HomeComponent } from './components/home/home.component';
 import { OrderCompletedComponent } from './components/order-completed/order-completed.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { ChartComponent } from './components/home/chart/chart.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },

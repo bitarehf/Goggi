@@ -1,11 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { BitcoinWithdrawal } from '../components/dashboard/withdrawal/bitcoinWithdrawal';
 import { AccountData } from './accountData';
+import { ChartPair } from './chartPair';
 import { Login } from './login';
 import { Register } from './register';
-import { ChartPair } from './chartPair';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +44,7 @@ export class BitarApiService {
   }
 
   getAccountData(): Observable<AccountData> {
-    let result = this.http.get<AccountData>(this.apiUrl + 'accountdata/getaccountdata');
+    const result = this.http.get<AccountData>(this.apiUrl + 'accountdata/getaccountdata');
     result.subscribe(r => (this.account = r));
     return result;
   }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { BitarApiService } from 'src/app/services/bitar-api.service';
-import { Register } from 'src/app/services/register';
-import { Login } from 'src/app/services/login';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ReactiveFormsModule, FormGroup, FormBuilder, Validators, AbstractControl, Validator } from '@angular/forms';
+import { BitarApiService } from 'src/app/services/bitar-api.service';
+import { Login } from 'src/app/services/login';
+import { Register } from 'src/app/services/register';
 
 @Component({
   selector: 'app-register',
@@ -76,17 +76,17 @@ export class RegisterComponent implements OnInit {
   }
 
   validateId() {
-    let id = this.registerForm.get('id').value.replace('-', '');
-    let x1 = +id[0] * 3;
-    let x2 = +id[1] * 2;
-    let x3 = +id[2] * 7;
-    let x4 = +id[3] * 6;
-    let x5 = +id[4] * 5;
-    let x6 = +id[5] * 4;
-    let x7 = +id[6] * 3;
-    let x8 = +id[7] * 2;
-    let y = x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8;
-    let j = y % 11;
+    const id = this.registerForm.get('id').value.replace('-', '');
+    const x1 = +id[0] * 3;
+    const x2 = +id[1] * 2;
+    const x3 = +id[2] * 7;
+    const x4 = +id[3] * 6;
+    const x5 = +id[4] * 5;
+    const x6 = +id[5] * 4;
+    const x7 = +id[6] * 3;
+    const x8 = +id[7] * 2;
+    const y = x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8;
+    const j = y % 11;
     let num = 11 - j;
     num = (num == 11) ? 0 : num;
     if (+id[8] == num) {
