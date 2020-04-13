@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BitarApiService } from 'src/app/services/bitar-api.service';
 import { AccountData } from 'src/app/services/accountData';
+import { BitarApiService } from 'src/app/services/bitar-api.service';
 
 @Component({
   selector: 'app-settings',

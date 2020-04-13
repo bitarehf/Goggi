@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Person } from 'src/app/services/person';
 import { BitarApiService } from 'src/app/services/bitar-api.service';
+import { Person } from 'src/app/services/person';
 
 @Component({
   selector: 'app-buy',
@@ -41,17 +41,17 @@ export class BuyComponent {
   }
 
   validateSSN() {
-    let ssn = this.person.ssn.replace('-', '');
-    let x1 = +ssn[0] * 3;
-    let x2 = +ssn[1] * 2;
-    let x3 = +ssn[2] * 7;
-    let x4 = +ssn[3] * 6;
-    let x5 = +ssn[4] * 5;
-    let x6 = +ssn[5] * 4;
-    let x7 = +ssn[6] * 3;
-    let x8 = +ssn[7] * 2;
-    let y = x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8;
-    let j = y % 11;
+    const ssn = this.person.ssn.replace('-', '');
+    const x1 = +ssn[0] * 3;
+    const x2 = +ssn[1] * 2;
+    const x3 = +ssn[2] * 7;
+    const x4 = +ssn[3] * 6;
+    const x5 = +ssn[4] * 5;
+    const x6 = +ssn[5] * 4;
+    const x7 = +ssn[6] * 3;
+    const x8 = +ssn[7] * 2;
+    const y = x1 + x2 + x3 + x4 + x5 + x6 + x7 + x8;
+    const j = y % 11;
     let num = 11 - j;
     num = (num == 11) ? 0 : num;
     if (+ssn[8] == num) {

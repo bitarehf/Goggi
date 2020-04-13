@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
 import { AccountData } from "src/app/services/accountData";
 import { BitarApiService } from 'src/app/services/bitar-api.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: "app-dashboard",

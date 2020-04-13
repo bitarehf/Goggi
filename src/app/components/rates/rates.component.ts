@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TickerService } from 'src/app/services/ticker.service';
 import { Observable, timer } from 'rxjs';
 import { Ticker } from 'src/app/services/ticker';
+import { TickerService } from 'src/app/services/ticker.service';
 
 @Component({
   selector: 'app-rates',

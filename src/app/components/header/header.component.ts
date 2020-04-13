@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BitarApiService } from 'src/app/services/bitar-api.service';
-import { AuthGuard } from 'src/app/guards/auth.guard';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthGuard } from 'src/app/guards/auth.guard';
+import { BitarApiService } from 'src/app/services/bitar-api.service';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +17,7 @@ export class HeaderComponent {
   logout() {
     this.bitar.logout();
     console.log('Logged out');
-    //this.router.navigate(['/'])
+    // this.router.navigate(['/'])
   }
 
   isAuthenticated(): boolean {
