@@ -39,7 +39,7 @@
             <!-- Form Group -->
             <div class="form-group">
               <label class="input-label">Kennitala eða netfang</label>
-              <input class="form-control" placeholder="Kennitala eða netfang" formControlName="user"
+              <input class="form-control" placeholder="Kennitala eða netfang" formControlName="user" tabindex="1"
                 [class.is-invalid]="!userValid && user.touched"
                 [class.is-valid]="userValid && user.touched" (ngModelChange)="validateUser()">
               <div *ngIf="user.touched && !userValid" class="invalid-feedback d-block">
@@ -50,14 +50,14 @@
 
             <!-- Form Group -->
             <div class="form-group">
-              <label class="input-label" for="signinSrPassword" tabindex="0">
+              <label class="input-label">
                 <span class="d-flex justify-content-between align-items-center">
                   Lykilorð
                   <a class="link-underline text-capitalize font-weight-normal" routerLink="">Gleymdirðu
                     lykilorðinu?</a>
                 </span>
               </label>
-              <input type="password" class="form-control" placeholder="Lykilorð" formControlName="password"
+              <input type="password" class="form-control" placeholder="Lykilorð" formControlName="password" tabindex="2"
                 [class.is-invalid]="password.invalid && password.touched"
                 [class.is-valid]="password.valid">
               <div *ngIf="password.invalid && password.touched" class="invalid-feedback d-block">
