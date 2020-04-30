@@ -1,38 +1,37 @@
 <table class="table table-light">
   <thead>
     <tr>
-      <th style="width: 35%;">Nafn</th>
-      <th>Kaupverð</th>
-      <th>Söluverð</th>
-      <th>24-h br.</th>
-      <th>% br.</th>
+      <th style="width: 35%;">Gjaldmiðill</th>
+      <th>Kaup</th>
+      <th>Sala</th>
+      <!-- <th>24-h br.</th> -->
+      <th class="d-none d-md-block">Breyting</th>
       <th class="text-dark counter">{{ countdown | async | date: 's' }}</th>
     </tr>
   </thead>
   <tbody *ngIf="tickers | async as tick">
     <tr>
       <th>
-        <img class="mr-3" src="assets/images/btc.png" width="70" height="70">
-        <span class="h2 align-middle mr-3">Bitcoin</span>
-        <span class="align-middle" style="font-size: 1.5rem; font-weight: 400;">BTCISK</span>
+        <div class="">
+          <img class="d-none d-md-inline mr-3" src="assets/images/btc.png" width="50" height="50">
+          <span class="d-none d-lg-inline h2 align-middle mr-3">Bitcoin</span>
+          <span class="d-lg-none d-inline h2 align-middle mr-3">BTC</span>
+        </div>
       </th>
-      <td class="align-middle">
-        <p class="h3 align-middle">{{ tick["btcisk"]?.ask | currency: 'ISK' }}</p>
-      </td>
       <td class="align-middle">
         <p class="h3 align-middle">{{ tick["btcisk"]?.bid | currency: 'ISK' }}</p>
       </td>
       <td class="align-middle">
+        <p class="h3 align-middle">{{ tick["btcisk"]?.ask | currency: 'ISK' }}</p>
+      </td>
+      <!-- <td class="align-middle">
         <p class="h3 align-middle" [ngClass]="tick['btcisk']?.dailyChange >= 0 ? 'text-success2' : 'text-danger'">
           {{ tick["btcisk"]?.dailyChange | currency: 'ISK' }}</p>
-      </td>
-      <td class="align-middle">
+      </td> -->
+      <td class="d-none d-md-table-cell align-middle">
         <p class="h3 align-middle" [ngClass]="tick['btcisk']?.dailyChange >= 0 ? 'text-success2' : 'text-danger'">
           {{ tick["btcisk"]?.dailyChange / tick["btcisk"]?.ask * 100 | number: '0.2-2' }}%</p>
       </td>
-      <!-- <td class="align-middle">
-        <p class="h3 align-middle">{{ countdown | async | date: 's' }} sek</p>
-      </td> -->
     </tr>
   </tbody>
 </table>
