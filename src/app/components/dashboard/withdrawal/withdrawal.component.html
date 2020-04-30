@@ -41,7 +41,7 @@
 
       <a class="card shadow p-3 transition-3d-hover mb-1" routerLink="/dashboard/withdrawal">
         <span class="media align-items-center">
-          <span class="fab fa-bitcoin fa-3x text-warning mr-4 mt-1"></span>
+          <span class="fab fa-bitcoin fa-3x text-btc mr-4 mt-1"></span>
           <span class="media-body">
 
             <h5 class="mb-0"><span class="text-dark">Bitcoin</span></h5>
@@ -54,9 +54,7 @@
 
       <a class="card shadow p-3 transition-3d-hover mb-2" routerLink="isk">
         <span class="media align-items-center">
-          <span class="btn btn-icon btn-soft-twitter rounded-circle mr-4 mt-1">
-            <span class="btn-icon__inner fas fa-university fa-2x mr-3"></span>
-          </span>
+          <span class="fas fa-university fa-2x text-info mr-4 mt-1"></span>
           <span class="media-body">
             <h5 class="mb-0"><span class="text-dark">Íslenska krónan</span></h5>
             <span class="d-block text-secondary" *ngIf="account">{{ account.balance | currency: 'ISK' }}</span>
