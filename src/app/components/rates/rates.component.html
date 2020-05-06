@@ -1,9 +1,9 @@
 <table class="table table-light">
   <thead>
     <tr>
-      <th style="width: 35%;">Gjaldmiðill</th>
-      <th>Kaup</th>
-      <th>Sala</th>
+      <th>Gjaldmiðill</th>
+      <th class="d-none d-sm-block">Kaup</th>
+      <th class="">Sala</th>
       <!-- <th>24-h br.</th> -->
       <th class="d-none d-md-block">Breyting</th>
       <th class="text-dark text-right counter">{{ countdown | async | date: 's' }}</th>
@@ -11,24 +11,22 @@
   </thead>
   <tbody *ngIf="tickers | async as tick">
     <tr>
-      <th>
-        <div class="">
-          <img class="d-none d-md-inline mr-3" src="assets/images/btc.png" width="50" height="50">
-          <span class="d-none d-lg-inline h2 align-middle mr-3">Bitcoin</span>
-          <span class="d-lg-none d-inline h2 align-middle mr-3">BTC</span>
-        </div>
-      </th>
       <td class="align-middle">
-        <p class="h3 align-middle">{{ tick["btcisk"]?.bid | number }}</p>
+        <img class="mr-3" src="assets/images/btc.png" width="57" height="57">
+        <p class="d-none d-lg-inline h3 mr-3">Bitcoin</p>
+        <p class="d-lg-none d-inline h3 mr-3">BTC</p>
+      </td>
+      <td class="align-middle d-none d-sm-table-cell">
+          <p class="h3">{{ tick["btcisk"]?.bid | number }}</p>
       </td>
       <td class="align-middle">
-        <p class="h3 align-middle">{{ tick["btcisk"]?.ask | number }}</p>
+        <p class="h3">{{ tick["btcisk"]?.ask | number }}</p>
       </td>
       <!-- <td class="align-middle">
         <p class="h3 align-middle" [ngClass]="tick['btcisk']?.dailyChange >= 0 ? 'text-success2' : 'text-danger'">
           {{ tick["btcisk"]?.dailyChange | currency: 'ISK' }}</p>
       </td> -->
-      <td class="d-none d-md-table-cell align-middle">
+      <td class="align-middle d-none d-md-table-cell">
         <p class="h3 align-middle" [ngClass]="tick['btcisk']?.dailyChange >= 0 ? 'text-success2' : 'text-danger'">
           {{ tick["btcisk"]?.dailyChange / tick["btcisk"]?.ask * 100 | number: '0.2-2' }}%</p>
       </td>
