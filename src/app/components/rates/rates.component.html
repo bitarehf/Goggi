@@ -6,7 +6,7 @@
       <th>Sala</th>
       <!-- <th>24-h br.</th> -->
       <th class="d-none d-md-block">Breyting</th>
-      <th class="text-dark counter">{{ countdown | async | date: 's' }}</th>
+      <th class="text-dark text-right counter">{{ countdown | async | date: 's' }}</th>
     </tr>
   </thead>
   <tbody *ngIf="tickers | async as tick">
@@ -19,10 +19,10 @@
         </div>
       </th>
       <td class="align-middle">
-        <p class="h3 align-middle">{{ tick["btcisk"]?.bid | currency: 'ISK' }}</p>
+        <p class="h3 align-middle">{{ tick["btcisk"]?.bid | number }}</p>
       </td>
       <td class="align-middle">
-        <p class="h3 align-middle">{{ tick["btcisk"]?.ask | currency: 'ISK' }}</p>
+        <p class="h3 align-middle">{{ tick["btcisk"]?.ask | number }}</p>
       </td>
       <!-- <td class="align-middle">
         <p class="h3 align-middle" [ngClass]="tick['btcisk']?.dailyChange >= 0 ? 'text-success2' : 'text-danger'">
