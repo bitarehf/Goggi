@@ -53,8 +53,8 @@
               <span class="fas fa-exchange-alt btn-icon__inner"></span>
             </span>
             <div class="media-body">
-              <p class="text-dark font-size-3 mb-0" *ngIf="bitcoinBalance >= 0 && tickers | async as tick">
-                {{ tick["btcisk"]?.ask * bitcoinBalance | number: "0.0-0" }}
+              <p class="text-dark font-size-3 mb-0" *ngIf="bitcoinBalance >= 0 && tickers">
+                {{ tickers["btcisk"]?.ask * bitcoinBalance | number: "0.0-0" }}
               </p>
               <h6 class="text-secondary font-weight-normal mb-0">
                 Bitcoin staða í ISK
@@ -129,8 +129,9 @@
       <div class="align-items-center justify-content-between mb-3">
         <div class="text-center">
           <h4 class="text-primary">Þú ert að kaupa</h4>
-          <h1 *ngIf="tickers | async as tick">
-            {{ ((nisk - (account.fee / 100 * nisk))  / tick["btcisk"]?.ask) | number: '0.8-8' }} BTC</h1>
+          <h1 *ngIf="tickers">
+            
+            {{ ((nisk - (account.fee / 100 * nisk))  / tickers["btcisk"]?.ask) | number: '0.8-8' }} BTC</h1>
           <h3 class="text-secondary">Fyrir {{ nisk | currency: 'ISK' }}</h3>
         </div>
       </div>

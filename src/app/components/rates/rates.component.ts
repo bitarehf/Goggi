@@ -10,7 +10,7 @@ import { TickerService } from 'src/app/services/ticker.service';
 })
 export class RatesComponent implements OnInit {
 
-  countdown;
+  countdown: Observable<number>;
   tickers: Observable<{ [id: string]: Ticker }>;
 
   constructor(public ticker: TickerService) { }
