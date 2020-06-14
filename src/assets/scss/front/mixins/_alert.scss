@@ -20,4 +20,12 @@
 @mixin alert-soft($hs-color, $hs-background) {
   color: ($hs-color);
   background-color: rgba($hs-background, .1);
+
+  .alert-link {
+    color: ($hs-color);
+
+    &:hover {
+      color: darken($hs-color, 7%);
+    }
+  }
 }

@@ -1,14 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
-$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+$fa-font-path: "assets/font-awesome/webfonts";
 
 @import "assets/scss/fonts.scss";
-@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "~@fortawesome/fontawesome-free/scss/solid.scss";
-@import "~@fortawesome/fontawesome-free/scss/regular.scss";
-@import "~@fortawesome/fontawesome-free/scss/brands.scss";
-@import "assets/scss/ngx-datatable/index.scss";
+
+@import "assets/font-awesome/scss/fontawesome.scss";
+@import "assets/font-awesome/scss/solid.scss";
+@import "assets/font-awesome/scss/regular.scss";
+@import "assets/font-awesome/scss/brands.scss";
+@import "assets/font-awesome/scss/light.scss";
+@import "assets/font-awesome/scss/duotone.scss";
+
 @import "assets/scss/ngx-datatable/datatable.scss";
-@import "~@swimlane/ngx-datatable/assets/icons.css";
+//@import "assets/scss/ngx-datatable/icons.scss";
 
 // .floating-tooltip-2 {
 //   width: 96px;

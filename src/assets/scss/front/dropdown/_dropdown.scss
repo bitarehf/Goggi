@@ -5,7 +5,12 @@
 /* Menu */
 .dropdown-menu {
   box-shadow: $dropdown-box-shadow;
-  font-size: $dropdown-item-font-size;
+}
+
+.dropdown-header {
+  font-size: $font-size-xs;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
 }
 
 /* Nav Link */
@@ -33,6 +38,7 @@
   &-icon {
     display: inline-block;
     text-align: center;
+    opacity: $dropdown-icon-opacity;
     font-size: $dropdown-icon-font-size;
     min-width: $dropdown-icon-width;
     max-width: $dropdown-icon-width;
@@ -62,6 +68,12 @@
       }
     }
   }
+}
+
+/* Card */
+.dropdown-card {
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /* Dropdown Positions */

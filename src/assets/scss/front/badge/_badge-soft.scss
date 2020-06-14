@@ -8,3 +8,7 @@
     @include badge-soft($value);
   }
 }
+
+.badge-soft-warning {
+  color: darken($warning, 20%) !important;
+}

@@ -15,6 +15,7 @@
 // Components
 //
 @import "list/list-article";
+@import "list/list-group";
 @import "links/links";
 @import "headers/header-default";
 @import "headers/header-helpers";
@@ -42,6 +43,7 @@
 @import "buttons/button-custom";
 @import "buttons/button-custom-toggle";
 @import "buttons/button-soft";
+@import "buttons/button-outline";
 @import "buttons/button-sizes";
 @import "buttons/button-ghost";
 @import "buttons/button-groups";
@@ -68,6 +70,7 @@
 @import "forms/form-flush";
 @import "forms/states/states";
 @import "forms/bookmark/bookmark-checkbox";
+@import "forms/custom-forms/custom-forms";
 @import "forms/checkbox/checkbox-outline";
 @import "forms/checkbox/checkbox-icon";
 @import "forms/checkbox/custom-checkbox";
@@ -77,13 +80,17 @@
 @import "go-to-section/go-to";
 @import "icon/icon";
 @import "icon/icon-styles";
+@import "legend-indicator/legend-indicator";
 @import "media/media-viewer";
 @import "media/video-player";
 @import "mockups/devices";
 @import "modal/modal";
 @import "page-preloader/page-preloader";
 @import "pagination/pagination";
+@import "navbar/navbar";
+@import "navbar/navbar-vertical";
 @import "navs/navs";
+@import "navs/nav-list";
 @import "progress/progress-vertical";
 @import "popover/popover";
 @import "scrollbar/scrollbar";
@@ -102,6 +109,8 @@
 @import "spinner/spinner";
 @import "stats/stats-progress";
 @import "step/step";
+@import "step/step-avatar";
+@import "step/step-avatar-sizes";
 @import "step/step-icon";
 @import "step/step-icon-sizes";
 @import "step/step-breakpoints";
@@ -113,6 +122,7 @@
 @import "step/step-flow/step-flow";
 @import "step/step-timeline/step-timeline";
 @import "table/table";
+@import "text-highlight/text-highlight";
 @import "sticky-block/sticky-block";
 @import "ie/ie";
 
@@ -140,17 +150,15 @@
 //
 @import "vendor/hs-unfold/hs-unfold";
 @import "vendor/hs-video-bg/hs-video-bg";
-@import "vendor/bootstrap-select/bootstrap-select";
 @import "vendor/chartjs/chartjs";
 @import "vendor/cubeportfolio/cubeportfolio";
-@import "vendor/datatables/datatables";
 @import "vendor/dropzone/dropzone";
 @import "vendor/dzsparallaxer/dzsparallaxer";
 @import "vendor/fancybox/fancybox";
-@import "vendor/flatpickr/flatpickr";
 @import "vendor/leaflet/leaflet";
+@import "vendor/quill/quill";
+@import "vendor/select2/select2";
 @import "vendor/ion-range-slider/ion-range-slider";
 @import "vendor/slick-carousel/slick-carousel";
-@import "vendor/summernote-editor/summernote-editor";
 @import "vendor/tagify/tagify";
 @import "vendor/typed.js/typedjs";

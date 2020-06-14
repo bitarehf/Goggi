@@ -3,7 +3,8 @@
 ------------------------------------*/
 
 .link {
-  display: flex;
+  font-size: $font-size-sm;
+  display: inline-flex;
 
   &-icon {
     position: relative;

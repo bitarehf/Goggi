@@ -33,11 +33,49 @@
 .card {
   border-width: 0;
   box-shadow: $card-box-shadow;
+
+  &-title {
+    display: block;
+    margin-bottom: 0;
+  }
+
+  &-subtitle {
+    display: block;
+    color: $card-subtitle-color;
+    font-weight: $card-subtitle-font-weight;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing;
+    margin-top: 0;
+    margin-bottom: $card-subtitle-margin-y;
+  }
+
+  &-text {
+    display: block;
+    color: $card-text-color;
+  }
+}
+
+.card-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: $card-header-padding-y;
+  padding-bottom: $card-header-padding-y;
+
+  &-title {
+    margin-bottom: 0;
+  }
+}
+
+.card-footer {
+  padding-top: $card-footer-padding-y;
+  padding-bottom: $card-footer-padding-y;
 }
 
 @include media-breakpoint-up(sm) {
   .card-group > .card + .card {
-    border-left: 1px solid $card-border-color;
+    border-left: $card-border-width solid $card-border-color;
   }
 }
 
@@ -64,7 +102,7 @@
 
 /* Shadow On Hover */
 .card-hover-shadow {
-  box-shadow: none;
+  transition: $card-hover-shadow-transition;
 
   &:hover {
     box-shadow: $card-hover-shadow-box-shadow;
@@ -117,8 +155,65 @@
   }
 }
 
+.card-body-centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Dashed */
+.card-dashed {
+  border-width: 0;
+  min-height: $card-dashed-min-height;
+
+  &:hover {
+    border-color: $card-frame-hover-border-color;
+
+    .card-dashed-body {
+      color: $card-dashed-body-text-hover-color;
+    }
+  }
+
+  .card-dashed-body {
+    color: $card-dashed-body-text-color;
+    border: $card-border-width dashed darken($card-border-color, 5%);
+    @include border-radius($card-border-radius);
+    transition: $card-dashed-body-transition;
+  }
+}
+
+/* Bordered */
+.card-bordered {
+  border-width: $card-border-width;
+  box-shadow: none;
+}
+
 /* IE image rendering fix */
 .card-img-top,
 .card-img-bottom {
   min-height: 1px;
+}
+
+/* Table */
+.card {
+  .table {
+    margin-bottom: 1px;
+
+    th, td {
+      padding-right: $card-spacer-x;
+      padding-left: $card-spacer-x;
+    }
+  }
+
+  .table-thead-bordered {
+    margin-top: -$table-border-width;
+  }
+}
+
+/* Dropdown */
+.card-dropdown {
+  position: absolute;
+  top: $card-dropdown-top-offset;
+  right: $card-dropdown-right-offset;
 }

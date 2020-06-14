@@ -1,35 +1,35 @@
 <header class="header">
-  <nav class="navbar navbar-dark fixed-top bg-primary flex-nowrap">
+  <nav class="navbar navbar-light flex-nowrap container">
     <div class="col-md-3 col-xl-2 d-flex align-items-center bg-md-primary-darker mr-0 py-2">
       <a routerLink="/">
         <img src="assets/bitar.svg" width="40" height="40">
       </a>
-      <a routerLink="/">
-        <span class="badge badge-danger ml-2">v0.2</span>
-      </a>
     </div>
 
-    <!-- Header Links -->
     <ul class="navbar-nav text-nowrap flex-row align-items-center px-3 ml-0 ml-sm-3">
-      <li *ngIf="!isAuthenticated()">
-        <a class="nav-link" routerLink="/login">
-          <i class="fas fa-sign-in-alt mr-sm-1"></i>
-          <span class="d-none d-lg-inline-block">Innskráning</span>
-        </a>
-      </li>
-      <li class="ml-4" *ngIf="isAuthenticated()">
-        <a class="nav-link" routerLink="/dashboard">
-          <i class="fas fa-jedi mr-sm-1"></i>
-          <span class="d-none d-lg-inline-block">Mitt svæði</span>
-        </a>
-      </li>
-      <li class="ml-3 ml-sm-5" *ngIf="isAuthenticated()">
-        <a class="btn btn-sm btn-light text-primary" routerLink="/" (click)="logout()">
-          <i class="fas fa-sign-out-alt mr-sm-1"></i>
-          Útskrá
-        </a>
-      </li>
+      <ng-container *ngIf="isAuthenticated(); else notLoggedIn">
+        <li class="ml-4">
+          <a class="nav-link text-warning" routerLink="/dashboard">
+            <i class="fas fa-jedi mr-2"></i>
+            <span class="d-none d-lg-inline-block text-dark text-hover-primary">Mitt svæði</span>
+          </a>
+        </li>
+        <li class="ml-3 ml-sm-5">
+          <a class="btn btn-sm btn-soft-indigo transition-3d-hover" routerLink="/" (click)="logout()">
+            <i class="fas fa-sign-out-alt mr-sm-1"></i>
+            Útskrá
+          </a>
+        </li>
+      </ng-container>
+
+      <ng-template #notLoggedIn>
+        <li>
+          <a class="nav-link" routerLink="/login">
+            <i class="fas fa-sign-in-alt mr-sm-1"></i>
+            <span class="d-none d-lg-inline-block">Innskráning</span>
+          </a>
+        </li>
+      </ng-template>
     </ul>
-    <!-- End Header Links -->
   </nav>
 </header>

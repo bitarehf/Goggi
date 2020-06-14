@@ -17,6 +17,14 @@
     }
   }
 
+  &-border-last-0 {
+    .step-item:last-child {
+      .step-icon::after {
+        display: none;
+      }
+    }
+  }
+
   .step-item {
     display: flex;
     flex-direction: column;

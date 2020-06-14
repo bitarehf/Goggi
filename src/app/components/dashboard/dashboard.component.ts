@@ -1,7 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { Observable } from 'rxjs';
-import { AccountData } from "src/app/services/accountData";
 import { BitarApiService } from 'src/app/services/bitar-api.service';
 
 @Component({
@@ -24,6 +22,12 @@ export class DashboardComponent implements OnInit {
     this.bitar.getUserEmail().subscribe(res => {
       this.email = res;
     });
+  }
+
+  logout() {
+    this.bitar.logout();
+    console.log('Logged out');
+    // this.router.navigate(['/'])
   }
 
 }

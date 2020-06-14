@@ -1,169 +1,670 @@
 <div class="container space-top-1">
+
   <div class="card">
-    <div class="card-header py-4 px-0 mx-4"></div>
-    <div class="card-body p-4">
-      <div class="" *ngIf="transactions">
-        <ngx-datatable #myTable class="bootstrap" [rows]="transactions" columnMode="force" rowHeight="56"
-          [sorts]="[{ prop: 'id', dir: 'desc' }]" limit="50" reorderable="false" [cssClasses]="cssClasses" [messages]="messages">
+    <!-- Header -->
+    <div class="card-header">
+      <h5 class="card-header-title">Hreyfingar</h5>
+    </div>
+    <!-- End Header -->
+    <div class="table-responsive">
 
-          <ngx-datatable-row-detail rowHeight="auto" #myDetailRow (toggle)="onDetailToggle($event)">
-            <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
-              <div class="border rounded p-5 mt-2">
+      <ngx-datatable #myTable class="bootstrap" columnMode="force" footerHeight="60" rowHeight="55" [limit]="12"
+        [rows]="transactions" [sorts]="[{ prop: 'name', dir: 'desc' }]" [messages]="messages" (page)="onPage($event)">
 
+        <!-- Row Detail Template -->
+        <ngx-datatable-row-detail rowHeight="auto" #myDetailRow (toggle)="onDetailToggle($event)">
+          <ng-template let-row="row" ngx-datatable-row-detail-template>
+            <ng-container *ngIf="row.type === 0">
+              <div class="card border bg-img-hero" style="background-image: url(assets/svg/abstract-shapes-18.svg);">
+                <div class="card-body p-5 p-md-7 p-lg-11">
+                  <div class="row justify-content-lg-between align-items-sm-center mb-11">
+                    <div class="col-sm-6 col-lg-4 order-sm-2 text-sm-right mb-5 mb-sm-0">
+                      <h1 class="h2 mb-0">
+                        Reikningur #
+                        <small class="d-block">{{ row.id }}</small>
+                      </h1>
+                    </div>
 
+                    <div class="col-sm-6 col-lg-4 order-sm-1">
+                      <!-- Logo -->
+                      <img class="mb-2" src="assets/bitar.svg" height="46" width="46">
+                      <h2 class="h1 text-primary">Bitar ehf.</h2>
+                      <!-- End Logo -->
 
-                <div class="row mb-6">
-                  <div class="col-6">
-                    <h4 class="h3">Færsla</h4>
-                    <ul class="list-unstyled">
-                      <li class="mb-2">
-                        <span class="text-secondary">Færslu númer: </span>
-                        <span class="font-weight-medium">{{ row.id | number }}</span>
-                      </li>
-                      <li class="mb-2">
-                        <span class="text-secondary">Tegund: </span>
-                        <span class="font-weight-medium" *ngIf="row.type === 0">Skipti</span>
-                        <span class="font-weight-medium" *ngIf="row.type === 1">Sala</span>
-                        <span class="font-weight-medium" *ngIf="row.type === 2">Innborgun</span>
-                        <span class="font-weight-medium" *ngIf="row.type === 3">Úttekt</span>
-                      </li>
-                      <li class="mb-2">
-                        <span class="text-secondary">Dagsetning og tími: </span>
-                        <span class="font-weight-medium">{{row.time | date: 'medium'}}</span>
-                      </li>
-                    </ul>
-
-                    <h5 class="text-dark font-size-1 text-uppercase">Upplýsingar viðskiptamanns:</h5>
-                    <ul class="list-unstyled mb-0">
-                      <li class="mb-2">
-                        <span class="text-secondary">Kennitala: </span>
-                        <span class="font-weight-medium">{{ row.personalId }}</span>
-                      </li>
-                      <li class="mb-2">
-                        <span class="text-secondary">Þóknunar prósent: </span>
-                        <span class="font-weight-medium">{{ row.fee / row.amount * 100 | number }}</span>
-                      </li>
-                    </ul>
+                      <!-- Company Id -->
+                      <p>
+                        Kt. 470818-0420
+                      </p>
+                      <!-- End Company Id -->
+                    </div>
                   </div>
 
-                  <div class="col-6">
-                    <h5 class="text-dark font-size-1 text-uppercase">Upplýsingar um vöru:</h5>
-                    <ul class="list-unstyled mb-0">
-                      <li class="mb-2">
-                        <span class="text-secondary">Magn: </span>
-                        <span class="font-weight-medium">{{ row.coins }} BTC</span>
-                      </li>
-                      <li class="mb-2" >
-                        <span class="text-secondary">Gengi: </span>
-                        <span class="font-weight-medium">{{ row.rate | currency: 'ISK' }}</span>
-                      </li>
-                    </ul>
+                  <!-- Bill To -->
+                  <div class="row justify-content-md-between mb-7">
+                    <div class="col-md-5 col-lg-4">
+                      <h3>Viðskiptamaður:</h3>
+                      <span class="d-block text-dark font-weight-bold">{{ username }}</span>
+                      <p class="text-body mb-0">Kt. {{ row.personalId }}</p>
+                    </div>
+
+                    <div class="col-md-5 col-lg-4 mt-6">
+                      <dl class="row mb-0">
+                        <dt class="col-5 col-md-6 text-body">Dagsetning:</dt>
+                        <dd class="col-7 col-md-6 text-dark font-weight-bold">{{ row.time | date: 'shortDate' }}</dd>
+                      </dl>
+                      <dl class="row mb-0">
+                        <dt class="col-5 col-md-6 text-body">Tími:</dt>
+                        <dd class="col-7 col-md-6 text-dark font-weight-bold">{{ row.time | date: 'mediumTime' }}</dd>
+                      </dl>
+                    </div>
                   </div>
+                  <!-- End Bill To -->
+
+                  <!-- Table -->
+                  <div class="table-responsive-lg">
+                    <table class="table table-heighlighted font-size-1 mb-0">
+                      <thead>
+                        <tr class="text-uppercase text-body">
+                          <th class="font-weight-bold">Lýsing</th>
+                          <th class="font-weight-bold">Magn</th>
+                          <th class="font-weight-bold">Ein.verð</th>
+                          <th class="font-weight-bold">VSK%</th>
+                          <th class="font-weight-bold text-right">Upphæð</th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-dark">
+                        <tr>
+                          <th scope="row">Bitcoin</th>
+                          <td>{{ row.coins | number: '0.0-8' }}</td>
+                          <td>{{ row.rate | number }}</td>
+                          <td>0</td>
+                          <td class="text-right">{{ -row.amount * 0.995 | number: '0.0-0' }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Þóknun {{ row.fee / row.amount * 100 | number: '0.0-5' }}%</th>
+                          <td>1</td>
+                          <td>{{ -row.fee | number }}</td>
+                          <td>0</td>
+                          <td class="text-right">{{ -row.fee | number: '0.0-0' }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- End Table -->
+
+                  <!-- Total -->
+                  <div class="border-top border-dark pt-2 mb-9">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="text-dark pl-2">
+                          Samtals
+                        </div>
+                      </div>
+                      <div class="col-6 text-right">
+                        <div class="text-dark pr-2">
+                          {{ -row.amount | number }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Total -->
+
+                  <!-- Contacts -->
+                  <div class="row justify-content-lg-between">
+                    <div class="col-md-8 col-lg-7 order-md-2 mb-5 mb-md-0">
+                      <h4>Takk!</h4>
+                      <p class="font-size-1 mb-0">Hafðu samband ef þú hefur einhverjar spurningar.</p>
+
+                      <span class="d-block">
+                        <small class="text-dark font-weight-bold">Netfang: </small>
+                        <small class="text-muted">bitar@bitar.is</small>
+                      </span>
+                      <small class="text-dark font-weight-bold">Sími: </small>
+                      <small class="text-muted">617-3807</small>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 order-md-1 align-self-end">
+                      <ul class="list-inline mb-0">
+                        <li class="list-inline-item u-ver-divider pr-3 mr-3">
+                          <a routerLink="/dashboard/transactions">
+                            <span class="fas fa-file-word text-secondary mr-1"></span>
+                            Sækja
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a routerLink="/dashboard/transactions">
+                            <span class="fas fa-print text-secondary mr-1"></span>
+                            Prenta
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- End Contacts -->
+
                 </div>
-
-                <div class="row">
-                  <div class="col-6 mb-3 mb-0">
-
-                  </div>
-
-                  <div class="col-6">
-
-                  </div>
-                </div>
-
-                <div class="row justify-content-end mb-4">
-                  <div class="col-6">
-                    <hr class="my-4">
-
-                    <h5 class="text-dark font-size-1 text-uppercase">Upplýsingar um greiðslu:</h5>
-                    <ul class="list-unstyled mb-0">
-                      <li class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="text-secondary">Kostnaður</span>
-                        <span class="font-weight-medium">{{ -(row.amount - row.fee) | currency: 'ISK' }}</span>
-                      </li>
-                      <li class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="text-secondary">Þóknun</span>
-                        <span class="font-weight-medium">{{ -row.fee | currency: 'ISK' }}</span>
-                      </li>
-                      <li class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="text-secondary">Samtals</span>
-                        <span class="text-primary font-weight-medium">{{ -row.amount | currency: 'ISK'}}</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <ul class="list-inline mb-0">
-                  <li class="list-inline-item u-ver-divider pr-3 mr-3">
-                    <a href="#">
-                      <span class="fas fa-file-word text-secondary mr-1"></span>
-                      Sækja
-                    </a>
-                  </li>
-                  <li class="list-inline-item">
-                    <a href="#">
-                      <span class="fas fa-print text-secondary mr-1"></span>
-                      Prenta
-                    </a>
-                  </li>
-                </ul>
+                <p class="font-size-1 text-center mb-0">Þessi reikningur er rafrænt ytra frumgagn skv. reglugerð nr.
+                  505/2013.</p>
+                <a class="font-size-1 text-center mb-2" href="https://blockchain.coinmarketcap.com/tx/bitcoin/{{ row.txId }}"
+                  target="_blank">
+                  {{ row.txId }}</a>
               </div>
-            </ng-template>
-          </ngx-datatable-row-detail>
+            </ng-container>
 
-          <ngx-datatable-column [width]="70" [resizeable]="false" [sortable]="false" [draggable]="false"
-            [canAutoResize]="false">
-            <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
-              <a href="javascript:void(0)" class="fas u-datatable__thead-icon" [class.fa-angle-up]="!expanded"
-                [class.fa-angle-down]="expanded" title="Expand/Collapse Row" (click)="toggleExpandRow(row)">
-              </a>
-            </ng-template>
-          </ngx-datatable-column>
+            <ng-container *ngIf="row.type === 1">
+              <div class="card border bg-img-hero"
+                style="background-image: url(assets/svg/abstract-shapes-18.svg); width: 100%;">
+                <div class="card-body p-5 p-md-7 p-lg-11">
+                  <div class="row justify-content-lg-between align-items-sm-center mb-11">
+                    <div class="col-sm-6 col-lg-4 order-sm-2 text-sm-right mb-5 mb-sm-0">
+                      <h1 class="h2 mb-0">
+                        Reikningur #
+                        <small class="d-block">{{ row.id }}</small>
+                      </h1>
+                    </div>
 
-          <ngx-datatable-column name="Færsla" prop="amount" [resizeable]="false" maxWidth="80">
-            <ng-template let-row="row" ngx-datatable-cell-template>
-              <p class="text-dark">{{ row.id | number }}</p>
-            </ng-template>
-          </ngx-datatable-column>
+                    <div class="col-sm-6 col-lg-4 order-sm-1">
+                      <!-- Logo -->
+                      <img class="mb-2" src="assets/bitar.svg" height="46" width="46">
+                      <h2 class="h1 text-primary">Bitar ehf.</h2>
+                      <!-- End Logo -->
 
-          <ngx-datatable-column name="Dagsetning" prop="date" [resizeable]="false" maxWidth="220">
-            <ng-template let-row="row" ngx-datatable-cell-template>
-              <p class="text-dark">{{ row.time | date: 'shortDate' }}</p>
-            </ng-template>
-          </ngx-datatable-column>
+                      <!-- Company Id -->
+                      <p>
+                        Kt. 470818-0420
+                      </p>
+                      <!-- End Company Id -->
+                    </div>
+                  </div>
 
-          <ngx-datatable-column name="Upphæð (ISK)" prop="amount" [resizeable]="false">
-            <ng-template let-row="row" ngx-datatable-cell-template>
-              <p class="text-success" *ngIf="row.amount > 0">{{ row.amount | number }}</p>
-              <p class="text-danger" *ngIf="row.amount < 0">{{ row.amount | number }}</p>
-            </ng-template>
-          </ngx-datatable-column>
+                  <!-- Bill To -->
+                  <div class="row justify-content-md-between mb-7">
+                    <div class="col-md-5 col-lg-4">
+                      <h3>Viðskiptamaður:</h3>
+                      <span class="d-block text-dark font-weight-bold">{{ username }}</span>
+                      <p class="text-body mb-0">Kt. {{ row.personalId }}</p>
+                    </div>
 
-          <ngx-datatable-column name="Upphæð (BTC)" prop="coins" [resizeable]="false">
-            <ng-template let-row="row" ngx-datatable-cell-template>
-              <p class="text-success" *ngIf="row.coins > 0">{{ row.coins | number: '0.8-8' }}</p>
-              <p class="text-danger" *ngIf="row.coins < 0">{{ row.coins | number: '0.8-8' }}</p>
-            </ng-template>
-          </ngx-datatable-column>
+                    <div class="col-md-5 col-lg-4 mt-6">
+                      <dl class="row mb-0">
+                        <dt class="col-5 col-md-6 text-body">Dagsetning:</dt>
+                        <dd class="col-7 col-md-6 text-dark font-weight-bold">{{ row.time | date: 'shortDate' }}</dd>
+                      </dl>
+                      <dl class="row mb-0">
+                        <dt class="col-5 col-md-6 text-body">Tími:</dt>
+                        <dd class="col-7 col-md-6 text-dark font-weight-bold">{{ row.time | date: 'mediumTime' }}</dd>
+                      </dl>
+                    </div>
+                  </div>
+                  <!-- End Bill To -->
 
-          <!-- <ngx-datatable-column name="Gengi" prop="rate" [resizeable]="false">
-            <ng-template let-row="row" ngx-datatable-cell-template>
-              <p class="text-dark">{{ row.rate | number }} kr.</p>
-            </ng-template>
-          </ngx-datatable-column> -->
+                  <!-- Table -->
+                  <div class="table-responsive-lg">
+                    <table class="table table-heighlighted font-size-1 mb-0">
+                      <thead>
+                        <tr class="text-uppercase text-body">
+                          <th class="font-weight-bold">Lýsing</th>
+                          <th class="font-weight-bold">Magn</th>
+                          <th class="font-weight-bold">Ein.verð</th>
+                          <th class="font-weight-bold">VSK%</th>
+                          <th class="font-weight-bold text-right">Upphæð</th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-dark">
+                        <tr>
+                          <th scope="row">Bitcoin</th>
+                          <td>{{ row.coins | number: '0.0-8' }}</td>
+                          <td>{{ row.rate | number }}</td>
+                          <td>0</td>
+                          <td class="text-right">{{ -row.amount * 0.995 | number: '0.0-0' }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Þóknun {{ row.fee / row.amount * 100 | number: '0.0-5' }}%</th>
+                          <td>1</td>
+                          <td>{{ -row.fee | number }}</td>
+                          <td>0</td>
+                          <td class="text-right">{{ -row.fee | number: '0.0-0' }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- End Table -->
 
-          <ngx-datatable-column name="Staða" prop="status" [resizeable]="false">
-            <ng-template let-row="row" ngx-datatable-cell-template>
-              <p class="text-success" *ngIf="row.status === 0">Afgreidd</p>
-              <p class="text-indigo" *ngIf="row.status === 1">Í bið</p>
-              <p class="text-danger" *ngIf="row.status === 2">Hafnað</p>
-              <p class="text-danger" *ngIf="row.status === 3">Mistókst</p>
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-footer></ngx-datatable-footer>
-        </ngx-datatable>
-      </div>
+                  <!-- Total -->
+                  <div class="border-top border-dark pt-2 mb-9">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="text-dark pl-2">
+                          Samtals
+                        </div>
+                      </div>
+                      <div class="col-6 text-right">
+                        <div class="text-dark pr-2">
+                          {{ -row.amount | number }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Total -->
+
+                  <!-- Contacts -->
+                  <div class="row justify-content-lg-between">
+                    <div class="col-md-8 col-lg-7 order-md-2 mb-5 mb-md-0">
+                      <h4>Takk!</h4>
+                      <p class="font-size-1 mb-0">Hafðu samband ef þú hefur einhverjar spurningar.</p>
+
+                      <span class="d-block">
+                        <small class="text-dark font-weight-bold">Netfang: </small>
+                        <small class="text-muted">bitar@bitar.is</small>
+                      </span>
+                      <small class="text-dark font-weight-bold">Sími: </small>
+                      <small class="text-muted">617-3807</small>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 order-md-1 align-self-end">
+                      <ul class="list-inline mb-0">
+                        <li class="list-inline-item u-ver-divider pr-3 mr-3">
+                          <a routerLink="/dashboard/transactions">
+                            <span class="fas fa-file-word text-secondary mr-1"></span>
+                            Sækja
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a routerLink="/dashboard/transactions">
+                            <span class="fas fa-print text-secondary mr-1"></span>
+                            Prenta
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- End Contacts -->
+
+                </div>
+                <p class="font-size-1 text-center mb-0">Þessi reikningur er rafrænt ytra frumgagn skv. reglugerð nr.
+                  505/2013.</p>
+                <a class="font-size-1 text-center" href="https://blockchain.coinmarketcap.com/tx/bitcoin/{{ row.txId }}"
+                  target="_blank">
+                  {{ row.txId }}</a>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="row.type === 3">
+              <div class="card border bg-img-hero"
+                style="background-image: url(assets/svg/abstract-shapes-18.svg); width: 100%;">
+                <div class="card-body p-5 p-md-7 p-lg-11">
+                  <div class="row justify-content-lg-between align-items-sm-center mb-11">
+                    <div class="col-sm-6 col-lg-4 order-sm-2 text-sm-right mb-5 mb-sm-0">
+                      <h1 class="h2 mb-0">
+                        Reikningur #
+                        <small class="d-block">{{ row.id }}</small>
+                      </h1>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-4 order-sm-1">
+                      <!-- Logo -->
+                      <img class="mb-2" src="assets/bitar.svg" height="46" width="46">
+                      <h2 class="h1 text-primary">Bitar ehf.</h2>
+                      <!-- End Logo -->
+
+                      <!-- Company Id -->
+                      <p>
+                        Kt. 470818-0420
+                      </p>
+                      <!-- End Company Id -->
+                    </div>
+                  </div>
+
+                  <!-- Bill To -->
+                  <div class="row justify-content-md-between mb-7">
+                    <div class="col-md-5 col-lg-4">
+                      <h3>Viðskiptamaður:</h3>
+                      <span class="d-block text-dark font-weight-bold">{{ username }}</span>
+                      <p class="text-body mb-0">Kt. {{ row.personalId }}</p>
+                    </div>
+
+                    <div class="col-md-5 col-lg-4 mt-6">
+                      <dl class="row mb-0">
+                        <dt class="col-5 col-md-6 text-body">Dagsetning:</dt>
+                        <dd class="col-7 col-md-6 text-dark font-weight-bold">{{ row.time | date: 'shortDate' }}</dd>
+                      </dl>
+                      <dl class="row mb-0">
+                        <dt class="col-5 col-md-6 text-body">Tími:</dt>
+                        <dd class="col-7 col-md-6 text-dark font-weight-bold">{{ row.time | date: 'mediumTime' }}</dd>
+                      </dl>
+                    </div>
+                  </div>
+                  <!-- End Bill To -->
+
+                  <!-- Table -->
+                  <div class="table-responsive-lg">
+                    <table class="table table-heighlighted font-size-1 mb-0">
+                      <thead>
+                        <tr class="text-uppercase text-body">
+                          <th class="font-weight-bold">Lýsing</th>
+                          <th class="font-weight-bold">Magn</th>
+                          <th class="font-weight-bold">Ein.verð</th>
+                          <th class="font-weight-bold">VSK%</th>
+                          <th class="font-weight-bold text-right">Upphæð</th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-dark">
+                        <tr>
+                          <th scope="row">Bitcoin úttekt</th>
+                          <td>{{ -row.coins | number: '0.0-8' }}</td>
+                          <td>{{ row.rate | number }}</td>
+                          <td>0</td>
+                          <td class="text-right">{{ row.amount * 0.995 | number: '0.0-0' }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Námuhvati {{ row.fee / row.amount * 100 | number: '0.0-5' }}%</th>
+                          <td>1</td>
+                          <td>{{ -row.fee | number }}</td>
+                          <td>0</td>
+                          <td class="text-right">{{ -row.fee | number: '0.0-0' }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- End Table -->
+
+                  <!-- Total -->
+                  <div class="border-top border-dark pt-2 mb-9">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="text-dark pl-2">
+                          Samtals
+                        </div>
+                      </div>
+                      <div class="col-6 text-right">
+                        <div class="text-dark pr-2">
+                          {{ -row.amount | number }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Total -->
+
+                  <!-- Contacts -->
+                  <div class="row justify-content-lg-between">
+                    <div class="col-md-8 col-lg-7 order-md-2 mb-5 mb-md-0">
+                      <h4>Takk!</h4>
+                      <p class="font-size-1 mb-0">Hafðu samband ef þú hefur einhverjar spurningar.</p>
+
+                      <span class="d-block">
+                        <small class="text-dark font-weight-bold">Netfang: </small>
+                        <small class="text-muted">bitar@bitar.is</small>
+                      </span>
+                      <small class="text-dark font-weight-bold">Sími: </small>
+                      <small class="text-muted">617-3807</small>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 order-md-1 align-self-end">
+                      <ul class="list-inline mb-0">
+                        <li class="list-inline-item u-ver-divider pr-3 mr-3">
+                          <a routerLink="/dashboard/transactions">
+                            <span class="fas fa-file-word text-secondary mr-1"></span>
+                            Sækja
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a routerLink="/dashboard/transactions">
+                            <span class="fas fa-print text-secondary mr-1"></span>
+                            Prenta
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- End Contacts -->
+
+                </div>
+                <p class="font-size-1 text-center mb-0">Þessi reikningur er rafrænt ytra frumgagn skv. reglugerð nr.
+                  505/2013.</p>
+                <a class="font-size-1 text-center" href="https://blockchain.coinmarketcap.com/tx/bitcoin/{{ row.txId }}"
+                  target="_blank">
+                  {{ row.txId }}</a>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="row.type === 4">
+              <div class="card border bg-img-hero"
+                style="background-image: url(assets/svg/abstract-shapes-18.svg); width: 100%;">
+                <div class="card-body p-5 p-md-7 p-lg-11">
+                  <div class="row justify-content-lg-between align-items-sm-center mb-11">
+                    <div class="col-sm-6 col-lg-4 order-sm-2 text-sm-right mb-5 mb-sm-0">
+                      <h1 class="h2 mb-0">
+                        Reikningur #
+                        <small class="d-block">{{ row.id }}</small>
+                      </h1>
+                    </div>
+
+                    <div class="col-sm-6 col-lg-4 order-sm-1">
+                      <!-- Logo -->
+                      <img class="mb-2" src="assets/bitar.svg" height="46" width="46">
+                      <h2 class="h1 text-primary">Bitar ehf.</h2>
+                      <!-- End Logo -->
+
+                      <!-- Company Id -->
+                      <p>
+                        Kt. 470818-0420
+                      </p>
+                      <!-- End Company Id -->
+                    </div>
+                  </div>
+
+                  <!-- Bill To -->
+                  <div class="row justify-content-md-between mb-7">
+                    <div class="col-md-5 col-lg-4">
+                      <h3>Viðskiptamaður:</h3>
+                      <span class="d-block text-dark font-weight-bold">{{ username }}</span>
+                      <p class="text-body mb-0">Kt. {{ row.personalId }}</p>
+                    </div>
+
+                    <div class="col-md-5 col-lg-4 mt-6">
+                      <dl class="row mb-0">
+                        <dt class="col-5 col-md-6 text-body">Dagsetning:</dt>
+                        <dd class="col-7 col-md-6 text-dark font-weight-bold">{{ row.time | date: 'shortDate' }}</dd>
+                      </dl>
+                      <dl class="row mb-0">
+                        <dt class="col-5 col-md-6 text-body">Tími:</dt>
+                        <dd class="col-7 col-md-6 text-dark font-weight-bold">{{ row.time | date: 'mediumTime' }}</dd>
+                      </dl>
+                    </div>
+                  </div>
+                  <!-- End Bill To -->
+
+                  <!-- Table -->
+                  <div class="table-responsive-lg">
+                    <table class="table table-heighlighted font-size-1 mb-0">
+                      <thead>
+                        <tr class="text-uppercase text-body">
+                          <th scope="col" class="font-weight-bold">Lýsing</th>
+                          <th scope="col" class="font-weight-bold">Magn</th>
+                          <th scope="col" class="font-weight-bold">Ein.verð</th>
+                          <th scope="col" class="font-weight-bold">VSK%</th>
+                          <th scope="col" class="font-weight-bold text-right">Upphæð</th>
+                        </tr>
+                      </thead>
+                      <tbody class="text-dark">
+                        <tr>
+                          <th scope="row">Bitcoin</th>
+                          <td>{{ row.coins | number: '0.0-8' }}</td>
+                          <td>{{ row.rate | number }}</td>
+                          <td>0</td>
+                          <td class="text-right">{{ -row.amount * 0.995 | number: '0.0-0' }}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Þóknun {{ row.fee / row.amount * 100 | number: '0.0-5' }}%</th>
+                          <td>1</td>
+                          <td>{{ -row.fee | number }}</td>
+                          <td>0</td>
+                          <td class="text-right">{{ -row.fee | number: '0.0-0' }}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- End Table -->
+
+                  <!-- Total -->
+                  <div class="border-top border-dark pt-2 mb-9">
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="text-dark pl-2">
+                          Samtals
+                        </div>
+                      </div>
+                      <div class="col-6 text-right">
+                        <div class="text-dark pr-2">
+                          {{ -row.amount | number }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- End Total -->
+
+                  <!-- Contacts -->
+                  <div class="row justify-content-lg-between">
+                    <div class="col-md-8 col-lg-7 order-md-2 mb-5 mb-md-0">
+                      <h4>Takk!</h4>
+                      <p class="font-size-1 mb-0">Hafðu samband ef þú hefur einhverjar spurningar.</p>
+
+                      <span class="d-block">
+                        <small class="text-dark font-weight-bold">Netfang: </small>
+                        <small class="text-muted">bitar@bitar.is</small>
+                      </span>
+                      <small class="text-dark font-weight-bold">Sími: </small>
+                      <small class="text-muted">617-3807</small>
+                    </div>
+
+                    <div class="col-md-4 col-lg-3 order-md-1 align-self-end">
+                      <ul class="list-inline mb-0">
+                        <li class="list-inline-item u-ver-divider pr-3 mr-3">
+                          <a routerLink="/dashboard/transactions">
+                            <span class="fas fa-file-word text-secondary mr-1"></span>
+                            Sækja
+                          </a>
+                        </li>
+                        <li class="list-inline-item">
+                          <a routerLink="/dashboard/transactions">
+                            <span class="fas fa-print text-secondary mr-1"></span>
+                            Prenta
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- End Contacts -->
+
+                </div>
+                <p class="font-size-1 text-center mb-0">Þessi reikningur er rafrænt ytra frumgagn skv. reglugerð nr.
+                  505/2013.</p>
+                <a class="font-size-1 text-center" href="https://blockchain.coinmarketcap.com/tx/bitcoin/{{ row.txId }}"
+                  target="_blank">
+                  {{ row.txId }}</a>
+              </div>
+            </ng-container>
+          </ng-template>
+        </ngx-datatable-row-detail>
+
+        <!-- Column Templates -->
+        <ngx-datatable-column name="TILVÍSUN" [draggable]="false" prop="id">
+
+          <ng-template let-row="row" let-rowIndex="rowIndex" let-expanded="expanded" ngx-datatable-cell-template>
+
+            <a href="javascript:void(0)" (click)="toggleExpandRow(row)">
+              #{{ row.id }}
+              <span [ngClass]="'ml-1 fad'" [class.fa-angle-up]="!expanded" [class.fa-angle-down]="expanded"></span>
+            </a>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="STAÐA" prop="status">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <span class="badge badge-soft-success" *ngIf="row.status === 0">Afgreitt</span>
+            <span class="badge badge-soft-warning" *ngIf="row.status === 1">Í vinnslu</span>
+            <span class="badge badge-soft-danger" *ngIf="row.status === 2">Hafnað</span>
+            <span class="badge badge-danger" *ngIf="row.status === 3">Villa</span>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="DAGSETNING" prop="time">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            {{ row.time | date: 'shortDate' }}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="UPPHÆÐ" prop="amount">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <ng-container *ngIf="row.type === 0">
+              {{ row.amount | number }}
+            </ng-container>
+            <ng-container *ngIf="row.type === 1">
+              {{ row.amount | number }}
+            </ng-container>
+            <ng-container *ngIf="row.type === 2">
+              {{ row.amount | number: '0.0-0' }}
+            </ng-container>
+            <ng-container *ngIf="row.type === 3">
+              {{ row.coins * row.rate | number: '0.0-0' }}
+            </ng-container>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="TEGUND" prop="type">
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <ng-container *ngIf="row.type === 0 || row.type === 1">
+              <span class="fa-stack fa-sm mr-2">
+                <i class="fas fa-circle fa-stack-2x" style="color: rgba(7, 215, 247, 0.1)"></i>
+                <i class="fas fa-exchange-alt fa-stack-1x" style="color: #07d7f7"></i>
+              </span>
+              <span class="align-middle">Viðskipti</span>
+            </ng-container>
+            <ng-container *ngIf="row.type === 2">
+              <span class="fa-stack fa-sm mr-2">
+                <i class="fas fa-circle fa-stack-2x" style="color: rgba(12, 220, 185, 0.1)"></i>
+                <i class="fal fa-arrow-right fa-stack-1x" style="color: rgb(12, 220, 185);"></i>
+              </span>
+              <span class="align-middle">Innborgun</span>
+            </ng-container>
+            <ng-container *ngIf="row.type === 3">
+              <span class="fa-stack fa-sm mr-2">
+                <i class="fas fa-circle fa-stack-2x" style="color: rgba(128, 105, 242, 0.1)"></i>
+                <i class="fal fa-arrow-left fa-stack-1x" style="color: #8069f2"></i>
+              </span>
+              <span class="align-middle">Úttekt</span>
+            </ng-container>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="REIKNINGUR" [sortable]=false>
+          <ng-template let-row="row" ngx-datatable-cell-template>
+            <a class="btn btn-xs btn-white mr-1" href="javascript:;">
+              <i class="fas fa-file-download mr-1"></i>
+              PDF
+            </a>
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-footer *ngIf="true">
+          <ng-template ngx-datatable-footer-template let-rowCount="rowCount" let-pageSize="pageSize"
+            let-selectedCount="selectedCount" let-curPage="curPage" let-offset="offset">
+            <datatable-pager [pagerLeftArrowIcon]="'fal fa-chevron-double-left'"
+              [pagerRightArrowIcon]="'fal fa-chevron-double-right'" [pagerPreviousIcon]="'fal fa-step-backward'"
+              [pagerNextIcon]="'fal fa-step-forward'" [page]="curPage" [size]="pageSize" [count]="rowCount"
+              [hidden]="!((rowCount / pageSize) > 1)" (change)="myTable.onFooterPage($event)">
+            </datatable-pager>
+            <!-- <span class="pl-3 text-primary">SHOWING:</span>&nbsp;&nbsp;<span class="text-muted text-sm">
+              {{curPage > 1 ? (curPage * pageSize) - pageSize : curPage}} -
+              {{(pageSize * curPage) < rowCount ? pageSize * curPage : rowCount}} of {{rowCount}}</span> -->
+
+            <small class="text-secondary ml-auto mr-4" *ngIf="curPage * pageSize <= rowCount">Sýni
+              {{ curPage * pageSize - pageSize + 1 }} til
+              {{ curPage * pageSize }} af {{ rowCount }} hreyfingum
+            </small>
+            <small class="text-secondary ml-auto mr-4" *ngIf="curPage * pageSize > rowCount">Sýni
+              {{ curPage * pageSize - pageSize + 1 }} til {{ rowCount }} af
+              {{ rowCount }} hreyfingum
+            </small>
+
+          </ng-template>
+        </ngx-datatable-footer>
+      </ngx-datatable>
     </div>
   </div>
-
 </div>

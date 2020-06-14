@@ -29,6 +29,17 @@
         padding: 0;
       }
     }
+
+    .custom-select,
+    .form-control {
+      &:not(:first-child) {
+        padding-left: $input-padding-x * 2;
+      }
+
+      &:not(:last-child) {
+        padding-right: $input-padding-x * 2;
+      }
+    }
   }
 
   &.input-group .form-control:not(:first-child),

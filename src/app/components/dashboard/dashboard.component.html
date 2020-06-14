@@ -1,41 +1,43 @@
 <app-header></app-header>
 
-<div class="bg-primary space-top-2">
-  <div class="pb-3 pl-4">
-    <div class="media pt-3">
-      <div class="media-body">
-        <h1 class="h3 text-white font-weight-medium" *ngIf="username">
-          Halló, {{ username }}
-        </h1>
-        <span class="text-white" *ngIf="email">{{ email }}</span>
+<div class="bg-navy" style="background-image: url(assets/svg/abstract-shapes-20.svg)">
+  <div class="container-lg space-top-lg-2">
+    <div class="row align-items-center">
+      <div class="col">
+        <h1 class="h2 text-white">Yfirlit</h1>
+
+        <ol class="breadcrumb breadcrumb-light breadcrumb-no-gutter mb-0">
+          <li class="breadcrumb-item" *ngIf="username">{{ username }}</li>
+        </ol>
+
       </div>
     </div>
-  </div>
 
-  <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-    <div class="navbar-collapse">
-      <ul class="navbar-nav flex-nowrap">
-        <li class="nav-item">
-          <a class="nav-link m-1 menu-item" routerLink="/dashboard" routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
-            Yfirlit
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link m-1 menu-item" routerLink="transactions" routerLinkActive="active">Viðskiptasaga</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link m-1 menu-item" routerLink="withdrawal" routerLinkActive="active">Taka út pening</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link m-1 menu-item" routerLink="deposit" routerLinkActive="active">Leggja inn pening</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link m-1 menu-item" routerLink="settings" routerLinkActive="active">Stillingar</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand navbar-dark mt-2">
+      <div class="navbar-collapse">
+        <ul class="navbar-nav flex-nowrap">
+          <li class="nav-item">
+            <a class="nav-link menu-item mr-1 pl-0" routerLink="/dashboard" routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }">
+              Yfirlit
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link m-1 menu-item" routerLink="transactions" routerLinkActive="active">Hreyfingar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link m-1 menu-item" routerLink="withdrawal" routerLinkActive="active">Úttekt</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link m-1 menu-item" routerLink="deposit" routerLinkActive="active">Innborgun</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link m-1 menu-item" routerLink="settings" routerLinkActive="active">Stillingar</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 </div>
 
 <router-outlet></router-outlet>

@@ -2,19 +2,23 @@
   Breadcrumb
 ------------------------------------*/
 
-.breadcrumb-white {
-  background-color: $breadcrumb-bg;
-
+.breadcrumb-light {
   .breadcrumb-item {
-    color: $breadcrumb-item-color;
+    color: $breadcrumb-light-item-color;
 
-    + .breadcrumb-item::before {
-      color: $breadcrumb-item-pseudo-color;
+    + .breadcrumb-item {
+      &::before {
+        color: $breadcrumb-light-divider-color;
+      }
     }
   }
 
   .breadcrumb-link {
-    color: $breadcrumb-link-color;
+    color: $breadcrumb-light-link-color;
+
+    &:hover {
+      color: $breadcrumb-light-link-hover-color;
+    }
   }
 }
 

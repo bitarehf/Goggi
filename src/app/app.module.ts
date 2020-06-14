@@ -22,12 +22,11 @@ import localeIs from '@angular/common/locales/is';
 registerLocaleData(localeIs, 'is');
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { TooltipModule } from 'ng2-tooltip-directive';
 import { AboutComponent } from './components/about/about.component';
 import { ChangelogComponent } from './components/changelog/changelog.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { DepositComponent } from './components/dashboard/deposit/deposit.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
+import { DepositComponent } from './components/dashboard/deposit/deposit.component';
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
 import { TransactionsComponent } from './components/dashboard/transactions/transactions.component';
 import { BtcCompletedComponent } from './components/dashboard/withdrawal-completed/btc/btc.component';
@@ -64,10 +63,10 @@ export function tokenGetter() {
     RatesComponent,
     RegisterComponent,
     DashboardComponent,
+    OverviewComponent,
     LoginComponent,
     OrderCompletedComponent,
     TransactionsComponent,
-    OverviewComponent,
     SettingsComponent,
     WithdrawalComponent,
     BtcComponent,
@@ -97,8 +96,7 @@ export function tokenGetter() {
     ReactiveFormsModule,
     FormsModule,
     TextMaskModule,
-    NgxDatatableModule,
-    TooltipModule
+    NgxDatatableModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'is' },

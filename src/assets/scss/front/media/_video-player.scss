@@ -54,6 +54,8 @@
     @include border-radius($video-player-icon-border-radius);
     color: $video-player-icon-color;
     background-color: $video-player-icon-bg-color;
+    backface-visibility: hidden;
+    transform: perspective(1px) translateZ(0);
     transition: $video-player-icon-transition;
   }
 }

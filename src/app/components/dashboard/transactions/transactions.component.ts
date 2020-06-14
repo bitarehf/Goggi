@@ -13,6 +13,10 @@ export class TransactionsComponent implements OnInit {
   @ViewChild('myTable') table: any;
 
   account: AccountData;
+  username: string;
+
+  timeout: any;
+  math = Math;
 
   // rows: Observable<any[]>;
   transactions: MarketTransaction[];
@@ -21,13 +25,13 @@ export class TransactionsComponent implements OnInit {
   /**
    * Css class overrides
    */
-  cssClasses: any = {
+  @Input() cssClasses: any = {
     sortAscending: 'fas fa-angle-up u-datatable__thead-icon',
     sortDescending: 'fas fa-angle-down u-datatable__thead-icon',
-    pagerLeftArrow: 'datatable-icon-left',
-    pagerRightArrow: 'datatable-icon-right',
-    pagerPrevious: 'datatable-icon-prev',
-    pagerNext: 'datatable-icon-skip'
+    pagerLeftArrow: 'fal fa-chevron-double-left',
+    pagerRightArrow: 'fal fa-chevron-double-right',
+    pagerPrevious: 'fal fa-step-backward',
+    pagerNext: 'fal fa-step-forward'
   };
 
   /**
@@ -62,6 +66,10 @@ export class TransactionsComponent implements OnInit {
       console.log(this.transactions);
     });
 
+    this.bitar.getUserName().subscribe(res => {
+      this.username = res;
+    });
+
     // this.bitar.getAccountData().subscribe(res => {
     //   const t = JSON.stringify(res.marketTransactions);
     //   const d = JSON.parse(t);
@@ -91,6 +99,13 @@ export class TransactionsComponent implements OnInit {
 
   onDetailToggle(event) {
     console.log('Detail Toggled', event);
+  }
+
+  onPage(event) {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(() => {
+      console.log('paged!', event);
+    }, 100);
   }
 
 }
