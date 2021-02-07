@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { BitcoinWithdrawal } from '../components/dashboard/withdrawal/bitcoinWithdrawal';
 import { AccountData } from './accountData';
 import { ChartPair } from './chartPair';
@@ -12,7 +13,7 @@ import { Register } from './register';
 })
 export class BitarApiService {
 
-  apiUrl: string = 'https://api.bitar.is/';
+  apiUrl: string = environment.apiUrl;
 
   public account: AccountData;
   public email: string;

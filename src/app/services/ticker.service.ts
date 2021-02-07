@@ -3,6 +3,7 @@ import { HubConnectionBuilder } from '@aspnet/signalr';
 import { BehaviorSubject } from 'rxjs';
 import { timer } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Ticker } from './ticker';
 
 @Injectable({
@@ -10,6 +11,7 @@ import { Ticker } from './ticker';
 })
 export class TickerService {
 
+  apiUrl: string = environment.apiUrl + 'tickers';
   lastUpdated: Date;
   private _tickers = new BehaviorSubject<{ [id: string]: Ticker }>({});
   readonly tickers = this._tickers.asObservable();
@@ -18,7 +20,7 @@ export class TickerService {
     console.log('Stock service started.');
 
     const connection = new HubConnectionBuilder()
-      .withUrl('https://api.bitar.is/tickers')
+      .withUrl(this.apiUrl)
       .build();
 
     connection.start().catch(err => console.error(err.toSting()));
