@@ -36,12 +36,12 @@ export class ChartComponent implements OnInit, AfterViewInit {
         return formatNumber(Math.trunc(price), 'is');
       }
     },
-    priceScale: {
-      borderColor: 'rgba(197, 203, 206, 1)',
-      borderVisible: false,
-      autoScale: true,
-      entireTextOnly: true,
-    },
+    // priceScale: {
+    //   borderColor: 'rgba(197, 203, 206, 1)',
+    //   borderVisible: false,
+    //   autoScale: true,
+    //   entireTextOnly: true,
+    // },
     timeScale: {
       borderVisible: false
     },
