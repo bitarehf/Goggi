@@ -51,7 +51,7 @@ export class BitarApiService {
   }
 
   getAddressBalance(): Observable<number> {
-    return this.http.get<number>(this.apiUrl + 'accountdata/getaddressbalance');
+    return this.http.get<number>(this.apiUrl + 'blockchain/getaddressbalance');
   }
 
   getUserEmail(): Observable<any> {
@@ -63,7 +63,7 @@ export class BitarApiService {
   }
 
   withdrawBitcoin(bitcoinWithdrawal: BitcoinWithdrawal) {
-    return this.http.post<string>(this.apiUrl + 'bitcoin/withdraw', bitcoinWithdrawal, { responseType: 'text' as 'json', observe: 'response' });
+    return this.http.post<string>(this.apiUrl + 'blockchain/withdraw', bitcoinWithdrawal, { responseType: 'text' as 'json', observe: 'response' });
   }
   withdrawISK(amount: number) {
     return this.http.post<string>(this.apiUrl + 'accountdata/withdraw', amount, { responseType: 'text' as 'json', observe: 'response' });
