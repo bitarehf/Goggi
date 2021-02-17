@@ -56,8 +56,8 @@ export class RegisterComponent implements OnInit {
   async submitHandler() {
     if (true) {
 
-      const formValue = this.registerForm.value;
-
+      let formValue = this.registerForm.value;
+      formValue.id = formValue.id.replace('-', '');
       console.log('Creating account...');
       console.log(formValue);
 
