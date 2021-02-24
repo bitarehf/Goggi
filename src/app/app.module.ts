@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { JwtModule } from '@auth0/angular-jwt';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { TextMaskModule } from 'angular2-text-mask';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,7 +13,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DepositComponent } from './components/dashboard/deposit/deposit.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
-import { TransactionsComponent } from './components/dashboard/transactions/transactions.component';
 import { BtcCompletedComponent } from './components/dashboard/withdrawal-completed/btc/btc.component';
 import { IskCompletedComponent } from './components/dashboard/withdrawal-completed/isk/isk.component';
 import { BtcComponent } from './components/dashboard/withdrawal/btc/btc.component';
@@ -25,7 +23,6 @@ import { FaqComponent } from './components/faq/faq.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HelpComponent } from './components/help/help.component';
-import { BuyComponent } from './components/home/buy/buy.component';
 import { ChartComponent } from './components/home/chart/chart.component';
 import { FeatureComponent } from './components/home/feature/feature.component';
 import { HomeComponent } from './components/home/home.component';
@@ -42,7 +39,6 @@ import { TermsComponent } from './components/terms/terms.component';
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    BuyComponent,
     FooterComponent,
     FeatureComponent,
     TermsComponent,
@@ -54,7 +50,6 @@ import { TermsComponent } from './components/terms/terms.component';
     OverviewComponent,
     LoginComponent,
     OrderCompletedComponent,
-    TransactionsComponent,
     SettingsComponent,
     WithdrawalComponent,
     BtcComponent,
@@ -76,7 +71,6 @@ import { TermsComponent } from './components/terms/terms.component';
     ReactiveFormsModule,
     FormsModule,
     TextMaskModule,
-    NgxDatatableModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {
