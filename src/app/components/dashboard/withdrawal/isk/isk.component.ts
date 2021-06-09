@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountData } from 'src/app/services/accountData';
 import { BitarApiService } from 'src/app/services/bitar-api.service';
-import createNumberMask from "text-mask-addons/dist/createNumberMask";
 import { iskWithdrawal } from '../iskWithdrawal';
 
 @Component({
@@ -18,14 +17,6 @@ export class IskComponent implements OnInit {
   sWithdrawalAmount: string;
   result: string;
   show: boolean;
-
-  iskMask = createNumberMask({
-    prefix: '',
-    thousandsSeparatorSymbol: '.',
-    allowDecimal: false,
-    decimalSymbol: ',',
-    decimalLimit: 8
-  });
 
   constructor(private bitar: BitarApiService, private router: Router) { }
 

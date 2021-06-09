@@ -46,8 +46,7 @@
               <div class="form-group">
                 <label class="input-label">Kennitala</label>
                 <input class="form-control" placeholder="470818-0420" [class.is-invalid]="id.touched && !idValid"
-                  [class.is-valid]="idValid" formControlName="id" autocomplete="off" (ngModelChange)="validateId()"
-                  [textMask]="{mask: idMask, guide: false}">
+                  [class.is-valid]="idValid" formControlName="id" autocomplete="off" (ngModelChange)="validateId()">
                 <span *ngIf="id.touched && !idValid" class="invalid-feedback">
                   Vinsamlegast sláðu inn gilda kennitölu
                 </span>

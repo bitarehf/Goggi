@@ -5,7 +5,7 @@ import { DashboardComponent } from './dashboard.component';
 import { DepositComponent } from './deposit/deposit.component';
 import { OverviewComponent } from './overview/overview.component';
 import { SettingsComponent } from './settings/settings.component';
-import { TransactionsModule } from './transactions/transactions.module';
+import { TransactionsComponent } from './transactions/transactions.component';
 import { BtcCompletedComponent } from './withdrawal-completed/btc/btc.component';
 import { IskCompletedComponent } from './withdrawal-completed/isk/isk.component';
 import { BtcComponent } from './withdrawal/btc/btc.component';
@@ -18,7 +18,7 @@ const routes: Routes = [
     path: '', component: DashboardComponent, canActivate: [AuthGuard],
     children: [
       { path: '', component: OverviewComponent },
-      { path: 'transactions', component: TransactionsModule },
+      { path: 'transactions', component: TransactionsComponent },
       { path: 'deposit', component: DepositComponent },
       {
         path: 'withdrawal', component: WithdrawalComponent,

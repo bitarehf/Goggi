@@ -7,7 +7,7 @@
           [ngClass]="account.balance-withdrawalAmount < 0 && withdrawalAmount >= 0 ? 'u-has-error' : 'u-has-success'">
           <label class="form-label">Magn</label>
           <input class="form-control" [(ngModel)]="sWithdrawalAmount" [ngModelOptions]="{standalone: true}"
-            (ngModelChange)="iskUpdate()" [textMask]="{ mask: iskMask, guide: false }" placeholder="0" />
+            (ngModelChange)="iskUpdate()" placeholder="0" />
           <p class="invalid-feedback" style="display: block;"
             *ngIf="account.balance-withdrawalAmount < 0 && withdrawalAmount >= 0">Þú getur ekki framkvæmt þessa færslu
           </p>

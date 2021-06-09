@@ -75,8 +75,7 @@
       <div class="row">
         <div class="col">
           <label class="h6 mb-3">Veldu upphæð í ISK</label>
-          <input class="form-control" [(ngModel)]="sisk" (ngModelChange)="iskUpdate()"
-            [textMask]="{ mask: iskMask, guide: false }" placeholder="0" />
+          <input class="form-control" [(ngModel)]="sisk" (ngModelChange)="iskUpdate()" placeholder="0" />
         </div>
         <div
           style="z-index: 1000; position: absolute; left: 50%; right: 50%; margin-top: 55px; margin-left: -10px; width: 20px; text-align: center;">
@@ -85,8 +84,7 @@
 
         <div class="col">
           <label class="h6 mb-3">Veldu upphæð í BTC</label>
-          <input class="form-control" [(ngModel)]="sbtc" (ngModelChange)="btcUpdate()"
-            [textMask]="{ mask: btcMask, guide: false }" placeholder="0,00000000" />
+          <input class="form-control" [(ngModel)]="sbtc" (ngModelChange)="btcUpdate()" placeholder="0,00000000" />
         </div>
       </div>
 

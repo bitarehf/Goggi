@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountData } from 'src/app/services/accountData';
 import { BitarApiService } from 'src/app/services/bitar-api.service';
-import createNumberMask from "text-mask-addons/dist/createNumberMask";
 import { BitcoinWithdrawal } from '../bitcoinWithdrawal';
 
 @Component({
@@ -19,14 +18,6 @@ export class BtcComponent implements OnInit {
   btcFees: number;
   result: string;
   show: boolean;
-
-  btcMask = createNumberMask({
-    prefix: '',
-    thousandsSeparatorSymbol: '.',
-    allowDecimal: true,
-    decimalSymbol: ',',
-    decimalLimit: 8
-  });
 
   constructor(private bitar: BitarApiService, private router: Router) { }
 

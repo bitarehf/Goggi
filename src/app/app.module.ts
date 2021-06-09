@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { JwtModule } from '@auth0/angular-jwt';
-import { TextMaskModule } from 'angular2-text-mask';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -70,7 +69,6 @@ import { TermsComponent } from './components/terms/terms.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    TextMaskModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {

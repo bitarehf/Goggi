@@ -7,7 +7,7 @@
           [ngClass]="bitcoinBalance-btcFees-nbtc < 0 || nbtc < 0.0005 ? 'u-has-error' : 'u-has-success'">
           <label class="form-label">Magn</label>
           <input class="form-control" [(ngModel)]="sbtc" [ngModelOptions]="{standalone: true}"
-            (ngModelChange)="btcUpdate()" [textMask]="{ mask: btcMask, guide: false }" placeholder="0" />
+            (ngModelChange)="btcUpdate()" placeholder="0" />
           <!-- <p class="invalid-feedback" style="display: block;" *ngIf="bitcoinBalance-btcFees-nbtc < 0">Þú átt ekki fyrir færslunni</p> -->
         </div>
 

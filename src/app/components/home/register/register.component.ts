@@ -14,8 +14,6 @@ export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup;
 
-  idMask: Array<string | RegExp> = [/[0-9]/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-
   // Form state
   idValid: boolean = false;
 

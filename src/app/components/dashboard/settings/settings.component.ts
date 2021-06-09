@@ -10,7 +10,6 @@ import { BitarApiService } from 'src/app/services/bitar-api.service';
 export class SettingsComponent implements OnInit {
 
   account: AccountData;
-  bankMask: Array<string | RegExp> = [/[0-9]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, /\d/, /\d/];
 
   constructor(private bitar: BitarApiService) { }
 
