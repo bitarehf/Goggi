@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, unlinkSync, writeFileSync } from 'fs';
+import { readdirSync, readFileSync, writeFileSync } from 'fs';
 import { compress } from 'brotli';
 
 readdirSync('dist/').forEach(file => {
