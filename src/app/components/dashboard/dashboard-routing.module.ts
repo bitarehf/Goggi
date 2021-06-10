@@ -6,11 +6,11 @@ import { DepositComponent } from './deposit/deposit.component';
 import { OverviewComponent } from './overview/overview.component';
 import { SettingsComponent } from './settings/settings.component';
 import { TransactionsComponent } from './transactions/transactions.component';
-import { BtcCompletedComponent } from './withdrawal-completed/btc/btc.component';
-import { IskCompletedComponent } from './withdrawal-completed/isk/isk.component';
-import { BtcComponent } from './withdrawal/btc/btc.component';
-import { IskComponent } from './withdrawal/isk/isk.component';
-import { WithdrawalComponent } from './withdrawal/withdrawal.component';
+import { BtcCompletedComponent } from './transfer-completed/btc/btc.component';
+import { IskCompletedComponent } from './transfer-completed/isk/isk.component';
+import { BtcComponent } from './transfer/btc/btc.component';
+import { IskComponent } from './transfer/isk/isk.component';
+import { TransferComponent } from './transfer/transfer.component';
 
 
 const routes: Routes = [
@@ -21,14 +21,14 @@ const routes: Routes = [
       { path: 'transactions', component: TransactionsComponent },
       { path: 'deposit', component: DepositComponent },
       {
-        path: 'withdrawal', component: WithdrawalComponent,
+        path: 'transfer', component: TransferComponent,
         children: [
           { path: '', component: BtcComponent },
           { path: 'isk', component: IskComponent },
         ]
       },
       {
-        path: 'withdrawal-completed',
+        path: 'transfer-completed',
         children: [
           { path: 'btc/:txid', component: BtcCompletedComponent },
           { path: 'isk/:txid', component: IskCompletedComponent },

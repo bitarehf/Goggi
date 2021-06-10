@@ -18,7 +18,7 @@ export class SettingsComponent implements OnInit {
   }
 
   update() {
-    this.bitar.setWithdrawalAddress(this.account.withdrawalAddress).subscribe(
+    this.bitar.setTransferAddress(this.account.withdrawalAddress).subscribe(
       res => {
         if (res.ok) {
           console.log('Withdrawal address updated successfully');

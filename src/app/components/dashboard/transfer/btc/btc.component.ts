@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountData } from 'src/app/services/accountData';
 import { BitarApiService } from 'src/app/services/bitar-api.service';
-import { BitcoinWithdrawal } from '../bitcoinWithdrawal';
+import { BitcoinTransfer } from '../bitcoinTransfer';
 
 @Component({
   selector: 'app-btc',
@@ -58,7 +58,7 @@ export class BtcComponent implements OnInit {
 
   withdrawBitcoinConfirm() {
 
-    const bitcoinWithdrawal: BitcoinWithdrawal = {
+    const bitcoinWithdrawal: BitcoinTransfer = {
       amount: this.nbtc,
       fees: this.btcFees
     };
@@ -67,7 +67,7 @@ export class BtcComponent implements OnInit {
     console.log(bitcoinWithdrawal.amount);
     console.log(bitcoinWithdrawal.fees);
 
-    this.bitar.withdrawBitcoin(bitcoinWithdrawal).subscribe(
+    this.bitar.transferBitcoin(bitcoinWithdrawal).subscribe(
       res => {
         if (res.ok) {
           console.log('Transaction request successful');

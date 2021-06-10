@@ -4,11 +4,11 @@ import { BitarApiService } from 'src/app/services/bitar-api.service';
 
 
 @Component({
-  selector: 'app-withdrawal',
-  templateUrl: './withdrawal.component.html',
-  styleUrls: ['./withdrawal.component.scss']
+  selector: 'app-transfer',
+  templateUrl: './transfer.component.html',
+  styleUrls: ['./transfer.component.scss']
 })
-export class WithdrawalComponent implements OnInit {
+export class TransferComponent implements OnInit {
 
   account: AccountData;
   bitcoinBalance: number;

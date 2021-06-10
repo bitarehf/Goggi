@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { BitcoinWithdrawal } from '../components/dashboard/withdrawal/bitcoinWithdrawal';
+import { BitcoinTransfer } from '../components/dashboard/transfer/bitcoinTransfer';
 import { AccountData } from './accountData';
 import { ChartPair } from './chartPair';
 import { Login } from './login';
@@ -62,14 +62,14 @@ export class BitarApiService {
     return this.http.get<string>(this.apiUrl + 'account/getusername', { responseType: 'text' as 'json' });
   }
 
-  withdrawBitcoin(bitcoinWithdrawal: BitcoinWithdrawal) {
-    return this.http.post<string>(this.apiUrl + 'blockchain/withdraw', bitcoinWithdrawal, { responseType: 'text' as 'json', observe: 'response' });
+  transferBitcoin(bitcoinTransfer: BitcoinTransfer) {
+    return this.http.post<string>(this.apiUrl + 'blockchain/withdraw', bitcoinTransfer, { responseType: 'text' as 'json', observe: 'response' });
   }
-  withdrawISK(amount: number) {
+  transferISK(amount: number) {
     return this.http.post<string>(this.apiUrl + 'accountdata/withdraw', amount, { responseType: 'text' as 'json', observe: 'response' });
   }
 
-  setWithdrawalAddress(bitcoinAddress: string) {
+  setTransferAddress(bitcoinAddress: string) {
     return this.http.post<string>(this.apiUrl + 'accountdata/updatewithdrawaladdress', JSON.stringify(bitcoinAddress), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' as 'json', observe: 'response' })
   }
 

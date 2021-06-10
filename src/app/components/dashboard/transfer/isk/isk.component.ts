@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountData } from 'src/app/services/accountData';
 import { BitarApiService } from 'src/app/services/bitar-api.service';
-import { iskWithdrawal } from '../iskWithdrawal';
 
 @Component({
   selector: 'app-isk',
@@ -55,12 +54,12 @@ export class IskComponent implements OnInit {
     console.log(this.withdrawalAmount);
     console.log(this.account.bankAccountNumber);
 
-    this.bitar.withdrawISK(this.withdrawalAmount).subscribe(res => {
+    this.bitar.transferISK(this.withdrawalAmount).subscribe(res => {
       if (res.ok) {
         console.log('Transaction request successful');
         this.result = res.body;
         console.log(this.result);
-        this.router.navigate(['/dashboard/withdrawal-completed/isk', res.body.toString()]);
+        this.router.navigate(['/dashboard/transfer-completed/isk', res.body.toString()]);
       }
     }, err => {
       console.log(err);

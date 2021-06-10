@@ -12,11 +12,11 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DepositComponent } from './components/dashboard/deposit/deposit.component';
 import { OverviewComponent } from './components/dashboard/overview/overview.component';
 import { SettingsComponent } from './components/dashboard/settings/settings.component';
-import { BtcCompletedComponent } from './components/dashboard/withdrawal-completed/btc/btc.component';
-import { IskCompletedComponent } from './components/dashboard/withdrawal-completed/isk/isk.component';
-import { BtcComponent } from './components/dashboard/withdrawal/btc/btc.component';
-import { IskComponent } from './components/dashboard/withdrawal/isk/isk.component';
-import { WithdrawalComponent } from './components/dashboard/withdrawal/withdrawal.component';
+import { BtcCompletedComponent } from './components/dashboard/transfer-completed/btc/btc.component';
+import { IskCompletedComponent } from './components/dashboard/transfer-completed/isk/isk.component';
+import { BtcComponent } from './components/dashboard/transfer/btc/btc.component';
+import { IskComponent } from './components/dashboard/transfer/isk/isk.component';
+import { TransferComponent } from './components/dashboard/transfer/transfer.component';
 import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -50,7 +50,7 @@ import { TermsComponent } from './components/terms/terms.component';
     LoginComponent,
     OrderCompletedComponent,
     SettingsComponent,
-    WithdrawalComponent,
+    TransferComponent,
     BtcComponent,
     IskComponent,
     BtcCompletedComponent,

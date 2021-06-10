@@ -1,4 +1,4 @@
-export interface iskWithdrawal {
+export interface iskTransfer {
     amount: number;
     accountNo: string;
   }
