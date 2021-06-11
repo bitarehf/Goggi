@@ -65,7 +65,7 @@ export class BitarApiService {
   transferBitcoin(bitcoinTransfer: BitcoinTransfer) {
     return this.http.post<string>(this.apiUrl + 'blockchain/withdraw', bitcoinTransfer, { responseType: 'text' as 'json', observe: 'response' });
   }
-  
+
   transferISK(amount: number) {
     return this.http.post<string>(this.apiUrl + 'accountdata/withdraw', amount, { responseType: 'text' as 'json', observe: 'response' });
   }
@@ -79,7 +79,7 @@ export class BitarApiService {
   }
 
   updateKnowYourCustomer(knowYourCustomer: KnowYourCustomer) {
-    return this.http.post<KnowYourCustomer>(this.apiUrl + 'accountdata/updateknowyourcustomer', knowYourCustomer, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' as 'json', observe: 'response' })
+    return this.http.post(this.apiUrl + 'accountdata/updateknowyourcustomer', knowYourCustomer, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' as 'json', observe: 'response' })
   }
 
 }
