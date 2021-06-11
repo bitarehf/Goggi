@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { BitcoinTransfer } from '../components/dashboard/transfer/bitcoinTransfer';
-import { AccountData } from './accountData';
+import { AccountData, KnowYourCustomer } from './accountData';
 import { ChartPair } from './chartPair';
 import { Login } from './login';
 import { Register } from './register';
@@ -65,6 +65,7 @@ export class BitarApiService {
   transferBitcoin(bitcoinTransfer: BitcoinTransfer) {
     return this.http.post<string>(this.apiUrl + 'blockchain/withdraw', bitcoinTransfer, { responseType: 'text' as 'json', observe: 'response' });
   }
+  
   transferISK(amount: number) {
     return this.http.post<string>(this.apiUrl + 'accountdata/withdraw', amount, { responseType: 'text' as 'json', observe: 'response' });
   }
@@ -76,4 +77,9 @@ export class BitarApiService {
   setBankAccountNumber(bankAccountNumber: string) {
     return this.http.post<string>(this.apiUrl + 'accountdata/updatebankaccountnumber', JSON.stringify(bankAccountNumber), { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' as 'json', observe: 'response' })
   }
+
+  updateKnowYourCustomer(knowYourCustomer: KnowYourCustomer) {
+    return this.http.post<KnowYourCustomer>(this.apiUrl + 'accountdata/updateknowyourcustomer', knowYourCustomer, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' as 'json', observe: 'response' })
+  }
+
 }

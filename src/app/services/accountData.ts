@@ -7,6 +7,7 @@ export interface AccountData {
     balance: number;
     transactions: Transaction[];
     marketTransactions: MarketTransaction[];
+    knowYourCustomers: KnowYourCustomer[];
 }
 
 export interface Transaction {
@@ -31,6 +32,15 @@ export interface MarketTransaction {
   balance: number;
   type: TransactionType;
   status: TransactionStatus;
+}
+
+export interface KnowYourCustomer {
+  id?: number;
+  personalId?: string;
+  occupation: string;
+  originOfFunds: string;
+  ownerOfFunds: boolean;
+  time?: string;
 }
 
 export enum TransactionType {

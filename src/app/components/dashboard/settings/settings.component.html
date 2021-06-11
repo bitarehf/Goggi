@@ -1,3 +1,67 @@
+<div class="container space-top-1">
+
+  <div class="card">
+    <!-- Header -->
+    <div class="card-header">
+      <h5 class="card-header-title">Áreiðanleikakönnun</h5>
+    </div>
+
+    <div class="card-body">
+
+      <div class="form-group">
+        <label>Atvinna</label>
+        <select class="form-control custom-select">
+          <option>Launþegi</option>
+          <option>Sjálfstætt starfandi</option>
+          <option>Námsmaður</option>
+          <option>Ekki í starfi</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Hver er uppruni þeirra fjármuna sem þú ætlar að nota?</label>
+        <select class="form-control custom-select">
+          <option>Laun</option>
+          <option>Söluhagnaður</option>
+          <option>Arfur</option>
+          <option>Lántaka</option>
+          <option>Arður</option>
+          <option>Erlent fjármagn</option>
+          <option>Gjöf</option>
+        </select>
+      </div>
+
+      <label>Ert þú eigandi þeirra peninga sem þú ætlar að nota?</label>
+      <div class="input-group input-group-md-down-break">
+        <!-- Custom Radio -->
+        <div class="form-control">
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" name="moneyOwner" id="moneyOwnerYes">
+            <label class="custom-control-label" for="moneyOwnerYes">Já</label>
+          </div>
+        </div>
+        <!-- End Custom Radio -->
+
+        <!-- Custom Radio -->
+        <div class="form-control">
+          <div class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" name="moneyOwner" id="moneyOwnerNo">
+            <label class="custom-control-label" for="moneyOwnerNo">Nei</label>
+          </div>
+        </div>
+        <!-- End Custom Radio -->
+
+      </div>
+
+      <br>
+
+      <button type="button" (click)="updateKnowYourCustomer()"
+        class="btn btn-sm btn-primary transition-3d-hover mr-1 float-right">Rafræn auðkenning</button>
+
+    </div>
+  </div>
+</div>
+
 <form class="container space-2" *ngIf="account != null">
   <div class="row">
     <div class="col-6 mb-6">

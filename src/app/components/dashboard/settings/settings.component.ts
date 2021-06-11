@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountData } from 'src/app/services/accountData';
+import { AccountData, KnowYourCustomer } from 'src/app/services/accountData';
 import { BitarApiService } from 'src/app/services/bitar-api.service';
 
 @Component({
@@ -10,11 +10,19 @@ import { BitarApiService } from 'src/app/services/bitar-api.service';
 export class SettingsComponent implements OnInit {
 
   account: AccountData;
+  knowYourCustomer: KnowYourCustomer;
 
   constructor(private bitar: BitarApiService) { }
 
   ngOnInit() {
     this.bitar.getAccountData().subscribe(res => (this.account = res));
+  }
+
+  updateKnowYourCustomer() {
+    console.log("kyc");
+    this.knowYourCustomer = { occupation: "t1", originOfFunds: "t2", ownerOfFunds: true };
+    this.bitar.updateKnowYourCustomer(this.knowYourCustomer);
+    //window.location.href = 'https://innskraning.island.is/?id=bitar.is&qaa=4';
   }
 
   update() {
