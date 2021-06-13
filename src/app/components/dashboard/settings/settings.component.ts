@@ -22,7 +22,7 @@ export class SettingsComponent implements OnInit {
     console.log("kyc");
     this.knowYourCustomer = { occupation: "t1", originOfFunds: "t2", ownerOfFunds: true };
     this.bitar.updateKnowYourCustomer(this.knowYourCustomer);
-    //window.location.href = 'https://innskraning.island.is/?id=bitar.is&qaa=4';
+    window.location.href = 'https://innskraning.island.is/?id=bitar.is&qaa=4';
   }
 
   update() {
