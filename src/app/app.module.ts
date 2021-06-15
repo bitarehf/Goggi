@@ -32,6 +32,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { RatesComponent } from './components/rates/rates.component';
 import { TermsComponent } from './components/terms/terms.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { TermsComponent } from './components/terms/terms.component';
     FaqComponent,
     HelpComponent,
     ChangelogComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

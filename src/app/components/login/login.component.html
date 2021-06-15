@@ -22,6 +22,7 @@
     </div>
 
     <div class="container">
+
       <div class="row no-gutters">
         <div class="col-md-8 col-lg-7 col-xl-6 offset-md-2 offset-lg-2 offset-xl-3 space-top-3 space-lg-0">
           <!-- Form -->
@@ -37,8 +38,8 @@
             <div class="form-group">
               <label class="input-label">Kennitala eða netfang</label>
               <input class="form-control" placeholder="Kennitala eða netfang" formControlName="user" tabindex="1"
-                [class.is-invalid]="!userValid && user.touched"
-                [class.is-valid]="userValid && user.touched" (ngModelChange)="validateUser()">
+                [class.is-invalid]="!userValid && user.touched" [class.is-valid]="userValid && user.touched"
+                (ngModelChange)="validateUser()">
               <div *ngIf="user.touched && !userValid" class="invalid-feedback d-block">
                 Vinsamlegast sláðu inn gilda kennitölu eða gilt netfang
               </div>
@@ -55,8 +56,7 @@
                 </span>
               </label>
               <input type="password" class="form-control" placeholder="Lykilorð" formControlName="password" tabindex="2"
-                [class.is-invalid]="password.invalid && password.touched"
-                [class.is-valid]="password.valid">
+                [class.is-invalid]="password.invalid && password.touched" [class.is-valid]="password.valid">
               <div *ngIf="password.invalid && password.touched" class="invalid-feedback d-block">
                 Vinsamlegast sláðu inn gilt lykilorð
               </div>

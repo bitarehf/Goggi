@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alert.service';
 import { BitarApiService } from 'src/app/services/bitar-api.service';
 import { Login } from 'src/app/services/login';
 
@@ -17,7 +18,10 @@ export class LoginComponent implements OnInit {
   idValid: boolean;
   emailValid: boolean;
 
-  constructor(private bitar: BitarApiService, private router: Router, private fb: FormBuilder) { }
+  constructor(
+    private bitar: BitarApiService,
+    private router: Router, private fb: FormBuilder,
+    public alertService: AlertService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -55,6 +59,7 @@ export class LoginComponent implements OnInit {
       },
       err => {
         console.log(err);
+        this.alertService.error('Innskráning tókst ekki: ' + err.error)
       }
     );
 
