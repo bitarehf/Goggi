@@ -1,4 +1,4 @@
-export interface AccountData {
+export class AccountData {
     id: string;
     withdrawalAddress: string;
     bankAccountNumber: string;
@@ -10,7 +10,7 @@ export interface AccountData {
     knowYourCustomers: KnowYourCustomer[];
 }
 
-export interface Transaction {
+export class Transaction {
   id: number;
   personalId: string;
   time: string;
@@ -20,7 +20,7 @@ export interface Transaction {
   amount: number;
 }
 
-export interface MarketTransaction {
+export class MarketTransaction {
   id: number;
   personalId: string;
   time: string;
@@ -34,7 +34,7 @@ export interface MarketTransaction {
   status: TransactionStatus;
 }
 
-export interface KnowYourCustomer {
+export class KnowYourCustomer {
   id?: number;
   personalId?: string;
   occupation: string;

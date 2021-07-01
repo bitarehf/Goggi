@@ -34,6 +34,9 @@ import { RatesComponent } from './components/rates/rates.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { AlertComponent } from './components/alert/alert.component';
 
+import { LOCALE_ID } from '@angular/core';
+import '@angular/common/locales/global/is';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,7 +84,7 @@ import { AlertComponent } from './components/alert/alert.component';
       }
     })
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'is' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

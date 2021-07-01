@@ -10,7 +10,12 @@ import { BitarApiService } from 'src/app/services/bitar-api.service';
 export class SettingsComponent implements OnInit {
 
   account: AccountData;
-  knowYourCustomer: KnowYourCustomer;
+  knowYourCustomer: KnowYourCustomer = new KnowYourCustomer();
+
+  occupationList = ['Launþegi', 'Sjálfstætt starfandi', 'Námsmaður', 'Ekki í starfi'];
+  originOfFundsList = ['Laun', 'Söluhagnaður', 'Arfur', 'Lántaka', 'Arður', 'Erlent fjármagn', 'Gjöf'];
+  ownerOfFunds: boolean;
+
 
   constructor(private bitar: BitarApiService) { }
 
@@ -18,11 +23,21 @@ export class SettingsComponent implements OnInit {
     this.bitar.getAccountData().subscribe(res => (this.account = res));
   }
 
-  updateKnowYourCustomer() {
+  onSubmit() {
     console.log("kyc");
     this.knowYourCustomer = { occupation: "t1", originOfFunds: "t2", ownerOfFunds: true };
-    this.bitar.updateKnowYourCustomer(this.knowYourCustomer);
-    window.location.href = 'https://innskraning.island.is/?id=bitar.is&qaa=4';
+    this.bitar.updateKnowYourCustomer(this.knowYourCustomer).subscribe(
+      res => {
+        if (res.ok) {
+          console.log('KnowYourCustomer updated successfully');
+          console.log(res.body.toString());
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    //window.location.href = 'https://innskraning.island.is/?id=bitar.is&qaa=4';
   }
 
   update() {

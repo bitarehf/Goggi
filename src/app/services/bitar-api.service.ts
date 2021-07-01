@@ -79,6 +79,8 @@ export class BitarApiService {
   }
 
   updateKnowYourCustomer(knowYourCustomer: KnowYourCustomer) {
+    console.log("updateKnowYourCustomer called");
+    console.log(knowYourCustomer);
     return this.http.post(this.apiUrl + 'accountdata/updateknowyourcustomer', knowYourCustomer, { headers: new HttpHeaders({ 'Content-Type': 'application/json' }), responseType: 'text' as 'json', observe: 'response' })
   }
 
