@@ -59,14 +59,13 @@ export class LoginComponent implements OnInit {
       },
       err => {
         console.log(err);
-        this.alertService.error('Innskráning tókst ekki: ' + err.error)
+        console.log('tada');
+        console.log(err.message);
+        this.alertService.clear(); // Prevents multiple alerts stacking.
+        this.alertService.error('Innskráning tókst ekki: ' + err.error);
+        
       }
     );
-
-    console.log('fuck');
-    console.log(this.idValid);
-    console.log(this.emailValid);
-
   }
 
   validateUser() {
